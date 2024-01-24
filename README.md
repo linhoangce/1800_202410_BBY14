@@ -13,7 +13,7 @@ HEAD
 * Hello again, it's Linh. I am here for fun!
 * Joey Jahanshahi
 * Isaac Azage
-* ...
+* Well, well, guess who's here gain? It's Linh. No, seriously, it's Linh again!
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
