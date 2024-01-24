@@ -1,5 +1,6 @@
+
 # Project Title
-My name is Isaac.
+# Comp 1800 - Burnaby 14
 
 ## 1. Project Description
 State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
@@ -7,8 +8,8 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* ...
-* ...
+* Joey Jahanshahi
+* Isaac Azage
 * ...
 	
 ## 3. Technologies and Resources Used
