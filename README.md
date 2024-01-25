@@ -8,7 +8,6 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-HEAD
 * Hi, my name is Linh. I am just happy to be here.
 * Hello again, it's Linh. I am here for fun!
 * Joey Jahanshahi
