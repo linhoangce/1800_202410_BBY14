@@ -41,12 +41,17 @@
     font-size: 48px;
 }
 
-.btn:hover{
+.btn{
     background-color: white;
     color: green;
     border: solid;
     border-color: green;
+}
 
+.btn:hover {
+    background-color: green;
+    color: white;
+    border:solid;
 }
 
 .navbar-toggler {
