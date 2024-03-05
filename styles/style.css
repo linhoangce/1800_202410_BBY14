@@ -1,6 +1,6 @@
 .signup {
     padding-top: 40px;
-    color: green;
+    color: #00610e;
 }
 
 .p-5 {
@@ -38,19 +38,19 @@
 }
 
 .material-icons.md-48 {
-    font-size: 48px;
+    font-size: 40px;
     
 }
 
 .btn{
     background-color: white;
-    color: green;
+    color: #00610e;
     border: solid;
-    border-color: green;
+    border-color: #00610e;
 }
 
 .btn:hover {
-    background-color: green;
+    background-color: #00610e;
     color: white;
     border:solid;
 }
@@ -59,18 +59,52 @@
     border: solid;
 }
 
-body {
-    overflow-y: scroll;
-}
 
 .row {
     padding-top: 50px;
+    margin: auto;
 }
 
 .card-body {
     height: 80px;
 }
 
-.fixed-bottom {
-    margin-top: 100px;
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: #00610e;
+    
+}
+
+.d-flex {
+    width: 50%;
+    height: 30px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+}
+
+.navbar-toggler {
+    width: 40px;
+    height: 40px;
+    border: none;
+    
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+.btn-outline-success {
+    border: solid white;
+    background-color: #00610e;
+}
+.cart {
+    color: white;
 }
