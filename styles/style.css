@@ -39,6 +39,7 @@
 
 .material-icons.md-48 {
     font-size: 48px;
+    
 }
 
 .btn{
@@ -56,4 +57,20 @@
 
 .navbar-toggler {
     border: solid;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+.row {
+    padding-top: 50px;
+}
+
+.card-body {
+    height: 80px;
+}
+
+.fixed-bottom {
+    margin-top: 100px;
 }
