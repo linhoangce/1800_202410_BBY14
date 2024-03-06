@@ -49,11 +49,11 @@
     border-color: #00610e;
 }
 
-/* .btn:hover {
+.btn:hover {
     background-color: #00610e;
     color: white;
     border:solid;
-} */
+}
 
 /* .navbar-toggler {
     border: solid;
@@ -83,12 +83,6 @@
     height: 30px;
 }
 
-.btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-}
 
 .navbar-toggler {
     width: 40px;
