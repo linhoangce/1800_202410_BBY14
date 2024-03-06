@@ -108,3 +108,11 @@
 .cart {
     color: white;
 }
+
+.col-md-8-fs-4 {
+    text-align: left;
+}
+
+.container-fluid {
+    margin-left: 1px;
+}
