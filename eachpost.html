@@ -50,10 +50,9 @@
       <a class="navbar-brand" href="#"><img src="images/logo.png" height=40 alt="farmify"></a>
       <form class="d-flex mt-1" role="search">
         <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large"
-            style="color: white"></ion-icon></button>
+        <button class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large" style="color: white"></ion-icon></button>
       </form>
-      <ion-icon class="cart" name="cart-outline" size="large"></ion-icon>
+      <ion-icon class="cart" name="cart-outline" size="large" ></ion-icon>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="float:left;">
         <span class="navbar-toggler-icon"></span>
@@ -69,7 +68,7 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="AboutUs.html">About Us</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -91,40 +90,48 @@
       </div>
     </div>
   </nav>
-
-  <
-    <div class="container-fluid py-5">
-      <h1 class="display-5 fw-bold">Who are we?</h1>
-      <p class="col-md-8-fs-4">Founded in 2024, Farmify was developed by Linh Hoang, Joseph Jahanshahi, and Isaac Azage.
-        Inspired by making produce accessible and affordable for the community, the group prototyped Farmify, when the
-        app
-        increased in popularity, Farmify officially launched Feb 05, 2024. The group now lives in Vancouver, BC where
-        they
-        are working to completing their diploma in Computer Systems Technology at the British Columbia Institute of
-        Technology.
-
-        Acknowledgement of free usage:
-        <a href="https://www.flaticon.com/free-icons/vegetables" title="vegetables icons">Vegetables icons created by Freepik - Flaticon</a>
-        <a href="https://www.flaticon.com/free-icons/fruit" title="fruit icons">Fruit icons created by Freepik - Flaticon</a>
-        <a href="https://www.flaticon.com/free-icons/dairy-products" title="dairy products icons">Dairy products icons created by Smashicons - Flaticon</a>
-        <a href="https://www.flaticon.com/free-icons/macadamia" title="macadamia icons">Macadamia icons created by surang - Flaticon</a>
-        <a href="https://www.flaticon.com/free-icons/farmer" title="farmer icons">Farmer icons created by Freepik - Flaticon</a>
-      </p>
-      <br /><br />
-    </div>
+  
+  <!-- Categories NAV -->
+  <nav id="categories">
+      <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 25%;"></a>
+      <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 25%;"></a>
+      <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy" style="width: 25%;"></a>
+      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts" style="width: 25%;"></a>
+      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 25%;"></a>
+    </nav>
   
 
+    <div class="container">
+      <h1><span id="post-title"> title</span></h1>
+      <img class="post-img responsive" src=""/>
+      <div id="details-go-here"></div>
+</div>
 
   <!-- our own footer goes here-->
 
-  <footer class="navbar bg-secondary-subtle fixed-bottom">
+  <footer class="navbar bg-secondary-subtle fixed-bottom" >
     <div class="container">
       <ion-icon name="home-outline" size="large"></ion-icon>
       <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
+
+     
+    </head>
+    <body>
+    
+    <!-- Define the button with Ionicon -->
+    <button onclick="navigateToCreatePage()">
       <ion-icon name="add-circle-outline" size="large"></ion-icon>
+    </button>
+    
+    <script>
+      function navigateToCreatePage() {
+        window.location.href = 'createPost.html';
+      }
+    </script>
+
       <ion-icon name="notifications-outline" size="large"></ion-icon>
       <ion-icon name="person-outline" size="large"></ion-icon>
-
+      
     </div>
   </footer>
 

@@ -93,14 +93,43 @@
   
   <!-- Categories NAV -->
   <nav id="categories">
-      <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 25%;"></a>
-      <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 25%;"></a>
-      <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy" style="width: 25%;"></a>
-      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts" style="width: 25%;"></a>
+      <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 40%;"></a>
+      <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 40%;"></a>
+      <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy" style="width: 40%;"></a>
+      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts" style="width: 40%;"></a>
+      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 40%;"></a>
     </nav>
   
+    <div class="container">
+      <h1>POSTS</h1>
+      <!-- Here is the container for cards  -->
+      <div class="container">
+          <div id="posts-go-here" class="row row-cols-auto">
+          </div>
+      </div>
+  </div>
 
-  <div class="row row-cols-2 row-cols-md-3 g-2 pb-5">
+    <!-- Templates for general use, not displayed -->
+    <template id="postCardTemplate">
+      <div class="card py-2 mx-2" style="width: 10rem">
+          <img class="card-image card-img-top" src=" ..." alt="..." />
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-farm">placeholder</p>
+              <br />
+              <p class="card-text">
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+              </p>
+              <div class="card-footer">
+                <small class="text-body-secondary">Price $</small>
+              </div>
+              <a class="btn btn-primary card-href">Read more ...</a>
+          </div>
+      </div>
+  </template>
+
+  <!-- <div class="row row-cols-2 row-cols-md-3 g-2 pb-5">
     <div class="col">
       <div class="card h-80">
         <img src="/images/card1.png" class="card-img-top" alt="..." style="height:100px;">
@@ -211,7 +240,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- our own footer goes here-->
 

@@ -50,9 +50,10 @@
       <a class="navbar-brand" href="#"><img src="images/logo.png" height=40 alt="farmify"></a>
       <form class="d-flex mt-1" role="search">
         <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large" style="color: white"></ion-icon></button>
+        <button class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large"
+            style="color: white"></ion-icon></button>
       </form>
-      <ion-icon class="cart" name="cart-outline" size="large" ></ion-icon>
+      <ion-icon class="cart" name="cart-outline" size="large"></ion-icon>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="float:left;">
         <span class="navbar-toggler-icon"></span>
@@ -94,59 +95,59 @@
 
   <br> <br>
 
-  <form>
- <br>
+  <form id="create-post">
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Product Type</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Product Name">
-      
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title">
     </div>
 
     <div class="form-group">
-      <label for="exampleInputPassword1">Price</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Price">
+      <label for="farm">Farm Name</label>
+      <input type="text" class="form-control" id="farm">
     </div>
 
-<div class="form-group">
-      <label for="exampleInputEmail1">Quantity</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Quantity">
-      <small id="emailHelp" class="form-text text-muted">  Weight Will Be In Kilograms</small>
+    </div>
+    <div class="form-group">
+      <label for="product-type">Product Type</label>
+      <input type="text" class="form-control" id="product-type">
     </div>
 
     <div class="form-group">
-        <label for="exampleInputEmail1">Description </label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Description">
-        <small id="emailHelp" class="form-text text-muted">  Optional*</small>
-      </div>
+      <label for="price">Price</label>
+      <input type="text" class="form-control" id="price">
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="text" class="form-control" id="quantity">
+      <small id="unit" class="form-text text-muted"> in kilograms</small>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description </label>
+      <input type="text" class="form-control" id="description">
+      <small id="optional" class="form-text text-muted"> Optional*</small>
+    </div>
 
 
-      <div class = "middle">
-      
+    <div class="middle">
+      <a type="submit" href="confirmationPage.html" class="btn btn-success">Post</a>
+    </div>
 
-        
-            <a type="submit"  href ="confirmationPage.html" class="btn btn-success">Submit</a>
-          
-          
-         
-
-    
-
-</div>
-    
   </form>
-  
+
 
   <!-- our own footer goes here-->
 
-  <footer class="navbar bg-secondary-subtle fixed-bottom" >
+  <footer class="navbar bg-secondary-subtle fixed-bottom">
     <div class="container">
       <ion-icon name="home-outline" size="large"></ion-icon>
       <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
       <ion-icon name="add-circle-outline" size="large"></ion-icon>
       <ion-icon name="notifications-outline" size="large"></ion-icon>
       <ion-icon name="person-outline" size="large"></ion-icon>
-      
+
     </div>
   </footer>
 
