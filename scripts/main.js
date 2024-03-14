@@ -23,19 +23,18 @@ function writePostLoop(max) {
     var hikesRef = db.collection("posts");
     for (i = 1; i <= max; i++) {
         hikesRef.add({ //add to database, autogen ID
-            title: i,
-            farm: i,
-            product: i,
-            price: i,
-            quantity: i,
-            description: i,
-            imgcode: i,
+            title: "",
+            farm: "",
+            product: "",
+            price: "",
+            quantity: "",
+            description: "",
+            imgcode: "",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()
         })
    }
 }
 
-writePostLoop(20);
 //------------------------------------------------------------------------------
 // Input parameter is a string representing the collection we are reading from
 //------------------------------------------------------------------------------
@@ -80,3 +79,13 @@ function displayCardsDynamically(collection) {
 }
 
 displayCardsDynamically("posts");  //input param is the name of the collection
+
+// const dataAvailable = db.collection("post").doc().title; // condition to display the content
+
+// if (dataAvailable != null) {
+//     document.getElementById("postCardTemplate").style.display = "none";
+//     document.getElementById("post-display").style.display = "block";
+// } else {
+//     document.getElementById("postCardTemplate").style.display = "block";
+//     document.getElementById("post-display").style.display = "none";
+// }

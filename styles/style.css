@@ -156,8 +156,33 @@
         display: flex;
         justify-content: center;
         border: solid 1px;
+        border-radius: 10px;
     }
 
     .nav-link img:hover{
         filter: brightness(60%);
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        
+    }
+
+    .customed-card {
+        width: 97%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 5px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .card-body {
+        width: 100%;
+    }
+
+    .card {
+        height: 400px;
     }

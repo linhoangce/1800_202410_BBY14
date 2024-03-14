@@ -101,30 +101,28 @@
     </nav>
   
     <div class="container">
-      <h1>POSTS</h1>
+      <h1></h1>
       <!-- Here is the container for cards  -->
       <div class="container">
-          <div id="posts-go-here" class="row row-cols-auto">
+          <div id="posts-go-here" class="row row-col customed-card">
           </div>
       </div>
   </div>
 
-    <!-- Templates for general use, not displayed -->
-    <template id="postCardTemplate">
-      <div class="card py-2 mx-2" style="width: 10rem">
+  <!-- Templates for general use, not displayed -->
+  <template id="postCardTemplate">
+      <div class="card py-2 mx-1">
           <img class="card-image card-img-top" src=" ..." alt="..." />
           <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title" style="overflow: hidden;">Card title</h5>
               <p class="card-farm">placeholder</p>
               <br />
-              <p class="card-text">
+              <p class="card-text" style="overflow-x: hidden;">
                   Some quick example text to build on the card title and make up the
                   bulk of the card's content.
               </p>
-              <div class="card-footer">
-                <small class="text-body-secondary">Price $</small>
-              </div>
-              <a class="btn btn-primary card-href">Read more ...</a>
+              <p class="card-footer"></p>
+              <a class="btn btn-primary card-href">Vier</a>
           </div>
       </div>
   </template>
