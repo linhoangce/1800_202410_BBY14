@@ -12,7 +12,7 @@ firesearch.Client = function (host) {
 // Create a Firesearch client
 const client = new firesearch.Client()
 client.host = 'https://firesearch-hk4xe7xdoa-uc.a.run.app';
-client.apiKey = 'AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo';
+client.apiKey = '';
 
 firesearch.IndexService = function (client) {
     this.client = client
