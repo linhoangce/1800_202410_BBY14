@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>My BCIT Project</title>
+  <title>Farmify</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -44,6 +44,135 @@
 </head>
 
 <body>
+  
+  <script src='./scripts/firesearch.gen.js'></script>
+	<script>
+
+		/*
+		
+			Hey - thanks for trying Firesearch.
+
+			To run this code, open this page (index.html) in a 
+			browser.
+
+			Get started at: https://firesearch.dev/docs/tutorial
+
+			Get in touch if you have any questions.
+		
+			Open an issue: https://github.com/pacedotdev/firesearch-sdk
+			or drop us an email: hello@firesearch.dev
+
+		*/
+
+		/*
+			Create a Firesearch client, and point it at your
+			running instance
+		*/
+		const client = new firesearch.Client()
+		client.host = 'https://firesearch-hk4xe7xdoa-uc.a.run.app'
+		client.fetch = window.fetch.bind(window)
+
+		/*
+			Use the firesearch.IndexService to add documents 
+			and perform searches on indexes.
+		*/
+		const indexService = new firesearch.IndexService(client)
+				
+		function addQueries() {
+			clear()
+			write('Putting new-movie-2...')
+			const indexPath = document.getElementById('indexPath').value
+			const input = {
+				indexPath: indexPath,
+				doc: {
+					id: 'new-movie-2',
+					searchFields: [
+						{
+							key: "title",
+							value: `Tenet`,
+							store: true,
+						},
+						{
+							key: "directors",
+							value: `Christopher Nolan`,
+							store: true,
+						},
+						{
+							key: "genres",
+							value: `Action,Drama,Thriller,Spy,Adventure,Sci-fi`,
+							store: true,
+						},
+					],
+				}
+			}
+			indexService.putDoc(input)
+				.then(response => {
+					write('success ✓ (now search for "Nolan")')
+				})
+				.catch(e => write('ERROR: ' + e))
+		}
+
+		let input
+		function performSearch() {
+			clear()
+			const q = document.getElementById('q').value
+			if (q === '') {
+				document.getElementById('q').focus()
+				return
+			}
+			const indexPath = document.getElementById('indexPath').value
+			input = {
+				query: {
+					indexPath: indexPath,
+					limit: 5,
+					text: q,
+					select: ['title'],
+				}
+			}
+			write(`POST ${client.host}`)
+			write(JSON.stringify(input, '', '\t'))
+			indexService.search(input)
+				.then(response => {
+					write('')
+					write(`*** Showing ${response.hits.length} result(s) (in ${response.duration}ms)`, true)
+					response.hits.forEach(hit => {
+						let lights = ''
+						hit.highlights.forEach(highlight => {
+							lights += ' ' + highlight.field + ': ' + highlight.text
+						})
+						write(`\t${hitTitle(hit)}\t(${hit.id})\t${lights}\t`, true)
+					})
+					write('')
+					write('Response:')
+					write(JSON.stringify(response, '', '\t'))
+					write('')
+				})
+				.catch(e => write('ERROR: ' + e))
+		}
+
+		function hitTitle(hit) {
+			const t = hit.fields.find(field => field.key === 'title')
+			if (!t) {
+				return 'Untitled'
+			}
+			return t.value
+		}
+
+		function write(s, highlight) {
+			const stdout = document.getElementById('stdout')
+			if (highlight) {
+				stdout.innerHTML += '\n<span class="text-white">' + s + '</span>'
+			} else {
+				stdout.innerHTML += '\n' + s
+			}
+		}
+
+		function clear() {
+			const stdout = document.getElementById('stdout')
+			stdout.innerHTML = ''
+		}
+
+	</script>
 
   <nav class="navbar fixed-top">
     <div class="container-fluid">
@@ -162,9 +291,9 @@
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/main.js"></script>
-  
-  <script type="module" src="./scripts/firesearch.gen.js"></script>
-  <script type="module" src="./scripts/search.js"></script>
+  <script src="./scripts/search.js"></script>
+  <!-- <script type="module" src="./scripts/firesearch.gen.js"></script>
+  <script type="module" src="./scripts/search.js"></script> -->
   <!-- Link to scripts of your own -->
   <!--<script src="./scripts/script.js"></script> -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

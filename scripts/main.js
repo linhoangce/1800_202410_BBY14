@@ -20,16 +20,16 @@ getNameFromAuth(); //run the function
 
 function writePostLoop(max) {
     //define a variable for the collection you want to create in Firestore to populate data
-    var hikesRef = db.collection("posts");
+    var postsRef = db.collection("posts");
     for (i = 1; i <= max; i++) {
-        hikesRef.add({ //add to database, autogen ID
+        postsRef.add({ //add to database, autogen ID
             title: "",
             farm: "",
             product: "",
             price: "",
             quantity: "",
             description: "",
-            imgcode: "",
+            img: "",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()
         })
    }
@@ -48,7 +48,7 @@ function displayCardsDynamically(collection) {
             allPosts.forEach(doc => { //iterate thru each doc
                 var title = doc.data().title;       // get value of the "title" key
                 var farm = doc.data().farm;  // get value of the "farm" key
-                var imgCode = doc.data().imgCode;    //get unique ID to each hike to be used for fetching right image
+                var imgCode = doc.data().img;    //get unique ID to each hike to be used for fetching right image
                 var product = doc.data().product; //gets the product
                 var price = doc.data().price;
                 var details = doc.data().description;
@@ -59,7 +59,7 @@ function displayCardsDynamically(collection) {
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-farm').innerHTML = farm;
                 newcard.querySelector('.card-text').innerHTML = product + details;
-                newcard.querySelector('.card-image').src = `./images/${imgCode}.jpg`; //Example: NV01.jpg
+                newcard.querySelector('.card-image').src = `./images/${imgCode}`; //Example: NV01.jpg
                 newcard.querySelector('.card-footer').innerHTML = "$" + price;
                 newcard.querySelector('a').href = "eachpost.html?docID="+docID;
 

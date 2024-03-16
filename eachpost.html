@@ -50,9 +50,10 @@
       <a class="navbar-brand" href="#"><img src="images/logo.png" height=40 alt="farmify"></a>
       <form class="d-flex mt-1" role="search">
         <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large" style="color: white"></ion-icon></button>
+        <button class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large"
+            style="color: white"></ion-icon></button>
       </form>
-      <ion-icon class="cart" name="cart-outline" size="large" ></ion-icon>
+      <ion-icon class="cart" name="cart-outline" size="large"></ion-icon>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="float:left;">
         <span class="navbar-toggler-icon"></span>
@@ -90,48 +91,61 @@
       </div>
     </div>
   </nav>
-  
+
   <!-- Categories NAV -->
   <nav id="categories">
-      <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 25%;"></a>
-      <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 25%;"></a>
-      <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy" style="width: 25%;"></a>
-      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts" style="width: 25%;"></a>
-      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 25%;"></a>
-    </nav>
-  
+    <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies"
+        style="width: 40%;"></a>
+    <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits"
+        style="width: 40%;"></a>
+    <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy"
+        style="width: 40%;"></a>
+    <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts"
+        style="width: 40%;"></a>
+    <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer"
+        style="width: 40%;"></a>
+  </nav>
 
-    <div class="container">
-      <h1><span id="post-title"> title</span></h1>
-      <img class="post-img responsive" src=""/>
-      <div id="details-go-here"></div>
-</div>
+
+  <div class="container">
+    <br/>
+    <h1><span id="post-title"> title</span></h1>
+    <img class="post-img responsive" src="" style="width: 100%;"/>
+    <div>
+      <p id="farm"></p>
+      <p id="product"></p>
+      <p id="quantity"></p>
+      <p id="description"></p>
+      <p id="price"></p>
+    </div>
+  </div>
 
   <!-- our own footer goes here-->
 
-  <footer class="navbar bg-secondary-subtle fixed-bottom" >
+  <footer class="navbar bg-secondary-subtle fixed-bottom">
     <div class="container">
       <ion-icon name="home-outline" size="large"></ion-icon>
       <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
 
-     
-    </head>
-    <body>
-    
-    <!-- Define the button with Ionicon -->
-    <button onclick="navigateToCreatePage()">
-      <ion-icon name="add-circle-outline" size="large"></ion-icon>
-    </button>
-    
-    <script>
-      function navigateToCreatePage() {
-        window.location.href = 'createPost.html';
-      }
-    </script>
 
-      <ion-icon name="notifications-outline" size="large"></ion-icon>
-      <ion-icon name="person-outline" size="large"></ion-icon>
-      
+      </head>
+
+      <body>
+
+        <!-- Define the button with Ionicon -->
+        <button onclick="navigateToCreatePage()">
+          <ion-icon name="add-circle-outline" size="large"></ion-icon>
+        </button>
+
+        <script>
+          function navigateToCreatePage() {
+            window.location.href = 'createPost.html';
+          }
+        </script>
+
+        <ion-icon name="notifications-outline" size="large"></ion-icon>
+        <ion-icon name="person-outline" size="large"></ion-icon>
+
     </div>
   </footer>
 
@@ -140,7 +154,7 @@
   <!---------------------------------------------->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/main.js"></script>
+  <script src="./scripts/eachpost.js"></script>
   <!-- Link to scripts of your own -->
   <!--<script src="./scripts/script.js"></script> -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -7,7 +7,7 @@ const productInput = document.querySelector("#product-type");
 const priceInput = document.querySelector("#price");
 const quantityInput = document.querySelector("#quantity");
 const descriptionInput = document.querySelector("#description");
-const imageInput = document.querySelector("#image");
+const imageInput = document.querySelector("#files");
 const postButton = document.querySelector("#post");
 
 async function createPost(collectionName, data) {

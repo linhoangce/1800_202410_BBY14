@@ -3,17 +3,27 @@ function displayPostInfo() {
     let ID = params.searchParams.get("docID"); // get value for key "id"
     console.log( ID );
 
-    db.collection( "post" )
+    db.collection( "posts" )
         .doc( ID )
         .get()
         .then( doc => {
             thisPost = doc.data();
-            postCode = thisPost.code;
+            postImage = doc.data().img;
             postTitle = doc.data().title;
+            postFarm = doc.data().farm;
+            postProduct = doc.data().product;
+            postQuantity = doc.data().quantity;
+            postDescription = doc.data().description;
+            postPrice = doc.data().price;
 
-            document.getElementById("postTitle").innerHTML = postTitle;
-            let imgEvent = document.querySelector("post-img");
-            imgEvent.src = "../images/" + postCode + ".png";
+            document.getElementById("post-title").innerHTML = postTitle;
+            let imgEvent = document.querySelector(".post-img");
+            imgEvent.src = "../images/" + postImage;
+            document.getElementById("farm").innerHTML = postFarm;
+            document.getElementById("product").innerHTML = postFarm;
+            document.getElementById("quantity").innerHTML = postQuantity;
+            document.getElementById("description").innerHTML = postDescription;
+            document.getElementById("price").innerHTML = postPrice;
         }) ;
 }
 
