@@ -1,8 +1,8 @@
-
 const postRef = db.collection("posts");
 
 const titleInput = document.querySelector("#title");
 const farmInput = document.querySelector("#farm");
+const categoryInput = document.querySelector("#create-categories");
 const productInput = document.querySelector("#product-type");
 const priceInput = document.querySelector("#price");
 const quantityInput = document.querySelector("#quantity");
@@ -23,6 +23,7 @@ async function createPost(collectionName, data) {
 postButton.addEventListener("click", () => {
     const title = titleInput.value;
     const farm = farmInput.value;
+    const category = categoryInput.value;
     const product = productInput.value;
     const price = priceInput.value;
     const quantity = quantityInput.value;
@@ -30,7 +31,7 @@ postButton.addEventListener("click", () => {
     const img = imageInput.value;
 
     // Update Firestore document
-    createPost("posts", {title, farm, product, price, quantity, description, img})
+    createPost("posts", {title, farm, category, product, price, quantity, description, img})
         .then(() => {
             console.log("Document succesfully updated!");
         })

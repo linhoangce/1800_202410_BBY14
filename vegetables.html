@@ -49,8 +49,8 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="images/logo.png" height=40 alt="farmify"></a>
       <form class="d-flex mt-1" role="search">
-        <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large" style="color: white"></ion-icon></button>
+        <input id="q" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+        <button onclick="performSearch()" class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large" style="color: white"></ion-icon></button>
       </form>
       <ion-icon class="cart" name="cart-outline" size="large" ></ion-icon>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -81,7 +81,7 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                <li><a class="dropdown-item" href="contactus.html">Contact Us</a></li>
               </ul>
             </li>
           </ul>
@@ -90,7 +90,8 @@
       </div>
     </div>
   </nav>
-
+  
+  <!-- Categories NAV -->
   <nav id="categories">
     <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 50%;"></a>
     <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 50%;"></a>
@@ -100,22 +101,56 @@
     <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 50%;"></a>
   </nav>
   
-  <div class="p-5 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-      <h1 class="display-5 fw-bold" href="contactus.html">Contact Us</h1>
-      <p class="col-md-8-fs-4">Customer Service Email: farmify@outlook.com 
-        <br /> Daytime Phone number (8 - 3pm PST): 778-214-5478
-        <br /> 
-      </p>
-      <br />
+    <div class="container" style="padding-bottom: 60px;">
+      <h1></h1>
+      <!-- Here is the container for cards  -->
+      <div class="container">
+          <div id="posts-go-here" class="row row-col customed-card">
+          </div>
+      </div>
   </div>
+
+  <!-- Templates for general use, not displayed -->
+  <template id="postCardTemplate" >
+      <div class="card py-2 mx-1">
+          <img class="card-image card-img-top" src=" ..." alt="..." style="height: 110px;"/>
+          <div class="card-body">
+              <h5 class="card-title" style="overflow: hidden;">Card title</h5>
+              <p class="card-farm">placeholder</p>
+              <br />
+              <p class="card-text" style="overflow-x: hidden;">
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+              </p>
+              <p class="card-footer"></p>
+              <a class="btn btn-primary card-href">View</a>
+          </div>
+      </div>
+  </template>
+
+
   <!-- our own footer goes here-->
 
   <footer class="navbar bg-secondary-subtle fixed-bottom" >
     <div class="container">
       <ion-icon name="home-outline" size="large"></ion-icon>
       <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
+
+     
+    </head>
+    <body>
+    
+    <!-- Define the button with Ionicon -->
+    <button onclick="navigateToCreatePage()">
       <ion-icon name="add-circle-outline" size="large"></ion-icon>
+    </button>
+    
+    <script>
+      function navigateToCreatePage() {
+        window.location.href = 'createPost.html';
+      }
+    </script>
+
       <ion-icon name="notifications-outline" size="large"></ion-icon>
       <ion-icon name="person-outline" size="large"></ion-icon>
       
@@ -127,9 +162,12 @@
   <!---------------------------------------------->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/main.js"></script>
+  <script src="./scripts/vegetables.js"></script>
   <!-- <script src="./scripts/filter_categories.js"></script> -->
 
+  
+  <script type="module" src="./scripts/firesearch.gen.js"></script>
+  <script type="module" src="./scripts/search.js"></script>
   <!-- Link to scripts of your own -->
   <!--<script src="./scripts/script.js"></script> -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

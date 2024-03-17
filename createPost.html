@@ -40,6 +40,7 @@
 
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/style-createPost.css">
 
 </head>
 
@@ -107,9 +108,20 @@
       <input type="text" class="form-control" id="farm">
     </div>
 
+    <div class="form-group">
+      <label for="create-categories">Category</label>
+      <select name="categories" id="create-categories">
+        <option id="vegetables" value="vegetables">Vegetables</option>
+        <option id="fruits" value="fruits">Fruits</option>
+        <option id="dairy" value="dairy">Dairy</option>
+        <option id="nuts" value="nuts">Nuts</option>
+        <option id="plants" value="nuts">Plants</option>
+      </select>
+    </div>
+
     </div>
     <div class="form-group">
-      <label for="product-type">Product Type</label>
+      <label for="product-type">Product</label>
       <input type="text" class="form-control" id="product-type">
     </div>
 
