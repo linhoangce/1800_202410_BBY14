@@ -12,15 +12,18 @@ const postButton = document.querySelector("#post");
 
 async function createPost(collectionName, data) {
     try {
-        const docRef = await db.collection(collectionName).doc().set(data);
+        const docRef = await db.collection(collectionName).add(data);
+        console.log("docRef: ", docRef.id);
         console.log("Document written with ID:", docRef.id);
+        return docRef.id;
     } catch (error) {
         console.error("Error adding document: ", error);
+        throw error;
     }
 }
 
 
-postButton.addEventListener("click", () => {
+postButton.addEventListener("click", async () => {
     const title = titleInput.value;
     const farm = farmInput.value;
     const category = categoryInput.value;
@@ -31,13 +34,15 @@ postButton.addEventListener("click", () => {
     const img = imageInput.value;
 
     // Update Firestore document
-    createPost("posts", {title, farm, category, product, price, quantity, description, img})
-        .then(() => {
-            console.log("Document succesfully updated!");
-        })
-        .catch((error) => {
+    try {
+    const docId = await createPost("posts", {title, farm, category, product, price, quantity, description, img})
+        
+            console.log("Document succesfully updated!", docId);
+            window.location.href = `eachpost.html?docID=${docId}`;
+    }
+        catch(error) {
             console.error("Error updating document:", error);
-        });
+        }
         // window.location.href = "eachpost.html?docID=" + postRef.doc.id;
 });
 

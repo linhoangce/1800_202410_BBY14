@@ -7,12 +7,17 @@ function populateNutsData(filteredData) {
   
       // Create a new post based on the template
       const newcard = cardTemplate.content.cloneNode(true);
+
+      // parse file path to get only file format name
+      const pathParsed = doc.data.img.split("\\");
+      const fileName = pathParsed[pathParsed.length -1];
+      console.log("File name: ", fileName);
   
       // Populate the new post with data
       newcard.querySelector('.card-title').innerHTML = doc.data.product;
       newcard.querySelector('.card-farm').innerHTML = doc.data.farm;
       newcard.querySelector('.card-text').innerHTML = doc.data.product + doc.data.description;
-      newcard.querySelector('.card-image').src = `./images/${doc.data.img}`; // Example: NV01.jpg
+      newcard.querySelector('.card-image').src = "./images/" + fileName; // Example: NV01.jpg
       newcard.querySelector('.card-footer').innerHTML = "$" + doc.data.price;
       newcard.querySelector('a').href = `eachpost.html?docID=${doc.id}`;
   
