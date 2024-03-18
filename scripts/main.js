@@ -54,12 +54,15 @@ function displayCardsDynamically(collection) {
                 var details = doc.data().description;
                 var docID = doc.id;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+                const pathParsed = imgCode.split("\\");
+                const fileName = pathParsed[pathParsed.length -1];
+                console.log("File name: ", fileName);
 
                 //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-farm').innerHTML = farm;
                 newcard.querySelector('.card-text').innerHTML = product + details;
-                newcard.querySelector('.card-image').src = `./images/${imgCode}`; //Example: NV01.jpg
+                newcard.querySelector('.card-image').src = "./images/" + fileName; //Example: NV01.jpg
                 newcard.querySelector('.card-footer').innerHTML = "$" + price;
                 newcard.querySelector('a').href = "eachpost.html?docID=" + docID;
 
@@ -79,118 +82,3 @@ function displayCardsDynamically(collection) {
 }
 
 displayCardsDynamically("posts");  //input param is the name of the collection
-
-
-//   async function fetchDataFromFirestore1() {
-//     try {
-//       // Execute the Firestore query to filter by categories
-//       const querySnapshot = await db.collection("posts").where("category", "==", "fruits").get();
-//       const filteredData = querySnapshot.docs.map((doc) => ({
-//         data: doc.data(),
-//         id: doc.id,
-//       }));
-//       return filteredData;
-//     } catch (error) {
-//       console.error("Error filtering documents:", error);
-//       return []; // Return an empty array in case of an error
-//     }
-//   }
-  
-//   // Event listener for the "Fetch Vegetables Data" button
-//   const fruitsFiltered = document.querySelector("#fruits-category");
-// fruitsFiltered.addEventListener("click", async () => {
-//     try {
-//       const filteredData = await fetchDataFromFirestore1();
-//       localStorage.setItem("filteredFruitsData", JSON.stringify(filteredData));
-//       // Redirect to the desired page (e.g., "vegetables.html")
-//       window.location.href = "fruits.html";
-//     } catch (error) {
-//       console.error("Error processing data:", error);
-//     }
-//   });
-
-//   async function fetchDataFromFirestore() {
-//     try {
-//       // Execute the Firestore query to filter by categories
-//       const querySnapshot = await db.collection("posts").where("category", "==", "dairy").get();
-//       const filteredData = querySnapshot.docs.map((doc) => ({
-//         data: doc.data(),
-//         id: doc.id,
-//       }));
-//       return filteredData;
-//     } catch (error) {
-//       console.error("Error filtering documents:", error);
-//       return []; // Return an empty array in case of an error
-//     }
-//   }
-  
-//   // Event listener for the "Fetch Vegetables Data" button
-//   const dairyFiltered = document.querySelector("#dairy-category");
-// dairyFiltered.addEventListener("click", async () => {
-//     try {
-//       const filteredData = await fetchDataFromFirestore();
-//       localStorage.setItem("filteredDairyData", JSON.stringify(filteredData));
-//       // Redirect to the desired page (e.g., "vegetables.html")
-//       window.location.href = "dairy.html";
-//     } catch (error) {
-//       console.error("Error processing data:", error);
-//     }
-//   });
-
-// // Filter category Nuts
-//   async function fetchDataFromFirestore() {
-//     try {
-//       // Execute the Firestore query to filter by categories
-//       const querySnapshot = await db.collection("posts").where("category", "==", "nuts").get();
-//       const filteredData = querySnapshot.docs.map((doc) => ({
-//         data: doc.data(),
-//         id: doc.id,
-//       }));
-//       return filteredData;
-//     } catch (error) {
-//       console.error("Error filtering documents:", error);
-//       return []; // Return an empty array in case of an error
-//     }
-//   }
-  
-//   // Event listener for the "Fetch Vegetables Data" button
-//   const nutsFiltered = document.querySelector("#nuts-category");
-// nutsFiltered.addEventListener("click", async () => {
-//     try {
-//       const filteredData = await fetchDataFromFirestore();
-//       localStorage.setItem("filteredNutsData", JSON.stringify(filteredData));
-//       // Redirect to the desired page (e.g., "vegetables.html")
-//       window.location.href = "nuts.html";
-//     } catch (error) {
-//       console.error("Error processing data:", error);
-//     }
-//   });
-
-//   // Filter category Plants
-//   async function fetchDataFromFirestore() {
-//     try {
-//       // Execute the Firestore query to filter by categories
-//       const querySnapshot = await db.collection("posts").where("category", "==", "plants").get();
-//       const filteredData = querySnapshot.docs.map((doc) => ({
-//         data: doc.data(),
-//         id: doc.id,
-//       }));
-//       return filteredData;
-//     } catch (error) {
-//       console.error("Error filtering documents:", error);
-//       return []; // Return an empty array in case of an error
-//     }
-//   }
-  
-//   // Event listener for the "Fetch Vegetables Data" button
-//   const plantsFiltered = document.querySelector("#plants-category");
-// plantsFiltered.addEventListener("click", async () => {
-//     try {
-//       const filteredData = await fetchDataFromFirestore();
-//       localStorage.setItem("filteredPlantsData", JSON.stringify(filteredData));
-//       // Redirect to the desired page (e.g., "vegetables.html")
-//       window.location.href = "plants.html";
-//     } catch (error) {
-//       console.error("Error processing data:", error);
-//     }
-//   });
