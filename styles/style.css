@@ -120,8 +120,6 @@
   
   }
 
-
-
   /* Remove default button styles */
   button {
     background: none;
@@ -185,4 +183,16 @@
 
     .card {
         height: 400px;
+    }
+
+    .buttons:hover {
+        cursor: pointer;
+    }
+
+    .buttons:active {
+        transform: scale(1.05);
+    }
+
+    .icon-inner {
+        padding-bottom: 20px;
     }

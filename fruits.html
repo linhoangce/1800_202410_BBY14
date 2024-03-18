@@ -133,16 +133,12 @@
 
   <footer class="navbar bg-secondary-subtle fixed-bottom" >
     <div class="container">
-      <ion-icon name="home-outline" size="large"></ion-icon>
-      <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
-
-     
-    </head>
-    <body>
+      <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
+      <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
     
     <!-- Define the button with Ionicon -->
     <button onclick="navigateToCreatePage()">
-      <ion-icon name="add-circle-outline" size="large"></ion-icon>
+      <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
     </button>
     
     <script>
@@ -151,8 +147,8 @@
       }
     </script>
 
-      <ion-icon name="notifications-outline" size="large"></ion-icon>
-      <ion-icon name="person-outline" size="large"></ion-icon>
+      <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
+      <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
       
     </div>
   </footer>
@@ -164,6 +160,7 @@
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/fruits.js"></script>
   <script src="./scripts/filter_categories.js"></script>
+  <script src="./scripts/home.js"></script>
 
   
   <!-- <script type="module" src="./scripts/firesearch.gen.js"></script>

@@ -1,5 +1,5 @@
 // Function to populate the HTML template based on the data
-function populateVegetablesData(filteredData) {
+function populatePlantsData(filteredData) {
     const cardTemplate = document.getElementById("postCardTemplate");
   
     filteredData.forEach((doc) => {
@@ -26,7 +26,7 @@ function populateVegetablesData(filteredData) {
       // Retrieve the filtered data from local storage
       const storedData = localStorage.getItem("filteredPlantsData");
       const filteredData = JSON.parse(storedData);
-      populateVegetablesData(filteredData); // Populate the HTML template
+      populatePlantsData(filteredData); // Populate the HTML template
     } catch (error) {
       console.error("Error processing data:", error);
     }
