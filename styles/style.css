@@ -47,6 +47,8 @@
     color: #00610e;
     border: solid;
     border-color: #00610e;
+    --bs-btn-padding-x: 0.5rem;
+    --bs-btn-padding-y: 0.2rem;
 }
 
 .btn:hover {
@@ -182,7 +184,27 @@
     }
 
     .card {
-        height: 400px;
+        height: 280px;
+        --bs-card-spacer-y: 0;
+    --bs-card-spacer-x: 0;
+    --bs-card-title-spacer-y: 0;
+    --bs-card-cap-padding-y: 0;
+    --bs-card-cap-padding-x: 0;
+    }
+
+    .row>* {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .card-farm {
+        font-size: small;
+        font-style: italic;
+        padding-bottom: 5px;
+    }
+
+    .card-footer {
+        margin-bottom: 5px;
     }
 
     .buttons:hover {
@@ -196,3 +218,22 @@
     .icon-inner {
         padding-bottom: 20px;
     }
+
+    .card-title, .card-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card-image {
+        height: 110px;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+    .py-2 {
+        padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}

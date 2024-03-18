@@ -16,9 +16,14 @@ function displayPostInfo() {
             postDescription = doc.data().description;
             postPrice = doc.data().price;
 
+            // parse file path to get only file format name
+            const pathParsed = postImage.split("\\");
+            const fileName = pathParsed[pathParsed.length -1];
+            console.log("File name: ", fileName);
+
             document.getElementById("post-title").innerHTML = postTitle;
             let imgEvent = document.querySelector(".post-img");
-            imgEvent.src = "../images/" + postImage;
+            imgEvent.src = "../images/" + fileName;
             document.getElementById("farm").innerHTML = postFarm;
             document.getElementById("product").innerHTML = postFarm;
             document.getElementById("quantity").innerHTML = postQuantity;

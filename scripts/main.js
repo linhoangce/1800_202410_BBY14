@@ -54,6 +54,8 @@ function displayCardsDynamically(collection) {
                 var details = doc.data().description;
                 var docID = doc.id;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+                
+                // parse file path to get only file format name
                 const pathParsed = imgCode.split("\\");
                 const fileName = pathParsed[pathParsed.length -1];
                 console.log("File name: ", fileName);
@@ -61,7 +63,7 @@ function displayCardsDynamically(collection) {
                 //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-farm').innerHTML = farm;
-                newcard.querySelector('.card-text').innerHTML = product + details;
+                newcard.querySelector('.card-text').innerHTML = product + "<br>" +  details;
                 newcard.querySelector('.card-image').src = "./images/" + fileName; //Example: NV01.jpg
                 newcard.querySelector('.card-footer').innerHTML = "$" + price;
                 newcard.querySelector('a').href = "eachpost.html?docID=" + docID;
