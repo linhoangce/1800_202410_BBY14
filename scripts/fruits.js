@@ -1,5 +1,3 @@
-// vegetables.js
-
 // Function to populate the HTML template based on the data
 function populateVegetablesData(filteredData) {
     const cardTemplate = document.getElementById("postCardTemplate");
