@@ -10,7 +10,7 @@ This browser based web application to ...
 List team members and/or short bio's here... 
 * Hi, my name is Linh. I am just happy to be here.
 * Hello again, it's Linh. I am here for fun!
-* Joey Jahanshahi
+* Joey Jahanshahi, Hello!
 * Isaac Azage
 * Well, well, guess who's here gain? It's Linh. No, seriously, it's Linh again!
 	
