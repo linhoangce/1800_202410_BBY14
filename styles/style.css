@@ -237,3 +237,81 @@
         padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+
+
+/* POST CARD CSS HERE*/
+.custom-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+  }
+  
+  .custom-card {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .custom-card-img {
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .custom-card-body {
+    padding: 20px;
+  }
+  
+  .custom-card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .custom-card-text {
+    font-size: 1rem;
+  }
+  
+  .custom-list-group-item {
+    font-size: 1rem;
+  }
+  
+  .custom-card-icons {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+  }
+  
+  .custom-icon:hover {
+    cursor: pointer;
+    font-size: 24px; /* Increase icon size */
+    font-weight: bold; /* Make icon bold */
+  }
+  
+  .custom-card-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .custom-card-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .custom-card-buttons button i {
+    margin-right: 5px;
+  }
+  
+  .dm-button, .cart-button {
+    background-color: green;
+  }
+  
