@@ -6,3 +6,30 @@
 .bottom-0 {
     bottom: 450px !important;
 }
+
+.container {
+    position: relative;
+    text-align: center;
+  }
+
+/* #content {
+    position: relative;
+} */
+
+#save-btn {
+    width: 35px;
+    position: absolute;
+    top: 500px;
+    right: 10px;
+    fill: white;
+}
+
+#save-btn:hover {
+    cursor: pointer;
+}
+
+#review-btn{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}

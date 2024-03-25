@@ -4,7 +4,7 @@ const ID = params.searchParams.get("docID"); // get value for key "id"
 
 function displayPostInfo() {
     
-    console.log( ID );
+    console.log( "docID: ", ID );
     
 
     db.collection( "posts" )
@@ -29,7 +29,7 @@ function displayPostInfo() {
             let imgEvent = document.querySelector(".post-img");
             imgEvent.src = "../images/" + fileName;
             document.getElementById("farm").innerHTML = postFarm;
-            document.getElementById("product").innerHTML = postFarm;
+            document.getElementById("product").innerHTML = postProduct;
             document.getElementById("quantity").innerHTML = postQuantity;
             document.getElementById("description").innerHTML = postDescription;
             document.getElementById("price").innerHTML = postPrice;
@@ -43,3 +43,50 @@ displayPostInfo();
 function savePostDocumentIDAndRedirect(){
     window.location.href = "review.html";
 }
+
+
+
+async function savePostToDatabase() {
+
+    var user = firebase.auth().currentUser;
+    if (user) {
+        var currentUser = db.collection("users").doc(user.uid);
+        var userID = user.uid;
+
+        const postDoc = await db.collection("posts").doc(ID).get();
+        const postData = postDoc.data();
+
+        db.collection("users")
+            .doc(userID)
+            .get()
+            .then((doc) => {
+
+                // Create a new collection of reviews for each post, each review is a doc
+                db.collection("savedPosts").add({
+                    postDocID: ID,
+                    userID: userID,
+                    title: postData.title,
+                    farm: postData.farm,
+                    img: postData.img,
+                    description: postData.description,
+                    product: postData.product,
+                    price: postData.price,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                }).then(() => {
+                    window.location.href = "thanks.html"; // Redirect to the thanks page
+                });
+            });
+    } else {
+        console.log("No user is signed in");
+        window.location.href = 'review.html';
+    }
+}
+
+const saveButton = document.getElementById("save-btn");
+
+saveButton.addEventListener("click", async () => {
+    savePostToDatabase();
+});
+
+
+

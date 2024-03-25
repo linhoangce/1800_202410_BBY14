@@ -106,10 +106,15 @@
   <div class="container">
     <br/>
     <h1><span id="post-title"> title</span></h1>
+    <div id="img-container"></div>
     <img class="post-img responsive" src="" style="width: 100%;"/>
-    <button class="btn btn-primary position-absolute bottom-0 end-0 m-3" onclick="savePostDocumentIDAndRedirect()">Write Review</button>
-    <div>
+    <button id="review-btn" class="btn btn-primary position-absolute bottom-1 end-0 m-3" onclick="savePostDocumentIDAndRedirect()">Write Review</button>
+    </div>
+    <div id="content">
       <p id="farm"></p>
+      <ion-icon id="save-btn" name="bookmark-outline" size="large"></ion-icon>
+      <!-- <ion-icon id="save-btn-dark" name="bookmark" size="large"></ion-icon> -->
+      <!-- <img id="save-btn" src="./images/bookmark.png" alt="bookmark"> -->
       <p id="product"></p>
       <p id="quantity"></p>
       <p id="description"></p>

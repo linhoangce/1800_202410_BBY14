@@ -43,6 +43,5 @@ postButton.addEventListener("click", async () => {
         catch(error) {
             console.error("Error updating document:", error);
         }
-        // window.location.href = "eachpost.html?docID=" + postRef.doc.id;
 });
 

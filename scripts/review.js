@@ -6,20 +6,10 @@ function getPostName(id) {
         .doc(id)
         .get()
         .then((thisPost) => {
+            var title = thisPost.data().title;
             var farm = thisPost.data().farm;
-            document.getElementById("farm_name").innerHTML = farm;
-
-            // return the values of these fields to update reviews doc
-            return {
-                farm: thisPost.data().farm,
-                title: thisPost.data().title,
-                imgPost: thisPost.data().img,
-                product: thisPost.data().product,
-                price: thisPost.data().price,
-                postDetails: thisPost.data().description
-            }
-
-
+            document.getElementById("title").innerHTML = title;
+            document.getElementById("farm_name").innerHTML =farm;
         });
 }
 
@@ -53,7 +43,7 @@ function displayDefaultInfo(user) {
 
 function writeReview() {
     console.log("inside write review");
-    let comment = document.getElementById("comment").value;
+    let comment = document.getElementById("comment").value; 
     let file = document.getElementById("file_name").value;
 
     // Get the star rating
@@ -98,6 +88,7 @@ function writeReview() {
                     description: postDetails,
                     product: product,
                     price: price,
+                    comment: comment,
                     rating: postRating, // Include the rating in the review
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 }).then(() => {
@@ -111,8 +102,14 @@ function writeReview() {
 }
 
 const postButton = document.getElementById("post");
+const closeButton = document.getElementById("close-btn");
 
 postButton.addEventListener("click", async () => {
     writeReview();
-}
-)
+});
+
+closeButton.addEventListener("click", () => {
+    console.log("clicked");
+    window.location.href = "eachpost.html?docID=" + postDocID;
+});
+
