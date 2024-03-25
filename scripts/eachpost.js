@@ -1,7 +1,11 @@
+
+const params = new URL( window.location.href); // get URL of search bar
+const ID = params.searchParams.get("docID"); // get value for key "id"
+
 function displayPostInfo() {
-    let params = new URL( window.location.href); // get URL of search bar
-    let ID = params.searchParams.get("docID"); // get value for key "id"
+    
     console.log( ID );
+    
 
     db.collection( "posts" )
         .doc( ID )
@@ -30,6 +34,12 @@ function displayPostInfo() {
             document.getElementById("description").innerHTML = postDescription;
             document.getElementById("price").innerHTML = postPrice;
         }) ;
+
+        
 }
 
 displayPostInfo();
+
+function savePostDocumentIDAndRedirect(){
+    window.location.href = "review.html";
+}

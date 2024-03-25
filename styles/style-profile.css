@@ -1,0 +1,19 @@
+.container {
+    margin-top: 20px;
+}
+
+.d-flex {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+.justify-content-end {
+    justify-content: center !important;
+}
+
+.btn {
+    width: 60px;
+    border: thin solid;
+}

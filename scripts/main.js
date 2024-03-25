@@ -84,3 +84,10 @@ function displayCardsDynamically(collection) {
 }
 
 displayCardsDynamically("posts");  //input param is the name of the collection
+
+// Redirect to Profile Page
+const profileButton = document.getElementById("account-btn");
+
+profileButton.addEventListener("click", () => {
+    window.location.href = "profile.html";
+})

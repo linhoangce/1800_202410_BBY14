@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Farmify</title>
+  <title>My BCIT Project - Farmify</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -40,139 +40,11 @@
 
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/style-profile.css">
 
 </head>
 
 <body>
-  
-  <script src='./scripts/firesearch.gen.js'></script>
-	<script>
-
-		/*
-		
-			Hey - thanks for trying Firesearch.
-
-			To run this code, open this page (index.html) in a 
-			browser.
-
-			Get started at: https://firesearch.dev/docs/tutorial
-
-			Get in touch if you have any questions.
-		
-			Open an issue: https://github.com/pacedotdev/firesearch-sdk
-			or drop us an email: hello@firesearch.dev
-
-		*/
-
-		/*
-			Create a Firesearch client, and point it at your
-			running instance
-		*/
-		const client = new firesearch.Client()
-		client.host = 'https://firesearch-hk4xe7xdoa-uc.a.run.app'
-		client.fetch = window.fetch.bind(window)
-
-		/*
-			Use the firesearch.IndexService to add documents 
-			and perform searches on indexes.
-		*/
-		const indexService = new firesearch.IndexService(client)
-				
-		function addQueries() {
-			clear()
-			write('Putting new-movie-2...')
-			const indexPath = document.getElementById('indexPath').value
-			const input = {
-				indexPath: indexPath,
-				doc: {
-					id: 'new-movie-2',
-					searchFields: [
-						{
-							key: "title",
-							value: `Tenet`,
-							store: true,
-						},
-						{
-							key: "directors",
-							value: `Christopher Nolan`,
-							store: true,
-						},
-						{
-							key: "genres",
-							value: `Action,Drama,Thriller,Spy,Adventure,Sci-fi`,
-							store: true,
-						},
-					],
-				}
-			}
-			indexService.putDoc(input)
-				.then(response => {
-					write('success ✓ (now search for "Nolan")')
-				})
-				.catch(e => write('ERROR: ' + e))
-		}
-
-		let input
-		function performSearch() {
-			clear()
-			const q = document.getElementById('q').value
-			if (q === '') {
-				document.getElementById('q').focus()
-				return
-			}
-			const indexPath = document.getElementById('indexPath').value
-			input = {
-				query: {
-					indexPath: indexPath,
-					limit: 5,
-					text: q,
-					select: ['title'],
-				}
-			}
-			write(`POST ${client.host}`)
-			write(JSON.stringify(input, '', '\t'))
-			indexService.search(input)
-				.then(response => {
-					write('')
-					write(`*** Showing ${response.hits.length} result(s) (in ${response.duration}ms)`, true)
-					response.hits.forEach(hit => {
-						let lights = ''
-						hit.highlights.forEach(highlight => {
-							lights += ' ' + highlight.field + ': ' + highlight.text
-						})
-						write(`\t${hitTitle(hit)}\t(${hit.id})\t${lights}\t`, true)
-					})
-					write('')
-					write('Response:')
-					write(JSON.stringify(response, '', '\t'))
-					write('')
-				})
-				.catch(e => write('ERROR: ' + e))
-		}
-
-		function hitTitle(hit) {
-			const t = hit.fields.find(field => field.key === 'title')
-			if (!t) {
-				return 'Untitled'
-			}
-			return t.value
-		}
-
-		function write(s, highlight) {
-			const stdout = document.getElementById('stdout')
-			if (highlight) {
-				stdout.innerHTML += '\n<span class="text-white">' + s + '</span>'
-			} else {
-				stdout.innerHTML += '\n' + s
-			}
-		}
-
-		function clear() {
-			const stdout = document.getElementById('stdout')
-			stdout.innerHTML = ''
-		}
-
-	</script>
 
   <nav class="navbar fixed-top">
     <div class="container-fluid">
@@ -181,7 +53,11 @@
         <input id="q" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
         <button onclick="performSearch()" class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large" style="color: white"></ion-icon></button>
       </form>
-      <ion-icon class="cart" name="cart-outline" size="large" ></ion-icon>
+
+      <a href="cart.html">
+        <ion-icon class="cart" name="cart-outline" size="large"></ion-icon>
+      </a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="float:left;">
         <span class="navbar-toggler-icon"></span>
@@ -221,56 +97,52 @@
   </nav>
   
   <!-- Categories NAV -->
-  <nav id="categories">
-      <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 40%;"></a>
-      <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 40%;"></a>
-      <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy" style="width: 40%;"></a>
-      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts" style="width: 40%;"></a>
-      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 40%;"></a>
-    </nav>
-  
-    <div class="container" style="padding-bottom: 60px;">
-      <h1></h1>
-      <!-- Here is the container for cards  -->
-      <div class="container">
-          <div id="posts-go-here" class="row row-col customed-card">
-          </div>
-      </div>
-  </div>
+  <!-- <nav id="categories">
+      <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 50%;"></a>
+      <a id="fruits-category" class="nav-link" href="fruits.html"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 50%;"></a>
+      <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy" style="width: 50%;"></a>
+      <a id="nuts-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts" style="width: 50%;"></a>
+      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/tomato.png" alt="nuts" style="width: 50%;"></a>
+      <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 50%;"></a>
+    </nav> -->
+
 
   <!-- Templates for general use, not displayed -->
-  <template id="postCardTemplate" >
-      <div class="card py-2 mx-1">
-          <img class="card-image card-img-top" src=" ..." alt="..." style="height: 110px;"/>
-          <div class="card-body">
-              <h5 class="card-title" style="overflow: hidden;">Card title</h5>
-              <p class="card-farm">placeholder</p>
-              <br />
-              <p class="card-text" style="overflow-x: hidden;">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-              </p>
-              <p class="card-footer"></p>
-              <a class="btn btn-primary card-href">View</a>
-          </div>
-      </div>
-  </template>
-
+  <div class="container">
+    <h1>User Profile </h1>
+    <form>
+        <fieldset class="mb-3" id="personalInfoFields" disabled>
+            <div class="form-group">
+                <label >Name</label>
+                <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label >School</label>
+                <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school">
+            </div>
+            <div class="form-group">
+                <label >City</label>
+                <input type="text" id="cityInput" class="form-control" placeholder="Enter your city">
+            </div>
+        </fieldset>
+        <div class="d-flex justify-content-end mt-5">
+            <button onclick="editUserInfo()" type="button" class="btn btn-secondary">Edit</button>
+            <span style="width: 10px"></span>
+            <button onclick="saveUserInfo()" type="button" class="btn btn-info">Save</button>
+        </div>
+    </form>
+</div>
 
   <!-- our own footer goes here-->
 
   <footer class="navbar bg-secondary-subtle fixed-bottom" >
     <div class="container">
-      <ion-icon name="home-outline" size="large"></ion-icon>
-      <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
-
-     
-    </head>
-    <body>
+      <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
+      <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
     
     <!-- Define the button with Ionicon -->
     <button onclick="navigateToCreatePage()">
-      <ion-icon name="add-circle-outline" size="large"></ion-icon>
+      <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
     </button>
     
     <script>
@@ -279,8 +151,8 @@
       }
     </script>
 
-      <ion-icon name="notifications-outline" size="large"></ion-icon>
-      <ion-icon name="person-outline" size="large"></ion-icon>
+      <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
+      <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
       
     </div>
   </footer>
@@ -290,10 +162,12 @@
   <!---------------------------------------------->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/main.js"></script>
-  <script src="./scripts/search.js"></script>
-  <!-- <script type="module" src="./scripts/firesearch.gen.js"></script>
-  <script type="module" src="./scripts/search.js"></script> -->
+  <!-- <script src="./scripts/main.js"></script> -->
+  <!-- <script src="./scripts/filter_categories.js"></script> -->
+  <script src="./scripts/home.js"></script>
+  <script src="./scripts/profile.js"></script>
+  <!-- <script type="module" src="./scripts/firesearch.gen.js"></script> -->
+  <!-- <script type="module" src="./scripts/search.js"></script> -->
   <!-- Link to scripts of your own -->
   <!--<script src="./scripts/script.js"></script> -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

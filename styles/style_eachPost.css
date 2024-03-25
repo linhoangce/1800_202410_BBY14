@@ -2,3 +2,7 @@
     margin: 0 auto;
     width: 97%;
 }
+
+.bottom-0 {
+    bottom: 450px !important;
+}
