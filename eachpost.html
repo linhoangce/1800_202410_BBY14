@@ -113,6 +113,8 @@
     <div id="content">
       <p id="farm"></p>
       <ion-icon id="save-btn" name="bookmark-outline" size="large"></ion-icon>
+      <ion-icon id="save-btn-clicked" name="bookmark" size="large"></ion-icon>
+
       <!-- <ion-icon id="save-btn-dark" name="bookmark" size="large"></ion-icon> -->
       <!-- <img id="save-btn" src="./images/bookmark.png" alt="bookmark"> -->
       <p id="product"></p>
@@ -122,27 +124,42 @@
     </div>
   </div>
 
+  <div id="post-saved">
+    <div id="saved-confirm">Post Saved</div>
+  </div>
+
   <!-- our own footer goes here-->
 
-  <footer class="navbar bg-secondary-subtle fixed-bottom" >
+  <footer class="navbar bg-secondary-subtle fixed-bottom">
     <div class="container">
-      <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
-      <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
-    
-    <!-- Define the button with Ionicon -->
-    <button onclick="navigateToCreatePage()">
-      <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
-    </button>
-    
-    <script>
-      function navigateToCreatePage() {
-        window.location.href = 'createPost.html';
-      }
-    </script>
+      <div id="home-container">
+        <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
+        <span id="home-sig">Home</span>
+      </div>
+      <div id="message-container">
+        <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
+        <span id="chat-sig">Message</span>
+      </div>
+      <!-- Define the button with Ionicon -->
 
-      <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
-      <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
-      
+      <div id="post-container">
+
+        <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
+        <span id="create-post-sig">Post</span>
+      </div>
+
+
+
+      <div id="notification-container">
+        <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
+        <span id="notification-sig">Notification</span>
+      </div>
+
+      <div id="account-container">
+        <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
+        <span id="account-sig">Account</span>
+      </div>
+
     </div>
   </footer>
 

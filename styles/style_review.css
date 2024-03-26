@@ -1,3 +1,95 @@
 #review {
     margin: 80px 5px;
 }
+
+/* Style the bottom navbar */
+#home-container {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+  }
+  
+  #home-btn{
+    position: absolute;
+    left: 50%;
+    transform:  translateX(-50%);
+  }
+  
+  #home-sig {
+    display: block;
+    text-align: center;
+    padding-top: 30px;
+  }
+  
+  #message-container {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+  }
+  
+  #chat-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #chat-sig {
+    display: block;
+    text-align: center;
+    padding-top: 30px;
+  }
+  
+  #post-container {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+  }
+  
+  #create-post-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #create-post-sig {
+    display: block;
+    text-align: center;
+    padding-top: 30px;
+  }
+  
+  #notification-container {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+  }
+  
+  #notification-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #notification-sig {
+    display: block;
+    text-align: center;
+    padding-top: 30px;
+  }
+  
+  #account-container {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+  }
+  
+  #account-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #account-sig {
+    display: block;
+    text-align: center;
+    padding-top: 28px;
+  }
+  

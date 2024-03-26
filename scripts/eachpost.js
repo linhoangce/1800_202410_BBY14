@@ -73,7 +73,7 @@ async function savePostToDatabase() {
                     price: postData.price,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 }).then(() => {
-                    window.location.href = "thanks.html"; // Redirect to the thanks page
+                    console.log("Post saved."); 
                 });
             });
     } else {
@@ -82,11 +82,31 @@ async function savePostToDatabase() {
     }
 }
 
+//Save a post to database when clicking save button
 const saveButton = document.getElementById("save-btn");
 
 saveButton.addEventListener("click", async () => {
     savePostToDatabase();
+    showSaved();
 });
+
+// Show confirmation for saving a post
+function showSaved() {
+    var div = document.getElementById('post-saved');
+    div.style.display = 'block';
+    setTimeout(function() {
+        div.style.display = 'none';
+    }, 4000);
+    console.log("Saved!");
+    
+    // toggle save icon
+    const icon = document.getElementById("save-btn-clicked");
+    icon.style.display = "block";
+}
+
+
+
+
 
 
 
