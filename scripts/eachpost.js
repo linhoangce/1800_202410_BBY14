@@ -67,12 +67,16 @@ function displayPostInfo() {
                 if (bookmarks.includes(doc.id)) {
                     document.getElementById('save-' + doc.id).innerText = 'bookmark';
 
-                    document.querySelector("i").onclick = () => {
-                        // a popup to confirm
-                        document.getElementById("exampleModalCenter").style.display = 'block';
-                        yesUnsave = document.getElementById("yes-unsave");
-                        cancelUnsave = document.getElementById('cancel-unsave');
+                    document.querySelector("i").onclick = (event) => {
+                        console.log("Bookmark icon clicked");
                         
+                        // a popup to confirm
+                        const modal = document.getElementById("exampleModalCenter");
+                        document.querySelector('i').setAttribute('data-bs-toggle', 'modal');
+                        document.querySelector('i').setAttribute('data-bs-target', '#exampleModal');
+
+                        yesUnsave = document.getElementById("yes-unsave");
+
                         yesUnsave.addEventListener("click", () => {
                             currentUser.update({
                                 // Use 'arrayUnion' to add the new bookmark ID to the 'bookmarks' array.
@@ -86,15 +90,17 @@ function displayPostInfo() {
                                     console.log(iconID);
                                     //this is to change the icon of the hike that was saved to "filled"
                                     document.getElementById(iconID).innerText = 'bookmark_border';
+                                    yesUnsave.setAttribute('data-bs-dismiss', 'modal');
+                                    document.querySelector('i').removeAttribute('data-bs-toggle');
+                                    document.querySelector('i').removeAttribute('data-bs-target');
                                 });
+
                         });
 
-                        document.getElementById("exampleModalCenter").style.display = 'none';
-                        cancelUnsave.addEventListener("click", () => {
-                            document.getElementById("exampleModalCenter").style.display = 'none';
-                        });
+                        // modal.style.display = 'none';
+
                     }
-                } 
+                }
             });
         });
 }
