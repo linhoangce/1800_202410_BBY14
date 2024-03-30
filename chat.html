@@ -40,7 +40,6 @@
 
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
-  <link rel="stylesheet" href="./styles/style_review.css">
 
 </head>
 
@@ -100,25 +99,74 @@
     </div>
   </nav>
 
-  <div id="review">
-    <button type="button" id="close-btn" class="btn-close" aria-label="Close"></button>
-    <h2 id="title"></h2>
-    <div id="farm_name"></div>
-    <div id="user_name"></div>
-    <div class="card-body">
-      <p>Rate your overall experience:</p>
-      <span class="material-icons star" id="star1">star_outline</span>
-      <span class="material-icons star" id="star2">star_outline</span>
-      <span class="material-icons star" id="star3">star_outline</span>
-      <span class="material-icons star" id="star4">star_outline</span>
-      <span class="material-icons star" id="star5">star_outline</span>
+<!-- CHAT MESSAGING GOES HERE-->>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Log</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom styles for chat log */
+    .chat-container {
+      max-height: calc(100vh - 150px); /* Adjust 150px according to your design */
+      overflow-y: auto;
+    }
+    .chat-message {
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .user-1 {
+      background-color: #f0f0f0;
+      border-radius: 10px 10px 10px 0;
+    }
+    .user-2 {
+      background-color: #cfe0d7;
+      border-radius: 10px 10px 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="chat-container" id="chat-container">
+      <div class="chat-message user-1">
+        <strong>You:</strong> Hello there!
+      </div>
+      <div class="chat-message user-2">
+        <strong>Farmer:</strong> Hi! How can I help you?
+      </div>
     </div>
-    <input type="text" id="comment" placeholder="Share your experience">
-    <input type="file" id="file_name" placeholder="Add photos & videos">
-    <div id="post_review">
-      <a type="submit" href="#" class="btn btn-success" id="post">Post</a>
+    <div class="input-group mt-3">
+      <input type="text" class="form-control" id="message-input" placeholder="Type your message...">
+      <div class="input-group-append">
+        <button class="btn btn-primary" id="send-btn">Send</button>
+      </div>
     </div>
   </div>
+
+  <!-- Bootstrap JS (Optional) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#send-btn").click(function() {
+        var message = $("#message-input").val();
+        if (message.trim() !== "") {
+          var chatMessage = '<div class="chat-message user-1"><strong>You:</strong> ' + message + '</div>';
+          $("#chat-container").append(chatMessage);
+          $("#message-input").val(""); // Clear input field after sending message
+          // Scroll to bottom of chat container
+          $("#chat-container").scrollTop($("#chat-container")[0].scrollHeight);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
 
 
 
@@ -163,10 +211,9 @@
   <!---------------------------------------------->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <!-- <script src="./scripts/main.js"></script> -->
-  <!-- <script src="./scripts/filter_categories.js"></script> -->
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/filter_categories.js"></script>
   <script src="./scripts/home.js"></script>
-  <script src="./scripts/review.js"></script>
   <script src="./scripts/create_post.js"></script>
 
 

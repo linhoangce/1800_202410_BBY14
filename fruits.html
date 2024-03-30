@@ -57,7 +57,9 @@
 
   <nav class="navbar fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="images/logo.png" height=40 alt="farmify"></a>
+
+      <a class="navbar-brand bigger-arrow" href="main.html"><ion-icon name="arrow-back-outline"></ion-icon></a>
+
       <form class="d-flex mt-1" role="search">
         <input id="q" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
         <button onclick="performSearch()" class="btn btn-outline-success" type="submit"><ion-icon name="search-outline" size="large" style="color: white"></ion-icon></button>
@@ -114,17 +116,21 @@
     <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/tomato.png" alt="nuts" style="width: 50%;"></a>
     <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 50%;"></a>
   </nav>
-  
-    <div class="container" style="padding-bottom: 60px;">
-      <h1></h1>
-      <!-- Here is the container for cards  -->
-      <div class="container">
-          <div id="posts-go-here" class="row row-col customed-card">
-          </div>
-      </div>
-  </div>
 
-  <!-- Templates for general use, not displayed -->
+  <!------
+  <div class="container" style="padding-bottom: 60px;">
+    <h1></h1>
+   Here is the container for cards  
+    <div class="container">
+        <div id="posts-go-here" class="row row-col customed-card">
+        </div>
+    </div>
+</div>
+-->
+
+
+  <p>.</p>
+  <p>.</p>
   <template id="postCardTemplate" >
       <div class="card py-2 mx-1">
           <img class="card-image card-img-top" src=" ..." alt="..." style="height: 110px;"/>
@@ -162,7 +168,11 @@
       <i class="bi bi-chat-dots custom-icon" style="color: green;"></i>
     </div>
     <div class="custom-card-buttons">
+
+      <a href = "chat.html">
       <button class="dm-button" style="background-color: green;"><i class="bi bi-envelope"></i> DM</button>
+      </a>
+
       <button class="cart-button" style="background-color: green; margin-left: 5px;"><i class="bi bi-cart-plus"></i> Add to Cart</button>
     </div>
   </div>
