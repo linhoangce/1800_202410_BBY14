@@ -92,3 +92,7 @@ profileButton.addEventListener("click", () => {
     window.location.href = "profile.html";
 })
 
+const editProfile = document.getElementById("account-container");
+editProfile.addEventListener("click", () => {
+    window.location.href = "profile.html";
+})

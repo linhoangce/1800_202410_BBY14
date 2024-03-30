@@ -101,7 +101,7 @@
       <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 50%;"></a>
     </nav>
   
-    <div class="container" style="padding-bottom: 60px;">
+    <div class="container" style="padding-bottom: 200px;">
       <h1>Search Result</h1>
       <!-- Here is the container for cards  -->
       <div class="container">
@@ -130,25 +130,35 @@
 
   <!-- our own footer goes here-->
 
-  <footer class="navbar bg-secondary-subtle fixed-bottom" >
+  <footer class="navbar bg-secondary-subtle fixed-bottom">
     <div class="container">
-      <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
-      <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
-    
-    <!-- Define the button with Ionicon -->
-    <button onclick="navigateToCreatePage()">
-      <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
-    </button>
-    
-    <script>
-      function navigateToCreatePage() {
-        window.location.href = 'createPost.html';
-      }
-    </script>
-
-      <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
-      <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
       
+      <div id="home-container">
+        <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
+        <span id="home-sig">Home</span>
+      </div>
+
+      <div id="message-container">
+        <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
+        <span id="chat-sig">Message</span>
+      </div>
+      <!-- Define the button with Ionicon -->
+
+      <div id="post-container">
+        <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
+        <span id="create-post-sig">Post</span>
+      </div>
+
+      <div id="notification-container">
+        <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
+        <span id="notification-sig">Notification</span>
+      </div>
+
+      <div id="account-container">
+        <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
+        <span id="account-sig">Account</span>
+      </div>
+
     </div>
   </footer>
 
@@ -157,10 +167,12 @@
   <!---------------------------------------------->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/main.js"></script>
+  <!-- <script src="./scripts/main.js"></script> -->
   <script src="./scripts/filter_categories.js"></script>
   <script src="./scripts/home.js"></script>
-  <script src="./scripts/generate_search_results.js"></script>
+  <script src="./scripts/search_result.js"></script>
+  <!-- <script src="./scripts/generate_search_results.js"></script> -->
+
   
   <!-- <script type="module" src="./scripts/firesearch.gen.js"></script> -->
   <!-- <script type="module" src="./scripts/search.js"></script> -->

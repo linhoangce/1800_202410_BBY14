@@ -49,8 +49,8 @@
     <div class="container-fluid">
       <!-- <a class="navbar-brand" href="#"><img src="images/logo.png" height=40 alt="farmify"></a> -->
       <form class="d-flex mt-1" role="search">
-        <input id="q" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-        <button onclick="performSearch()" class="btn btn-outline-success" type="submit"><ion-icon name="search-outline"
+        <input id="query" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+        <button onclick="" id="search-btn" class="btn btn-outline-success" type="button"><ion-icon name="search-outline"
             size="large" style="color: white"></ion-icon></button>
       </form>
 
@@ -143,10 +143,12 @@
 
   <footer class="navbar bg-secondary-subtle fixed-bottom">
     <div class="container">
+      
       <div id="home-container">
         <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
         <span id="home-sig">Home</span>
       </div>
+
       <div id="message-container">
         <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
         <span id="chat-sig">Message</span>
@@ -154,12 +156,9 @@
       <!-- Define the button with Ionicon -->
 
       <div id="post-container">
-
         <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
         <span id="create-post-sig">Post</span>
       </div>
-
-
 
       <div id="notification-container">
         <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
@@ -183,6 +182,7 @@
   <script src="./scripts/filter_categories.js"></script>
   <script src="./scripts/home.js"></script>
   <script src="./scripts/create_post.js"></script>
+  <script src="./scripts/search_firestore.js"></script>
 
 
 

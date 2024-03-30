@@ -95,28 +95,31 @@
 
   <!-- Categories NAV -->
   <nav id="categories">
-    <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 50%;"></a>
-    <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 50%;"></a>
-    <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy" style="width: 50%;"></a>
-    <a id="nuts-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts" style="width: 50%;"></a>
-    <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/tomato.png" alt="nuts" style="width: 50%;"></a>
-    <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 50%;"></a>
+    <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies"
+        style="width: 50%;"></a>
+    <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits"
+        style="width: 50%;"></a>
+    <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy"
+        style="width: 50%;"></a>
+    <a id="nuts-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts"
+        style="width: 50%;"></a>
+    <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/tomato.png" alt="nuts"
+        style="width: 50%;"></a>
+    <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer"
+        style="width: 50%;"></a>
   </nav>
 
   <div class="container">
-    <br/>
+    <br />
     <h1><span id="post-title"> title</span></h1>
-    <div id="img-container"></div>
-    <img class="post-img responsive" src="" style="width: 100%;"/>
-    <button id="review-btn" class="btn btn-primary position-absolute bottom-1 end-0 m-3" onclick="savePostDocumentIDAndRedirect()">Write Review</button>
+    <div id="img-container">
+      <img class="post-img responsive" src="" style="width: 100%;" />
+      <button id="review-btn" class="btn btn-primary position-absolute bottom-1 end-0 m-3"
+        onclick="savePostDocumentIDAndRedirect()">Write Review</button>
+        <i class="material-icons">bookmark_border</i>
     </div>
     <div id="content">
       <p id="farm"></p>
-      <ion-icon id="save-btn" name="bookmark-outline" size="large"></ion-icon>
-      <ion-icon id="save-btn-clicked" name="bookmark" size="large"></ion-icon>
-
-      <!-- <ion-icon id="save-btn-dark" name="bookmark" size="large"></ion-icon> -->
-      <!-- <img id="save-btn" src="./images/bookmark.png" alt="bookmark"> -->
       <p id="product"></p>
       <p id="quantity"></p>
       <p id="description"></p>
@@ -124,9 +127,58 @@
     </div>
   </div>
 
+  <div class="container-review">
+    <h2>Reviews</h2>
+    <div id="details-go-here"></div>
+    <!-- Here is the container for cards with horizontal scrolling -->
+    <div class="card-container">
+        <div id="reviewCardGroup" class="row row-cols-auto">
+            <!-- Add your card templates here -->
+        </div>
+    </div>
+</div>
+
+<template id="reviewCardTemplate">
+    <div class="card bg-secondary">
+        <img class="card-img-top">
+        <div class="card-body bg-light">
+            <h5 class="title">placeholder</h5>
+            <p class="star-rating"></p>
+            <p class="time">placeholder</p>
+            <p class="file">placeholder</p>
+            <!-- <p class="season">placeholder</p>
+            <p class="scrambled">placeholder</p>
+            <p class="flooded">placeholder</p> -->
+            <br>
+            <p class="description">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+    </div>
+</template>
+
   <div id="post-saved">
     <div id="saved-confirm">Post Saved</div>
   </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to unsave this post?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-unsave" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button id="yes-unsave" type="button" class="btn btn-primary">Yes, unsave this post</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- our own footer goes here-->
 

@@ -7,14 +7,10 @@
     bottom: 450px !important;
 }
 
-.container {
+#img-container {
     position: relative;
     text-align: center;
-  }
-
-/* #content {
-    position: relative;
-} */
+}
 
 #save-btn {
     width: 35px;
@@ -141,4 +137,10 @@
     display: none;
   }
 
+  .container-review {
+    margin-top: 600px;
+  }
   
+  .material-icons{
+    cursor: pointer;
+}

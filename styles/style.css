@@ -156,7 +156,7 @@ body-title {
 }
 
 .check-icon {
-  color: #4CAF50;
+  color: #24a828;
   /* green */
   font-size: 100px;
 }
@@ -166,7 +166,7 @@ body-title {
 }
 
 #categories {
-  margin-top: 70px;
+  margin-top: 65px;
   padding: 5px 0 5px 30px;
   display: flex;
   justify-content: center;
@@ -445,5 +445,5 @@ p {
 #account-sig {
   display: block;
   text-align: center;
-  padding-top: 28px;
+  padding-top: 30px;
 }
