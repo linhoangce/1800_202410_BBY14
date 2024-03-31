@@ -1,11 +1,11 @@
 
 
 // Event listener for the "Fetch Vegetables Data" button
-const searchItem = document.getElementById("search-btn");
+const searchItem = document.getElementById("search-icon");
 searchItem.addEventListener("click", async () => {
     try {
         // Get the query from search bar
-        var queryValue = document.getElementById("query").value;
+        var queryValue = document.getElementById("search-field").value;
         console.log("Query value: ", queryValue);
 
         // Execute the Firestore query to search for the item

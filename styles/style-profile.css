@@ -109,3 +109,25 @@
     padding-top: 28px;
   }
   
+  #search-bar {
+
+    width: 95%;
+    position: relative;
+    margin: 0 auto;
+    margin-left: 20px;
+  }
+  
+  #search-field {
+    padding-left: 100px;
+    height: 50px;
+    background-color: #ededed;
+    border-radius: 30px;
+  }
+  
+  #search-icon {
+    color: #999;
+    position: absolute;
+    left: 50px;
+    top: 35%;
+    transform: translateX(-50%);
+  }
