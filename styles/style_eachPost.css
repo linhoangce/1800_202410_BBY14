@@ -144,3 +144,7 @@
   .material-icons{
     cursor: pointer;
 }
+
+.mt-1 {
+  /* margin-top: 0 !important; */
+}

@@ -93,3 +93,6 @@
     padding-top: 28px;
   }
   
+  .star:hover {
+cursor: pointer;
+  }
