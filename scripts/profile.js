@@ -13,6 +13,7 @@ function populateUserInfo() {
                     let userName = userDoc.data().name;
                     let userSchool = userDoc.data().school;
                     let userCity = userDoc.data().city;
+                    let userAvatar = userDoc.data().avatar;
 
                     //if the data fields are not empty, then write them in to the form.
                     if (userName != null) {
@@ -23,6 +24,9 @@ function populateUserInfo() {
                     }
                     if (userCity != null) {
                         document.getElementById("cityInput").value = userCity;
+                    }
+                    if (userCity != null) {
+                        document.getElementById("fileInput").value = userAvatar;
                     }
                 })
         } else {
@@ -47,12 +51,13 @@ function saveUserInfo() {
     userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
     userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
     userCity = document.getElementById('cityInput').value;       //get the value of the field with id="cityInput"
-
+    userAvater = document.getElementById('fileInput').value;
     //b) update user's document in Firestore
     currentUser.update({
         name: userName,
         school: userSchool,
-        city: userCity
+        city: userCity,
+        avatar: userAvater
     })
     .then(() => {
         console.log("Document successfully updated!");

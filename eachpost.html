@@ -39,17 +39,24 @@
   <link rel="stylesheet" href="./styles/style.css">
 
   <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style.css">
   <link rel="stylesheet" href="./styles/style_eachPost.css">
 
 </head>
 
 <body>
 
-  <nav class="navbar fixed-top">
+  <nav id="top-navbar" class="navbar fixed-top">
     <div class="container-fluid">
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      <div id="back-btn">
+        <ion-icon id="back-icon" name="chevron-back-outline" size="large"> </ion-icon>
+      </div>
+
+      <div id="search-bar" class="d-flex mt-1" role="search">
+        <input id="search-field" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+        <ion-icon id="search-icon" name="search-outline" size="large"></ion-icon>
+      </div>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="float:left;">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -82,23 +89,26 @@
             </li>
           </ul>
 
-        </div>
+        </div> -->
+      <div id="cart-btn">
+          <ion-icon class="cart" name="cart" size="large"></ion-icon>
       </div>
-      <a href="cart.html">
-        <ion-icon class="cart" name="cart" size="large"></ion-icon>
-      </a>
-    </div>
+
+      <div id="toggle-menu">
+        <ion-icon name="ellipsis-vertical-outline" size="large"></ion-icon>
+      </div>
+      </div>
+  
   </nav>
 
-   <!-- Search bar -->
-   <div id="search-bar" class="d-flex mt-1" role="search">
+  <!-- Search bar -->
+  <!-- <div id="search-bar" class="d-flex mt-1" role="search">
     <input id="search-field" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-    <!-- <button class="btn btn-outline-success"> -->
     <ion-icon id="search-icon" name="search-outline" size="large"></ion-icon>
-  </div>
+  </div> -->
 
   <!-- Categories NAV -->
-  <nav id="categories">
+  <!-- <nav id="categories">
     <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies"
         style="width: 50%;"></a>
     <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits"
@@ -111,23 +121,37 @@
         style="width: 50%;"></a>
     <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer"
         style="width: 50%;"></a>
-  </nav>
+  </nav> -->
 
   <div class="container">
-    <br />
-    <h1><span id="post-title"> title</span></h1>
     <div id="img-container">
       <img class="post-img responsive" src="" style="width: 100%;" />
-      <button id="review-btn" class="btn btn-primary position-absolute bottom-1 end-0 m-3"
-        onclick="savePostDocumentIDAndRedirect()">Write Review</button>
+      <div id="bookmark-container">
       <i id="bookmark-icon" class="material-icons">bookmark_border</i>
+      </div>
     </div>
+    <h1><span id="post-title"> title</span></h1>
     <div id="content">
-      <p id="farm"></p>
+      <div id="farm-container">
+        <div id="avatar-container">
+          <img id="user-avatar" src="" alt="user-avatar">
+          <div id="fallback-avatar" class="fallback-avatar"></div>
+          <span id="farm"></span>
+        </div>
+        <p id="star-rating"></p>
+      </div>
       <p id="product"></p>
       <p id="quantity"></p>
       <p id="description"></p>
       <p id="price"></p>
+      <div id="btn-group">
+      <button id="message-container" class="btn btn-primary">
+        <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
+        Message
+      </button>
+      <button id="review-btn" class="btn btn-primary"
+        onclick="savePostDocumentIDAndRedirect()">Review</button>
+        </div>
     </div>
   </div>
 
@@ -158,7 +182,7 @@
       <img class="card-img-top">
       <div class="card-body bg-light">
         <h5 class="title">placeholder</h5>
-        <p class="star-rating"></p>
+        
         <p class="time">placeholder</p>
         <p class="file">placeholder</p>
         <!-- <p class="season">placeholder</p>
@@ -186,7 +210,7 @@
           Area you sure you want to unsave this post?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="cancel-unsave" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button id="yes-unsave" type="button" class="btn btn-primary">Yes, unsave!</button>
         </div>
       </div>
@@ -196,17 +220,13 @@
 
   <!-- our own footer goes here-->
 
-  <footer class="navbar bg-secondary-subtle fixed-bottom">
+  <footer id="bottom-navbar" class="navbar bg-secondary-subtle fixed-bottom">
     <div class="container">
       <div id="home-container">
         <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
         <span id="home-sig">Home</span>
       </div>
-      <div id="message-container">
-        <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
-        <span id="chat-sig">Message</span>
-      </div>
-      <!-- Define the button with Ionicon -->
+      
 
       <div id="post-container">
 
@@ -235,12 +255,12 @@
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/eachpost.js"></script>
-  <script src="./scripts/filter_categories.js"></script>
+  <!-- <script src="./scripts/filter_categories.js"></script> -->
   <script src="./scripts/home.js"></script>
   <script src="./scripts/create_post.js"></script>
   <script async
     src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo&loading=async&callback=initMap"></script>
-    <script src="./scripts/search_firestore.js"></script>
+  <script src="./scripts/search_firestore.js"></script>
 
 
 

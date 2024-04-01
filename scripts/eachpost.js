@@ -11,6 +11,7 @@ function doAll() {
         if (user) {
             currentUser = db.collection("users").doc(user.uid); //global
             console.log(currentUser);
+            // return currentUser;
 
             // the following functions are always called when someone is logged in
             displayPostInfo();
@@ -27,7 +28,6 @@ doAll();
 function displayPostInfo() {
 
     console.log("docID: ", ID);
-
 
     db.collection("posts")
         .doc(ID)
@@ -60,6 +60,11 @@ function displayPostInfo() {
             console.log("save id: ", document.getElementById('save-' + doc.id));
             document.querySelector('i').onclick = () => saveBookmark(doc.id);
 
+            // Style bookmark
+            // document.getElementById("save-" + doc.id).style.top = "50%";
+            // document.getElementById("save-" + doc.id).style.transform = "translateX(-50%)";
+            // document.getElementById("save-" + doc.id).style.right = "50px";
+
             // keep bookmark if already saved
             currentUser.get().then(userDoc => {
                 //get the user name
@@ -88,7 +93,7 @@ function displayPostInfo() {
                                     console.log("bookmark has been unsaved for" + doc.id);
                                     let iconID = 'save-' + doc.id;
                                     console.log(iconID);
-                                    //this is to change the icon of the hike that was saved to "filled"
+                                    //this is to change the icon of the review that was saved to "filled"
                                     document.getElementById(iconID).innerText = 'bookmark_border';
                                     yesUnsave.setAttribute('data-bs-dismiss', 'modal');
                                     document.querySelector('i').removeAttribute('data-bs-toggle');
@@ -110,6 +115,9 @@ function displayPostInfo() {
 
 
 function savePostDocumentIDAndRedirect() {
+    let params = new URL(window.location.href) //get the url from the search bar
+    let ID = params.searchParams.get("docID");
+    localStorage.setItem('postDocID', ID);
     window.location.href = "review.html";
 }
 
@@ -126,7 +134,7 @@ async function saveBookmark(postDocID) {
             console.log("bookmark has been saved for" + postDocID);
             let iconID = 'save-' + postDocID;
             console.log(iconID);
-            //this is to change the icon of the hike that was saved to "filled"
+            //this is to change the icon of the review that was saved to "filled"
             document.getElementById(iconID).innerText = 'bookmark';
         });
 }
@@ -156,11 +164,12 @@ async function saveBookmark(postDocID) {
 // Populate review
 function populateReviews() {
     console.log("test");
-    let hikeCardTemplate = document.getElementById("reviewCardTemplate");
-    let hikeCardGroup = document.getElementById("reviewCardGroup");
+    let reviewCardTemplate = document.getElementById("reviewCardTemplate");
+    let reviewCardGroup = document.getElementById("reviewCardGroup");
 
     let params = new URL(window.location.href); // Get the URL from the search bar
     let postID = params.searchParams.get("docID");
+    console.log("postID: ", postID);
 
     // Double-check: is your collection called "Reviews" or "reviews"?
     db.collection("reviews")
@@ -178,11 +187,11 @@ function populateReviews() {
                 // var scrambled = doc.data().scrambled;
                 var time = doc.data().timestamp.toDate();
                 var rating = doc.data().rating; // Get the rating value
-                console.log(rating)
+                console.log("rating: ", rating)
 
                 console.log(time);
 
-                let reviewCard = hikeCardTemplate.content.cloneNode(true);
+                let reviewCard = reviewCardTemplate.content.cloneNode(true);
                 reviewCard.querySelector(".title").innerHTML = title;
                 reviewCard.querySelector(".time").innerHTML = new Date(
                     time
@@ -205,9 +214,15 @@ function populateReviews() {
                 for (let i = rating; i < 5; i++) {
                     starRating += '<span class="material-icons">star_outline</span>';
                 }
-                reviewCard.querySelector(".star-rating").innerHTML = starRating;
+                console.log("starRating: ", starRating);
+                document.querySelector("#star-rating").innerHTML = starRating;
+                // Calculate the number of filled stars
+                // const filledStars = Math.floor(rating);
+                // const hasHalfStar = rating % 1 !== 0;
 
-                hikeCardGroup.appendChild(reviewCard);
+                // Fill the stars
+                
+                reviewCardGroup.appendChild(reviewCard);
             });
         });
 }
@@ -269,3 +284,26 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 window.initMap = initMap;
+
+// Make the search bar appear when scrolling
+
+window.addEventListener("scroll", () => {
+    const navbar = document.getElementById("top-navbar");
+    const searchBar = document.getElementById("search-field");
+    const searchIcon = document.getElementById("search-icon");
+    
+    if (window.scrollY > 0){
+        searchBar.style.display = "block";
+        searchIcon.style.display = "block";
+        if (window.scrollY > 400){
+            navbar.style.backgroundColor = "gray";
+        } else {
+            navbar.style.backgroundColor = "";
+        }
+    } else {
+        navbar.style.backgroundColor = "";
+        searchBar.style.display = "none";
+        searchIcon.style.display = "none";
+    }
+});
+

@@ -1,6 +1,8 @@
 .container {
     margin: 0 auto;
-    width: 97%;
+    width: 100%;
+    --bs-gutter-x: 0;
+
 }
 
 .bottom-0 {
@@ -10,25 +12,27 @@
 #img-container {
     position: relative;
     text-align: center;
+    width: 100%;
 }
 
-#save-btn {
-    width: 35px;
-    position: absolute;
-    top: 500px;
-    right: 10px;
-    fill: white;
+.post-img {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
+#cancel-unsave {
+  left: -100px;
+}
+
+#yes-unsave {
+  left: 0;
+}
 #save-btn:hover {
     cursor: pointer;
 }
 
-#review-btn{
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-}
+
+
 
 /* Style the bottom navbar */
 #home-container {
@@ -48,24 +52,7 @@
     text-align: center;
     padding-top: 30px;
   }
-  
-  #message-container {
-    position: relative;
-    display: inline-block;
-    height: 50px;
-  }
-  
-  #chat-btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  #chat-sig {
-    display: block;
-    text-align: center;
-    padding-top: 30px;
-  }
+
   
   #post-container {
     position: relative;
@@ -139,6 +126,7 @@
 
   .container-review {
     margin-top: 600px;
+    width: 97%;
   }
   
   .material-icons{
@@ -147,23 +135,138 @@
 
 #search-bar {
 
-  width: 95%;
+  width: 50%;
   position: relative;
   margin: 0 auto;
   margin-left: 20px;
+  margin-bottom: 70px;
 }
 
 #search-field {
-  padding-left: 100px;
-  height: 50px;
+  padding-left: 80px;
+  height: 40px;
   background-color: #ededed;
   border-radius: 30px;
+  display: none;
 }
 
 #search-icon {
   color: #999;
   position: absolute;
-  left: 50px;
-  top: 35%;
+  left: 30px;
+  top: 15%;
   transform: translateX(-50%);
+  display: none;
+}
+
+#back-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#back-icon {
+  /* color: white; */
+  opacity: 1.0;
+}
+
+#cart-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 60px;
+}
+
+#toggle-menu {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+}
+
+#search-icon:hover{
+  cursor: pointer;
+}
+
+#top-navbar {
+  --bs-navbar-padding-y: 0;
+  height: 80px;
+  padding-top: 20px;
+}
+
+#bookmark-container {
+  position: absolute;
+  bottom: -20px;
+  right: 30px;
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 2px 2px rgb(241, 240, 240);
+
+}
+
+.cart {
+  color: black;
+  position: initial;
+  right: initial;
+  bottom: initial;
+}
+
+h1 {
+  margin: 20px 20px 0;
+}
+
+#content {
+  margin: 0 20px;
+}
+
+#farm {
+  font-style: italic;
+}
+
+#btn-group{
+  position: relative;
+  display: flex;
+  width: 100%;
+  float: left;
+}
+
+#message-container, #review-btn {
+  width: 40%;
+  float: left;
+  left: 28%;
+  transform: translateX(-50%);
+  border-radius: 30px;
+}
+
+#chat-btn {
+  left: 15%;
+  bottom: 20%;
+}
+
+button {
+  margin-right: 20px;
+}
+
+.material-icons {
+  color: green;
 }
