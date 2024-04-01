@@ -99,9 +99,12 @@
     </div>
   </nav>
 
-<!-- CHAT MESSAGING GOES HERE-->>
-<!DOCTYPE html>
-<html lang="en">
+<!----------------------------->
+<!-- CHAT MESSAGING GOES HERE-->
+<!----------------------------->
+
+
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,6 +148,61 @@
       </div>
     </div>
   </div>
+
+  <!-- Firebase JavaScript SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js"></script>
+  <script>
+    
+    // Initialize Firebase
+  // Also re-defines the API keys since I couldnt find them anywhere in the .JS file explorer page.
+    const firebaseConfig = {
+    apiKey: "AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo",
+    authDomain: "comp1800-bby14-b87af.firebaseapp.com",
+    databaseURL: "https://comp1800-bby14-b87af-default-rtdb.firebaseio.com",
+    projectId: "comp1800-bby14-b87af",
+    storageBucket: "comp1800-bby14-b87af.appspot.com",
+    messagingSenderId: "146512146276",
+    appId: "1:146512146276:web:c76e20f4075f1bc8f5d471",
+    measurementId: "G-9M2Q3B13XP"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Initilizes and configures Firebase/Firestore
+    const firestore = firebase.firestore();
+
+    document.getElementById("send-btn").addEventListener("click", () => {
+      const messageInput = document.getElementById("message-input");
+      const message = messageInput.value.trim();
+      if (message !== "") {
+        // Add message to Firestore
+        firestore.collection("messages").add({
+
+          // Sends the message to FireStore
+          text: message,
+
+          // Sends the timestamp of the sender to FireStore. 
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+          console.log("Message sent to Firestore");
+          messageInput.value = ""; // Clear input field after sending
+        })
+        .catch((error) => {
+          // Sends error if message was not logged into FireStore
+          console.error("Error sending message:", error);
+        });
+      }
+    });
+  </script>
+</body>
+
+
+<!----------------------------->
+<!-- CHAT MESSAGING ENDS HERE-->
+<!----------------------------->
+
+
 
   <!-- Bootstrap JS (Optional) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
