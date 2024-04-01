@@ -74,7 +74,7 @@ function displayPostInfo() {
 
                     document.querySelector("i").onclick = (event) => {
                         console.log("Bookmark icon clicked");
-                        
+
                         // a popup to confirm
                         const modal = document.getElementById("exampleModalCenter");
                         document.querySelector('i').setAttribute('data-bs-toggle', 'modal');
@@ -187,7 +187,12 @@ function populateReviews() {
                 // var scrambled = doc.data().scrambled;
                 var time = doc.data().timestamp.toDate();
                 var rating = doc.data().rating; // Get the rating value
-                console.log("rating: ", rating)
+                var filePath = doc.data().imgReview;
+
+                // parse file path to get only file format name
+                const pathParsed = filePath.split("\\");
+                const fileName = pathParsed[pathParsed.length - 1];
+                console.log("filename: ", fileName);
 
                 console.log(time);
 
@@ -200,8 +205,8 @@ function populateReviews() {
                 // reviewCard.querySelector(".season").innerHTML = `Season: ${season}`;
                 // reviewCard.querySelector(".scrambled").innerHTML = `Scrambled: ${scrambled}`;
                 // reviewCard.querySelector(".flooded").innerHTML = `Flooded: ${flooded}`;
-                reviewCard.querySelector(".description").innerHTML = `Comment: ${comment}`;
-
+                reviewCard.querySelector(".description").innerHTML = `${comment}`;
+                reviewCard.querySelector(".file").src = `./images/${fileName}`;
                 // Populate the star rating based on the rating value
 
                 // Initialize an empty string to store the star rating HTML
@@ -221,7 +226,7 @@ function populateReviews() {
                 // const hasHalfStar = rating % 1 !== 0;
 
                 // Fill the stars
-                
+
                 reviewCardGroup.appendChild(reviewCard);
             });
         });
@@ -236,74 +241,87 @@ function populateReviews() {
 let map, infoWindow;
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("googleMap"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 6,
-  });
-  infoWindow = new google.maps.InfoWindow();
+    map = new google.maps.Map(document.getElementById("googleMap"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 6,
+    });
+    infoWindow = new google.maps.InfoWindow();
 
-  const locationButton = document.createElement("button");
+    const locationButton = document.createElement("button");
 
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
+    locationButton.textContent = "Pan to Current Location";
+    locationButton.classList.add("custom-map-control-button");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+    locationButton.addEventListener("click", () => {
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
 
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
-          infoWindow.open(map);
-          map.setCenter(pos);
-        },
-        () => {
-          handleLocationError(true, infoWindow, map.getCenter());
-        },
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-  });
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent("Location found.");
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                },
+                () => {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                },
+            );
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+    });
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation.",
-  );
-  infoWindow.open(map);
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+        browserHasGeolocation
+            ? "Error: The Geolocation service failed."
+            : "Error: Your browser doesn't support geolocation.",
+    );
+    infoWindow.open(map);
 }
 
 window.initMap = initMap;
 
 // Make the search bar appear when scrolling
+const navbar = document.getElementById("top-navbar");
+const searchBar = document.getElementById("search-field");
+const searchIcon = document.getElementById("search-icon");
 
 window.addEventListener("scroll", () => {
-    const navbar = document.getElementById("top-navbar");
-    const searchBar = document.getElementById("search-field");
-    const searchIcon = document.getElementById("search-icon");
-    
-    if (window.scrollY > 0){
+
+    if (window.scrollY > 0) {
         searchBar.style.display = "block";
         searchIcon.style.display = "block";
-        if (window.scrollY > 400){
-            navbar.style.backgroundColor = "gray";
+
+        if (window.scrollY > 170) {
+            navbar.style.backgroundColor = "white";
+            navbar.style.border = "thin black";
+            document.getElementById("back-icon").style.color = "green";
+            document.getElementById("cart-icon").setAttribute('name', 'cart-outline');
+            document.getElementById("cart-icon").classList.add('green-outline-cart');
+            document.getElementById('toggle-icon').style.color = 'green';
+            document.getElementById('search-icon').style.color = 'green';
         } else {
             navbar.style.backgroundColor = "";
+            document.getElementById('cart-icon').classList.remove('green-outline-cart');
         }
     } else {
         navbar.style.backgroundColor = "";
         searchBar.style.display = "none";
         searchIcon.style.display = "none";
+        document.getElementById("back-icon").style.color = "initial";
+        document.getElementById("cart-icon").setAttribute('name', 'cart');
+        document.getElementById('cart-icon').classList.remove('green-outline-cart');
+        document.getElementById('toggle-icon').style.color = 'black';
+
     }
 });
 

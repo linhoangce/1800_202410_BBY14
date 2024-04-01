@@ -91,14 +91,14 @@
 
         </div> -->
       <div id="cart-btn">
-          <ion-icon class="cart" name="cart" size="large"></ion-icon>
+        <ion-icon id="cart-icon" class="cart" name="cart" size="large"></ion-icon>
       </div>
 
       <div id="toggle-menu">
-        <ion-icon name="ellipsis-vertical-outline" size="large"></ion-icon>
+        <ion-icon id="toggle-icon" name="ellipsis-vertical-outline" size="large"></ion-icon>
       </div>
-      </div>
-  
+    </div>
+
   </nav>
 
   <!-- Search bar -->
@@ -122,96 +122,97 @@
     <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer"
         style="width: 50%;"></a>
   </nav> -->
+  <div id="big-container">
 
-  <div class="container">
-    <div id="img-container">
-      <img class="post-img responsive" src="" style="width: 100%;" />
-      <div id="bookmark-container">
-      <i id="bookmark-icon" class="material-icons">bookmark_border</i>
-      </div>
-    </div>
-    <h1><span id="post-title"> title</span></h1>
-    <div id="content">
-      <div id="farm-container">
-        <div id="avatar-container">
-          <img id="user-avatar" src="" alt="user-avatar">
-          <div id="fallback-avatar" class="fallback-avatar"></div>
-          <span id="farm"></span>
+    <div id="post-container" class="container">
+      <div id="img-container">
+        <img class="post-img responsive" src="" style="width: 100%;" />
+        <div id="bookmark-container">
+          <i id="bookmark-icon" class="material-icons">bookmark_border</i>
         </div>
-        <p id="star-rating"></p>
       </div>
-      <p id="product"></p>
-      <p id="quantity"></p>
-      <p id="description"></p>
-      <p id="price"></p>
-      <div id="btn-group">
-      <button id="message-container" class="btn btn-primary">
-        <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
-        Message
-      </button>
-      <button id="review-btn" class="btn btn-primary"
-        onclick="savePostDocumentIDAndRedirect()">Review</button>
+      <h1><span id="post-title"> title</span></h1>
+      <div id="content">
+        <div id="farm-container">
+          <div id="avatar-container">
+            <img id="user-avatar" src="" alt="user-avatar">
+            <div id="fallback-avatar" class="fallback-avatar"></div>
+            <span id="farm"></span>
+          </div>
+          <p id="star-rating"></p>
         </div>
-    </div>
-  </div>
-
-
-  <div class="container-review">
-    <h2>Reviews</h2>
-    <div id="details-go-here"></div>
-    <!-- Here is the container for cards with horizontal scrolling -->
-    <div class="card-container">
-      <div id="reviewCardGroup" class="row row-cols-auto">
-        <!-- Add your card templates here -->
+        <p id="product"></p>
+        <p id="quantity"></p>
+        <p id="description"></p>
+        <p id="price"></p>
+        <div id="btn-group">
+          <button id="message-container" class="btn btn-primary">
+            <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
+            Message
+          </button>
+          <button id="review-btn" class="btn btn-primary" onclick="savePostDocumentIDAndRedirect()">Review</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="googleMap" style="width:100%;height:400px;"></div>
-  <script>
-    (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
-      key: "AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo",
-      v: "weekly",
-      // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-      // Add other bootstrap parameters as needed, using camel case.
-    });
-  </script>
 
-  <template id="reviewCardTemplate">
-    <div class="card bg-secondary">
-      <img class="card-img-top">
-      <div class="card-body bg-light">
-        <h5 class="title">placeholder</h5>
-        
-        <p class="time">placeholder</p>
-        <p class="file">placeholder</p>
-        <!-- <p class="season">placeholder</p>
+    <div id="review-container" class="container-review">
+      <h2>Reviews</h2>
+      <div id="details-go-here"></div>
+      <!-- Here is the container for cards with horizontal scrolling -->
+      <div class="card-container">
+        <div id="reviewCardGroup" class="row row-cols-auto">
+          <!-- Add your card templates here -->
+        </div>
+      </div>
+    </div>
+
+    <div id="googleMap" style="width:100%;height:400px;"></div>
+    <script>
+      (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+        key: "AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo",
+        v: "weekly",
+        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+        // Add other bootstrap parameters as needed, using camel case.
+      });
+    </script>
+
+    <template id="reviewCardTemplate">
+      <div class="card bg-secondary">
+        <img class="card-img-top">
+        <div class="card-body bg-light">
+          <h5 class="title">placeholder</h5>
+
+          <p class="time">placeholder</p>
+          <img id="review-images" class="file" src="" alt="review-img">
+          <!-- <p class="season">placeholder</p>
             <p class="scrambled">placeholder</p>
             <p class="flooded">placeholder</p> -->
-        <br>
-        <p class="description">This card has supporting text below as a natural lead-in to additional content.</p>
+          <br>
+          <p class="description">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
       </div>
+    </template>
+
+    <div id="post-saved">
+      <div id="saved-confirm">Post Saved</div>
     </div>
-  </template>
 
-  <div id="post-saved">
-    <div id="saved-confirm">Post Saved</div>
-  </div>
-
-  <!-- Button trigger modal -->
-  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Unsave this post</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Area you sure you want to unsave this post?
-        </div>
-        <div class="modal-footer">
-          <button id="cancel-unsave" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="yes-unsave" type="button" class="btn btn-primary">Yes, unsave!</button>
+    <!-- Button trigger modal -->
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Unsave this post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Area you sure you want to unsave this post?
+          </div>
+          <div class="modal-footer">
+            <button id="cancel-unsave" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button id="yes-unsave" type="button" class="btn btn-primary">Yes, unsave!</button>
+          </div>
         </div>
       </div>
     </div>
@@ -220,30 +221,23 @@
 
   <!-- our own footer goes here-->
 
-  <footer id="bottom-navbar" class="navbar bg-secondary-subtle fixed-bottom">
-    <div class="container">
-      <div id="home-container">
-        <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
-        <span id="home-sig">Home</span>
-      </div>
-      
+  <footer id="bottom-navbar" class="navbar fixed-bottom">
+    <div id="navbar-bottom" class="container">
 
-      <div id="post-container">
+      <div id="border-style"></div>
 
-        <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
-        <span id="create-post-sig">Post</span>
+      <div id="chat-container">
+        <ion-icon id="chat-icon" name="chatbubbles-outline" size="large"></ion-icon>
       </div>
 
 
+      <div id="add-cart-container">
 
-      <div id="notification-container">
-        <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
-        <span id="notification-sig">Notification</span>
+        <ion-icon id="add-cart-icon" name="bag-add-outline" size="large"></ion-icon>
       </div>
 
-      <div id="account-container">
-        <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
-        <span id="account-sig">Account</span>
+      <div id="buy-container">
+        <span id="buy">Buy</span>
       </div>
 
     </div>
@@ -256,8 +250,8 @@
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/eachpost.js"></script>
   <!-- <script src="./scripts/filter_categories.js"></script> -->
-  <script src="./scripts/home.js"></script>
-  <script src="./scripts/create_post.js"></script>
+  <!-- <script src="./scripts/home.js"></script> -->
+  <!-- <script src="./scripts/create_post.js"></script> -->
   <script async
     src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo&loading=async&callback=initMap"></script>
   <script src="./scripts/search_firestore.js"></script>

@@ -1,6 +1,6 @@
 // Post button
-const postButton = document.getElementById("create-post-btn");
+const createpostButton = document.getElementById("create-post-btn");
 
-postButton.addEventListener("click", () => {
+createpostButton.addEventListener("click", () => {
     window.location.href = 'createPost.html';
 });
