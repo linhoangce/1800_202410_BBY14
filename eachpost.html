@@ -243,6 +243,51 @@
     </div>
   </footer>
 
+  <!-- cart/checkout options menu -->
+  <footer id="cart-menu-option" class="navbar fixed-bottom">
+    <div id="cart-menu" class="container">
+
+      <div id="border-style-cart"></div>
+
+      <div id="range-option">
+        <label id="range-text" for="customRange1" class="form-label">Range</label>
+        <input id="range-input" type="range" class="form-range" id="customRange1">
+      </div>
+
+      <div id="delivery-options">
+        <div id="pickup">Pickup</div>
+        <div id="delivery">Delivery</div>
+      </div>
+
+      <div id="select-quantity">
+        <div id="quantity-text">Quantity</div>
+        <div id="quantity-adjust">
+          <ion-icon id="decrement" name="remove-circle-outline" size="large"></ion-icon>
+          <div id="quantity-selected"></div>
+          <ion-icon id="increment" name="add-circle-outline" size="large"></ion-icon>
+        </div>
+        <div id="total-price"></div>
+      </div>
+
+
+      <!-- keep these things -->
+    </div>
+
+
+    <div id="add-cart-container-cart" >
+      <div id="add-cart-icon-cart">
+      <ion-icon id="add-cart-icon-cart" name="bag-add-outline"></ion-icon>
+      </div>
+      <div id="add-to-card">Add to cart</div>
+    </div>
+
+    <div id="buy-container-cart">
+      <span id="buy1">Buy</span>
+    </div>
+
+    </div>
+  </footer>
+
 
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
@@ -255,6 +300,7 @@
   <script async
     src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo&loading=async&callback=initMap"></script>
   <script src="./scripts/search_firestore.js"></script>
+  <script src="./scripts/calculate_price.js"></script>
 
 
 

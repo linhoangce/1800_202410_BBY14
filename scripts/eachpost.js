@@ -312,6 +312,11 @@ window.addEventListener("scroll", () => {
         } else {
             navbar.style.backgroundColor = "";
             document.getElementById('cart-icon').classList.remove('green-outline-cart');
+            document.getElementById("cart-icon").setAttribute('name', 'cart');
+            document.getElementById("back-icon").style.color = "black";
+            document.getElementById('search-icon').style.color = 'black';
+            document.getElementById('toggle-icon').style.color = 'black';
+
         }
     } else {
         navbar.style.backgroundColor = "";
