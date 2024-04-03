@@ -302,6 +302,7 @@ window.addEventListener("scroll", () => {
         searchIcon.style.display = "block";
 
         if (window.scrollY > 170) {
+            navbar.style.height = '120px';
             navbar.style.backgroundColor = "white";
             navbar.style.border = "thin black";
             document.getElementById("back-icon").style.color = "green";

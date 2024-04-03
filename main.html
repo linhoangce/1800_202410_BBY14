@@ -85,8 +85,15 @@
 
         </div>
       </div>
+
+      <!-- Initially hide this search bar and display it only when scrolling -->
+      <div id="search-bar-scroll" class="d-flex1 mt-0" role="search">
+        <input id="search-field-scroll" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+        <ion-icon id="search-icon-scroll" name="search-outline" size="large"></ion-icon>
+      </div>
+
       <a href="cart.html">
-        <ion-icon class="cart" name="cart" size="large"></ion-icon>
+        <ion-icon id="cart-icon-home" class="cart" name="cart" size="large"></ion-icon>
       </a>
     </div>
   </nav>
@@ -133,7 +140,7 @@
           bulk of the card's content.
         </p>
         <p class="card-footer"></p>
-        <a class="btn btn-primary card-href">View</a>
+        <a id="view-btn" class="btn btn-primary card-href">View</a>
       </div>
     </div>
   </template>
@@ -141,7 +148,7 @@
 
   <!-- our own footer goes here-->
 
-  <footer class="navbar bg-secondary-subtle fixed-bottom">
+  <footer class="navbar fixed-bottom">
     <div class="container">
 
       <div id="home-container">
@@ -155,7 +162,7 @@
       </div>
       <!-- Define the button with Ionicon -->
 
-      <div id="post-container">
+      <div id="create-post-container">
         <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
         <span id="create-post-sig">Post</span>
       </div>

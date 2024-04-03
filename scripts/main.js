@@ -54,16 +54,16 @@ function displayCardsDynamically(collection) {
                 var details = doc.data().description;
                 var docID = doc.id;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
-                
+
                 // parse file path to get only file format name
                 const pathParsed = imgCode.split("\\");
-                const fileName = pathParsed[pathParsed.length -1];
+                const fileName = pathParsed[pathParsed.length - 1];
                 console.log("File name: ", fileName);
 
                 //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-farm').innerHTML = farm;
-                newcard.querySelector('.card-text').innerHTML = product + "<br>" +  details;
+                newcard.querySelector('.card-text').innerHTML = product + "<br>" + details;
                 newcard.querySelector('.card-image').src = "./images/" + fileName; //Example: NV01.jpg
                 newcard.querySelector('.card-footer').innerHTML = "$" + price;
                 newcard.querySelector('a').href = "eachpost.html?docID=" + docID;
@@ -96,3 +96,84 @@ const editProfile = document.getElementById("account-container");
 editProfile.addEventListener("click", () => {
     window.location.href = "profile.html";
 })
+
+
+// Style the top navbar when scrolling
+const topNavbar = document.querySelector('.fixed-top');
+const searchBarScroll = document.querySelector('#search-bar-scroll');
+
+// const originalStyles = {
+//     navPos: topNavbar.style.position,
+//     width: searchBar.style.width,
+//     position: searchBar.style.position,
+//     searchMargin: searchBar.style.margin,
+//     searchMarginLeft: searchBar.style.marginLeft,
+//     backgroundColor: topNavbar.style.backgroundColor,
+//     height: topNavbar.style.height,
+//     searchIconColor: document.getElementById('search-icon').style.color,
+//     cartPos: document.querySelector('.cart').style.position,
+//     cartRight: document.querySelector('.cart').style.right,
+//     cartBottom: document.querySelector('.cart').style.bottom,
+
+// };
+// const originalTopPosition = '900px';
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 25) {
+
+        searchBarScroll.style.display = 'block';
+        topNavbar.style.backgroundColor = 'white';
+        topNavbar.style.height = '120px';
+
+        searchBarScroll.style.position = 'relative';
+        document.getElementById("search-field-scroll").style.position = 'absolute';
+        document.getElementById("search-field-scroll").classList.remove('form-control');
+        document.getElementById("search-field-scroll").classList.remove('me-1');
+        document.getElementById("search-field-scroll").style.left = '-140px';
+        document.getElementById("search-field-scroll").style.border = 'white';
+        document.getElementById("search-field-scroll").style.top = '-10px';
+        document.getElementById('search-icon-scroll').style.left = '-130px';
+        document.getElementById('search-icon-scroll').style.top = '0';
+        document.getElementById("cart-icon-home").setAttribute('name', 'cart-outline');
+        document.getElementById("cart-icon-home").classList.add('green-outline-cart');
+        document.getElementById("cart-icon-home").style.bottom = '8px';
+        document.querySelector('.navbar-toggler-icon').style.color = 'green';
+        document.getElementById('cart-icon-home').addEventListener('mouseenter', handleMouseEnterCart);
+        document.getElementById('cart-icon-home').addEventListener('mouseleave', handleMouseLeaveCart);
+
+    } else {
+        searchBarScroll.style.display = 'none';
+        topNavbar.style.backgroundColor = '';
+        topNavbar.style.height = '';
+
+        searchBarScroll.style.position = 'relative';
+        document.getElementById("search-field-scroll").style.position = 'absolute';
+        document.getElementById("search-field-scroll").classList.remove('form-control');
+        document.getElementById("search-field-scroll").classList.remove('me-1');
+        document.getElementById("search-field-scroll").style.left = '-140px';
+        document.getElementById("search-field-scroll").style.border = 'white';
+        document.getElementById("search-field-scroll").style.top = '-10px';
+        document.getElementById('search-icon-scroll').style.left = '-130px';
+        document.getElementById('search-icon-scroll').style.top = '0';
+        document.getElementById("cart-icon-home").setAttribute('name', 'cart');
+        document.getElementById("cart-icon-home").classList.remove('green-outline-cart');
+        document.getElementById("cart-icon-home").style.color = 'black';
+        document.getElementById("cart-icon-home").style.bottom = '8px';
+        document.getElementById('search-icon').style.color = '';
+        document.getElementById('cart-icon-home').removeEventListener('mouseenter', handleMouseEnterCart);
+        document.getElementById('cart-icon-home').removeEventListener('mouseleave', handleMouseLeaveCart);
+    }
+})
+
+
+function handleMouseEnterCart(evt) {
+
+    evt.target.style.color = 'green';
+
+}
+
+function handleMouseLeaveCart(evt) {
+
+    evt.target.style.color = '';
+
+}

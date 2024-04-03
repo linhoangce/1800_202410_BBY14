@@ -124,3 +124,36 @@ function handleMouseLeave(evt) {
     evt.target.style.backgroundColor = 'white';
     evt.target.style.color = 'green';
 }
+
+// hide the cart selection panel
+
+const closeButtonCart = document.getElementById('close-btn-cart');
+closeButtonCart.addEventListener('click', () => {
+    document.getElementById('cart-menu-option').style.display = 'none';
+})
+
+//Style delivery options
+
+const pickupButton = document.getElementById('pickup');
+const deliveryButton = document.getElementById('delivery');
+
+pickupButton.addEventListener('mousenter', handleMouseEnterDelivery);
+pickupButton.addEventListener('mouseleave', handleMouseLeaveDelivery);
+deliveryButton.addEventListener('mouseenter', handleMouseEnterDelivery);
+deliveryButton.addEventListener('mouseleave', handleMouseLeaveDelivery);    
+
+function handleMouseEnterDelivery(evt) {
+    evt.target.style.backgroundColor = 'green';
+    evt.target.style.border = 'solid white 1px';
+    evt.target.style.color = 'white';
+    evt.target.style.cursor = 'pointer';
+    pickupButton.style.backgroundColor = 'white';
+    pickupButton.style.color = 'green';
+}
+
+function handleMouseLeaveDelivery(evt) {
+    evt.target.style.backgroundColor = 'white';
+    evt.target.style.color = 'green';
+    pickupButton.style.backgroundColor = 'green';
+    pickupButton.style.color = 'white';
+}

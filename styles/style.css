@@ -120,6 +120,10 @@ body {
   bottom: 8px;
 }
 
+.cart:hover{
+  color:green;
+}
+
 .col-md-8-fs-4 {
   text-align: left;
 }
@@ -127,6 +131,7 @@ body {
 .container-fluid {
   position: relative;
   margin-left: 1px;
+  margin-top: 20px;
 }
 
 .form-group {
@@ -179,7 +184,7 @@ body-title {
   padding: 5px 0 5px 30px;
   display: flex;
   justify-content: center;
-  border-bottom: solid 1px;
+  border-bottom: solid 1px green;
   width: 95%;
   height: 50px;
   border-radius: 30px;
@@ -378,6 +383,12 @@ p {
   position: relative;
   display: inline-block;
   height: 50px;
+  color: green;
+}
+
+#home-container:hover {
+  color: black;
+  scale: 1.05;
 }
 
 #home-btn{
@@ -398,6 +409,11 @@ p {
   height: 50px;
 }
 
+#message-container:hover {
+  scale: 1.05;
+  color: green;
+}
+
 #chat-btn {
   position: absolute;
   left: 50%;
@@ -410,10 +426,15 @@ p {
   padding-top: 30px;
 }
 
-#post-container {
+#create-post-container {
   position: relative;
   display: inline-block;
   height: 50px;
+}
+
+#create-post-container:hover {
+  color: green;
+  scale: 1.05;
 }
 
 #create-post-btn {
@@ -434,6 +455,10 @@ p {
   height: 50px;
 }
 
+#notification-container:hover {
+  color: green;
+}
+
 #notification-btn {
   position: absolute;
   left: 50%;
@@ -450,6 +475,11 @@ p {
   position: relative;
   display: inline-block;
   height: 50px;
+}
+
+#account-container:hover {
+  color: green;
+  scale: 1.05;
 }
 
 #account-btn {
@@ -469,7 +499,7 @@ p {
 /* Style Seach Bar */
 
 .mt-1 {
-  margin-top: 4rem !important;
+  margin-top: 5rem !important;
 }
 
 #search-bar {
@@ -495,6 +525,54 @@ p {
   transform: translateX(-50%);
 }
 
+#search-icon-scroll:hover{
+  color:green;
+  cursor: pointer;
+}
+
+#search-icon:hover{
+  color:green;
+  cursor: pointer;
+}
+
+
 #posts-go-here {
   padding-bottom: 105px;
+}
+
+#search-bar-scroll {
+  display: none;
+  position: relative;
+}
+
+#search-field-scroll {
+  position: absolute;
+  top: 20px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #ededed;
+  padding-left: 50px;
+}
+
+#search-icon-scroll {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+}
+
+.fixed-bottom {
+  border-top: 1px solid;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#view-btn {
+  background-color: green;
+  color: white;
+}
+
+#view-btn:hover {
+  scale: 1.05;
+  background-color: white;
+  color: green;
 }

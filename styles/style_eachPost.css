@@ -18,7 +18,7 @@
 .post-img {
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  height: 250px;
+  height: 300px;
 }
 
 #cancel-unsave {
@@ -138,7 +138,7 @@
   position: relative;
   margin: 0 auto;
   margin-left: 20px;
-  margin-bottom: 70px;
+  margin-bottom: 80px;
 }
 
 #search-field {
@@ -168,9 +168,16 @@
   align-items: center;
 }
 
+#back-btn:hover {
+  cursor: pointer;
+}
+
 #back-icon {
-  /* color: white; */
   opacity: 1.0;
+}
+
+#back-icon:hover {
+  color: green;
 }
 
 #cart-btn {
@@ -185,6 +192,10 @@
   right: 60px;
 }
 
+#cart-btn:hover {
+  cursor: pointer;
+}
+
 #toggle-menu {
   width: 40px;
   height: 40px;
@@ -196,6 +207,10 @@
   align-items: center;
   position: absolute;
   right: 10px;
+}
+
+#toggle-menu:hover{
+  cursor: pointer;
 }
 
 #search-icon:hover{
@@ -261,10 +276,15 @@ h1 {
   border-radius: 30px;
 }
 
+#message-container:hover {
+  color: white;
+}
+
 #chat-btn {
   left: 15%;
   bottom: 20%;
 }
+
 
 button {
   margin-right: 20px;
@@ -338,6 +358,7 @@ h2 {
   left: 30px;
   cursor: pointer;
 }
+
 
 #add-cart-container {
   position: absolute;
@@ -418,7 +439,7 @@ h2 {
 #add-cart-container-cart{
   position: absolute;
   width: 180px;
-  height: 60px;
+  height: 65px;
   background-color: gray;
   color: white;
   border-radius: 30px;
@@ -445,7 +466,7 @@ h2 {
 #buy-container-cart{
   position: absolute;
   width: 180px;
-  height: 60px;
+  height: 65px;
   background-color: gray;
   color: white;
   border-radius: 30px;
@@ -581,3 +602,8 @@ h2 {
   border-radius: 30px;
 }
 
+#close-btn-cart {
+  position: absolute;
+  left: 30px;
+  top: -200px;
+}
