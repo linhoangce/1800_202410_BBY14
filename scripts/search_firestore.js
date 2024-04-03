@@ -6,10 +6,11 @@ searchItem.addEventListener("click", async () => {
     try {
         // Get the query from search bar
         var queryValue = document.getElementById("search-field").value;
+        var queryUpperCase = queryValue.toUpperCase();
         console.log("Query value: ", queryValue);
 
         // Execute the Firestore query to search for the item
-        const querySnapshot = await db.collection("posts").where("product", "==", queryValue).get();
+        const querySnapshot = await db.collection("posts").where("productUpperCase", "==", queryUpperCase).get();
         const searchData = querySnapshot.docs.map((doc) => ({
             data: doc.data(),
             id: doc.id,
@@ -29,3 +30,4 @@ searchItem.addEventListener("click", async () => {
         console.error("Error processing data:", error);
     }
 });
+

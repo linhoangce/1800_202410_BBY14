@@ -25,17 +25,23 @@ async function createPost(collectionName, data) {
 
 postButton.addEventListener("click", async () => {
     const title = titleInput.value;
+    const titleUpperCase = title.toUpperCase();
     const farm = farmInput.value;
+    const farmUpperCase = farm.toUpperCase();
     const category = categoryInput.value;
+    const categoryUpperCase = category.toUpperCase();
     const product = productInput.value;
+    const productUpperCase = product.toUpperCase();
     const price = priceInput.value;
     const quantity = quantityInput.value;
     const description = descriptionInput.value;
+    const descriptionUpperCase = description.toUpperCase();
     const img = imageInput.value;
+    const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
     // Update Firestore document
     try {
-    const docId = await createPost("posts", {title, farm, category, product, price, quantity, description, img})
+    const docId = await createPost("posts", {title, titleUpperCase, farm, farmUpperCase, category, categoryUpperCase, product, productUpperCasse, price, quantity, description, descriptionUpperCase, img, timestamp})
         
             console.log("Document succesfully updated!", docId);
             window.location.href = `eachpost.html?docID=${docId}`;

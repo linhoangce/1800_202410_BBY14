@@ -140,26 +140,21 @@ async function saveBookmark(postDocID) {
 }
 
 //Save a post to database when clicking save button
-// const saveButton = document.getElementById("save-btn");
+const saveButton = document.getElementById("bookmark-container");
 
-// saveButton.addEventListener("click", async () => {
-//     savePostToDatabase();
-//     showSaved();
-// });
+saveButton.addEventListener("click", async () => {
+    showSaved();
+});
 
-// // Show confirmation for saving a post
-// function showSaved() {
-//     var div = document.getElementById('post-saved');
-//     div.style.display = 'block';
-//     setTimeout(function () {
-//         div.style.display = 'none';
-//     }, 4000);
-//     console.log("Saved!");
-
-//     // toggle save icon
-//     const icon = document.getElementById("save-btn-clicked");
-//     icon.style.display = "block";
-// }
+// Show confirmation for saving a post
+function showSaved() {
+    var div = document.getElementById('post-saved');
+    div.style.display = 'block';
+    setTimeout(function () {
+        div.style.display = 'none';
+    }, 4000);
+    console.log("Saved!");
+}
 
 // Populate review
 function populateReviews() {
