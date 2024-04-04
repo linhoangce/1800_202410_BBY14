@@ -114,6 +114,11 @@
     top: 70%;
     left: 50%;
     transform: translateX(-50%);
+    background-color: #f6f4f4;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    padding-top: 15px;
   }
 
   #save-btn-clicked{

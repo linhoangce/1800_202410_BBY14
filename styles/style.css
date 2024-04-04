@@ -185,7 +185,7 @@ body-title {
   display: flex;
   justify-content: center;
   border-bottom: solid 1px green;
-  width: 95%;
+  width: 90%;
   height: 50px;
   border-radius: 30px;
 }
@@ -195,15 +195,14 @@ body-title {
 }
 
 .container {
-  margin: 10px;
-  padding: 0;
+  padding: 10px;
   width: 100%;
   height: 50px;
 
 }
 
 .customed-card {
-  width: 89%;
+  width: 93%;
   display: grid;
   grid-template-columns: 50% 50%;
   gap: 20px;
@@ -504,7 +503,7 @@ p {
 
 #search-bar {
 
-  width: 95%;
+  width: 90%;
   position: relative;
   margin: 0 auto;
   margin-left: 20px;
@@ -561,7 +560,7 @@ p {
 }
 
 .fixed-bottom {
-  border-top: 1px solid;
+  border-top: 1px solid green;
   background-color: white;
   border-radius: 10px;
 }
@@ -575,4 +574,27 @@ p {
   scale: 1.05;
   background-color: white;
   color: green;
+}
+
+#login-btn {
+    margin-right: 300px;
+}
+
+#footerPlaceholder {
+  padding-top: 300px;
+  margin: 10px;
+}
+
+#background-cover {
+  padding-top: 100px;
+  padding-left: 100px;
+  width: 100%;
+}
+
+.login-container {
+  margin: 60px;
+}
+
+.firebaseui-container {
+  margin-top: 50px;
 }

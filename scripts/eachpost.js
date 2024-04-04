@@ -58,7 +58,7 @@ function displayPostInfo() {
 
             document.querySelector('i').id = 'save-' + doc.id;   //guaranteed to be unique
             console.log("save id: ", document.getElementById('save-' + doc.id));
-            document.querySelector('i').onclick = () => saveBookmark(doc.id);
+            document.querySelector('i').onclick = () => saveBookmark(doc.id); // onclick can lead to firing the modal events twice
 
             // Style bookmark
             // document.getElementById("save-" + doc.id).style.top = "50%";
@@ -69,44 +69,10 @@ function displayPostInfo() {
             currentUser.get().then(userDoc => {
                 //get the user name
                 var bookmarks = userDoc.data().bookmarks;
-                if (bookmarks.includes(doc.id)) {
-                    document.getElementById('save-' + doc.id).innerText = 'bookmark';
-
-                    document.querySelector("i").onclick = (event) => {
-                        console.log("Bookmark icon clicked");
-
-                        // a popup to confirm
-                        const modal = document.getElementById("exampleModalCenter");
-                        document.querySelector('i').setAttribute('data-bs-toggle', 'modal');
-                        document.querySelector('i').setAttribute('data-bs-target', '#exampleModal');
-
-                        yesUnsave = document.getElementById("yes-unsave");
-
-                        yesUnsave.addEventListener("click", () => {
-                            currentUser.update({
-                                // Use 'arrayUnion' to add the new bookmark ID to the 'bookmarks' array.
-                                // This method ensures that the ID is added only if it's not already present, preventing duplicates.
-                                bookmarks: firebase.firestore.FieldValue.arrayRemove(doc.id)
-                            })
-                                // Handle the front-end update to change the icon, providing visual feedback to the user that it has been clicked.
-                                .then(function () {
-                                    console.log("bookmark has been unsaved for" + doc.id);
-                                    let iconID = 'save-' + doc.id;
-                                    console.log(iconID);
-                                    //this is to change the icon of the review that was saved to "filled"
-                                    document.getElementById(iconID).innerText = 'bookmark_border';
-                                    yesUnsave.setAttribute('data-bs-dismiss', 'modal');
-                                    document.querySelector('i').removeAttribute('data-bs-toggle');
-                                    document.querySelector('i').removeAttribute('data-bs-target');
-                                });
-
-                        });
-
-                        // modal.style.display = 'none';
-
-                    }
+                if (bookmarks.includes(docID)) {
+                   document.getElementById('save-' + docID).innerText = 'bookmark';
                 }
-            });
+          });
         });
 }
 
@@ -121,30 +87,72 @@ function savePostDocumentIDAndRedirect() {
     window.location.href = "review.html";
 }
 
+const bookmarkClicked = document.getElementById('bookmark-container');
+// bookmarkClicked.addEventListener('click', saveBookmark); // for debugging
 
 async function saveBookmark(postDocID) {
+    
+    console.log("sfafdfas", currentUser);
+    currentUser.get().then(userDoc => {
+        //get the user name
+        const bookmarks = userDoc.data().bookmarks;
+        
+        if (bookmarks.includes(postDocID)) {
 
-    currentUser.update({
-        // Use 'arrayUnion' to add the new bookmark ID to the 'bookmarks' array.
-        // This method ensures that the ID is added only if it's not already present, preventing duplicates.
-        bookmarks: firebase.firestore.FieldValue.arrayUnion(postDocID)
-    })
-        // Handle the front-end update to change the icon, providing visual feedback to the user that it has been clicked.
-        .then(function () {
-            console.log("bookmark has been saved for" + postDocID);
-            let iconID = 'save-' + postDocID;
-            console.log(iconID);
-            //this is to change the icon of the review that was saved to "filled"
-            document.getElementById(iconID).innerText = 'bookmark';
-        });
+
+            // a popup to confirm
+            
+            document.querySelector('i').setAttribute('data-bs-toggle', 'modal');
+            document.querySelector('i').setAttribute('data-bs-target', '#exampleModal');
+
+            yesUnsaveButton = document.getElementById("yes-unsave");
+
+            yesUnsaveButton.addEventListener("click", () => {
+                currentUser.update({
+                    // Use 'arrayUnion' to add the new bookmark ID to the 'bookmarks' array.
+                    // This method ensures that the ID is added only if it's not already present, preventing duplicates.
+                    bookmarks: firebase.firestore.FieldValue.arrayRemove(postDocID)
+                })
+                    // Handle the front-end update to change the icon, providing visual feedback to the user that it has been clicked.
+                    .then(function () {
+                        console.log("bookmark has been unsaved for" + postDocID);
+                        let iconID = 'save-' + postDocID;
+                        console.log(iconID);
+                        //this is to change the icon of the review that was saved to "filled"
+                        
+                    });
+                    document.getElementById('save-' + postDocID).innerText = 'bookmark_border';
+                    yesUnsaveButton.setAttribute('data-bs-dismiss', 'modal');
+                    document.querySelector('i').removeAttribute('data-bs-toggle');
+                    document.querySelector('i').removeAttribute('data-bs-target');
+            });
+
+            // modal.style.display = 'none';
+        } else {
+            currentUser.update({
+                // Use 'arrayUnion' to add the new bookmark ID to the 'bookmarks' array.
+                // This method ensures that the ID is added only if it's not already present, preventing duplicates.
+                bookmarks: firebase.firestore.FieldValue.arrayUnion(postDocID)
+            })
+                // Handle the front-end update to change the icon, providing visual feedback to the user that it has been clicked.
+                .then(function () {
+                    console.log("bookmark has been saved for" + postDocID);
+                    let iconID = 'save-' + postDocID;
+                    console.log(iconID);
+                    //this is to change the icon of the review that was saved to "filled"
+                    document.getElementById(iconID).innerText = 'bookmark';
+                });
+            showSaved();
+
+        }
+
+    });
 }
 
-//Save a post to database when clicking save button
+
+
 const saveButton = document.getElementById("bookmark-container");
 
-saveButton.addEventListener("click", async () => {
-    showSaved();
-});
 
 // Show confirmation for saving a post
 function showSaved() {
