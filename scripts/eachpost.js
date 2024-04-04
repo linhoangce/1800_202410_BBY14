@@ -15,7 +15,8 @@ function doAll() {
 
             // the following functions are always called when someone is logged in
             displayPostInfo();
-            populateReviews();;
+            populateReviews();
+            populateAverageReviews();
         } else {
             // No user is signed in.
             console.log("No user is signed in");
@@ -70,9 +71,9 @@ function displayPostInfo() {
                 //get the user name
                 var bookmarks = userDoc.data().bookmarks;
                 if (bookmarks.includes(docID)) {
-                   document.getElementById('save-' + docID).innerText = 'bookmark';
+                    document.getElementById('save-' + docID).innerText = 'bookmark';
                 }
-          });
+            });
         });
 }
 
@@ -91,17 +92,17 @@ const bookmarkClicked = document.getElementById('bookmark-container');
 // bookmarkClicked.addEventListener('click', saveBookmark); // for debugging
 
 async function saveBookmark(postDocID) {
-    
+
     console.log("sfafdfas", currentUser);
     currentUser.get().then(userDoc => {
         //get the user name
         const bookmarks = userDoc.data().bookmarks;
-        
+
         if (bookmarks.includes(postDocID)) {
 
 
             // a popup to confirm
-            
+
             document.querySelector('i').setAttribute('data-bs-toggle', 'modal');
             document.querySelector('i').setAttribute('data-bs-target', '#exampleModal');
 
@@ -119,12 +120,12 @@ async function saveBookmark(postDocID) {
                         let iconID = 'save-' + postDocID;
                         console.log(iconID);
                         //this is to change the icon of the review that was saved to "filled"
-                        
+
                     });
-                    document.getElementById('save-' + postDocID).innerText = 'bookmark_border';
-                    yesUnsaveButton.setAttribute('data-bs-dismiss', 'modal');
-                    document.querySelector('i').removeAttribute('data-bs-toggle');
-                    document.querySelector('i').removeAttribute('data-bs-target');
+                document.getElementById('save-' + postDocID).innerText = 'bookmark_border';
+                yesUnsaveButton.setAttribute('data-bs-dismiss', 'modal');
+                document.querySelector('i').removeAttribute('data-bs-toggle');
+                document.querySelector('i').removeAttribute('data-bs-target');
             });
 
             // modal.style.display = 'none';
@@ -149,10 +150,7 @@ async function saveBookmark(postDocID) {
     });
 }
 
-
-
 const saveButton = document.getElementById("bookmark-container");
-
 
 // Show confirmation for saving a post
 function showSaved() {
@@ -181,33 +179,23 @@ function populateReviews() {
         .then((allReviews) => {
             reviews = allReviews.docs;
             console.log(reviews);
+
             reviews.forEach((doc) => {
                 var title = doc.data().title;
-                // var level = doc.data().level;
-                // var season = doc.data().season;
                 var comment = doc.data().comment;
-                // var flooded = doc.data().flooded;
-                // var scrambled = doc.data().scrambled;
                 var time = doc.data().timestamp.toDate();
-                var rating = doc.data().rating; // Get the rating value
                 var filePath = doc.data().imgReview;
+                var rating = doc.data().rating; // Get the rating value
 
                 // parse file path to get only file format name
                 const pathParsed = filePath.split("\\");
                 const fileName = pathParsed[pathParsed.length - 1];
-                console.log("filename: ", fileName);
-
-                console.log(time);
 
                 let reviewCard = reviewCardTemplate.content.cloneNode(true);
                 reviewCard.querySelector(".title").innerHTML = title;
                 reviewCard.querySelector(".time").innerHTML = new Date(
                     time
                 ).toLocaleString();
-                // reviewCard.querySelector(".level").innerHTML = `Level: ${level}`;
-                // reviewCard.querySelector(".season").innerHTML = `Season: ${season}`;
-                // reviewCard.querySelector(".scrambled").innerHTML = `Scrambled: ${scrambled}`;
-                // reviewCard.querySelector(".flooded").innerHTML = `Flooded: ${flooded}`;
                 reviewCard.querySelector(".description").innerHTML = `${comment}`;
                 reviewCard.querySelector(".file").src = `./images/${fileName}`;
                 // Populate the star rating based on the rating value
@@ -223,10 +211,7 @@ function populateReviews() {
                     starRating += '<span class="material-icons">star_outline</span>';
                 }
                 console.log("starRating: ", starRating);
-                document.querySelector("#star-rating").innerHTML = starRating;
-                // Calculate the number of filled stars
-                // const filledStars = Math.floor(rating);
-                // const hasHalfStar = rating % 1 !== 0;
+                reviewCard.querySelector('#star-review').innerHTML = starRating;
 
                 // Fill the stars
 
@@ -235,6 +220,90 @@ function populateReviews() {
         });
 }
 
+function populateAverageReviews() {
+
+    let params = new URL(window.location.href); // Get the URL from the search bar
+    let postID = params.searchParams.get("docID");
+    console.log("postID: ", postID);
+
+    // Double-check: is your collection called "Reviews" or "reviews"?
+    db.collection("reviews")
+        .where("postDocID", "==", postID)
+        .get()
+        .then((allReviews) => {
+            reviews = allReviews.docs;
+            console.log(reviews);
+
+            let totalRating = 0;
+            let totalReviews = 0;
+
+            reviews.forEach((doc) => {
+                var rating = doc.data().rating; // Get the rating value
+
+                totalRating += rating;
+                totalReviews++;
+
+                const averageRating = totalRating / totalReviews;
+                console.log("Ave Star: ", averageRating);
+
+                // Populate the star rating for each post based on the average rating value from all reviews
+
+                // Initialize an empty string to store the star rating HTML
+                let starRating = "";
+                // This loop runs from i=0 to i<rating, where 'rating' is a variable holding the rating value.
+                for (let i = 0; i < averageRating; i++) {
+                    starRating += '<span class="material-icons">star</span>';
+                }
+                // After the first loop, this second loop runs from i=rating to i<5.
+                for (let i = averageRating; i < 5; i++) {
+                    starRating += '<span class="material-icons">star_outline</span>';
+                }
+                console.log("starRating: ", starRating);
+                document.querySelector("#star-rating").innerHTML = starRating;
+            });
+        });
+}
+
+
+// Make the search bar appear when scrolling
+const navbar = document.getElementById("top-navbar");
+const searchBar = document.getElementById("search-field");
+const searchIcon = document.getElementById("search-icon");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+        searchBar.style.display = "block";
+        searchIcon.style.display = "block";
+
+        if (window.scrollY > 170) {
+            navbar.style.height = '120px';
+            navbar.style.backgroundColor = "white";
+            navbar.style.border = "thin black";
+            document.getElementById("back-icon").style.color = "green";
+            document.getElementById("cart-icon").setAttribute('name', 'cart-outline');
+            document.getElementById("cart-icon").classList.add('green-outline-cart');
+            document.getElementById('toggle-icon').style.color = 'green';
+            document.getElementById('search-icon').style.color = 'green';
+        } else {
+            navbar.style.backgroundColor = "";
+            document.getElementById('cart-icon').classList.remove('green-outline-cart');
+            document.getElementById("cart-icon").setAttribute('name', 'cart');
+            document.getElementById("back-icon").style.color = "black";
+            document.getElementById('search-icon').style.color = 'black';
+            document.getElementById('toggle-icon').style.color = 'black';
+
+        }
+    } else {
+        navbar.style.backgroundColor = "";
+        searchBar.style.display = "none";
+        searchIcon.style.display = "none";
+        document.getElementById("back-icon").style.color = "initial";
+        document.getElementById("cart-icon").setAttribute('name', 'cart');
+        document.getElementById('cart-icon').classList.remove('green-outline-cart');
+        document.getElementById('toggle-icon').style.color = 'black';
+
+    }
+});
 
 // Generate Google map
 // Note: This example requires that you consent to location sharing when
@@ -253,6 +322,9 @@ function initMap() {
     const locationButton = document.createElement("button");
 
     locationButton.textContent = "Pan to Current Location";
+    locationButton.style.backgroundColor = 'white';
+    locationButton.style.borderRadius = '5px';
+    locationButton.style.padding = '5px';
     locationButton.classList.add("custom-map-control-button");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
     locationButton.addEventListener("click", () => {
@@ -293,44 +365,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 window.initMap = initMap;
 
-// Make the search bar appear when scrolling
-const navbar = document.getElementById("top-navbar");
-const searchBar = document.getElementById("search-field");
-const searchIcon = document.getElementById("search-icon");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 0) {
-        searchBar.style.display = "block";
-        searchIcon.style.display = "block";
-
-        if (window.scrollY > 170) {
-            navbar.style.height = '120px';
-            navbar.style.backgroundColor = "white";
-            navbar.style.border = "thin black";
-            document.getElementById("back-icon").style.color = "green";
-            document.getElementById("cart-icon").setAttribute('name', 'cart-outline');
-            document.getElementById("cart-icon").classList.add('green-outline-cart');
-            document.getElementById('toggle-icon').style.color = 'green';
-            document.getElementById('search-icon').style.color = 'green';
-        } else {
-            navbar.style.backgroundColor = "";
-            document.getElementById('cart-icon').classList.remove('green-outline-cart');
-            document.getElementById("cart-icon").setAttribute('name', 'cart');
-            document.getElementById("back-icon").style.color = "black";
-            document.getElementById('search-icon').style.color = 'black';
-            document.getElementById('toggle-icon').style.color = 'black';
-
-        }
-    } else {
-        navbar.style.backgroundColor = "";
-        searchBar.style.display = "none";
-        searchIcon.style.display = "none";
-        document.getElementById("back-icon").style.color = "initial";
-        document.getElementById("cart-icon").setAttribute('name', 'cart');
-        document.getElementById('cart-icon').classList.remove('green-outline-cart');
-        document.getElementById('toggle-icon').style.color = 'black';
-
-    }
+// Google Map API Code
+(g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+    key: "AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo",
+    v: "weekly",
+    // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+    // Add other bootstrap parameters as needed, using camel case.
 });
-

@@ -41,7 +41,7 @@ postButton.addEventListener("click", async () => {
 
     // Update Firestore document
     try {
-    const docId = await createPost("posts", {title, titleUpperCase, farm, farmUpperCase, category, categoryUpperCase, product, productUpperCasse, price, quantity, description, descriptionUpperCase, img, timestamp})
+    const docId = await createPost("posts", {title, titleUpperCase, farm, farmUpperCase, category, categoryUpperCase, product, productUpperCase, price, quantity, description, descriptionUpperCase, img, timestamp})
         
             console.log("Document succesfully updated!", docId);
             window.location.href = `eachpost.html?docID=${docId}`;

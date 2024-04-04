@@ -98,96 +98,63 @@
         <ion-icon id="toggle-icon" name="ellipsis-vertical-outline" size="large"></ion-icon>
       </div>
     </div>
-
   </nav>
 
-  <!-- Search bar -->
-  <!-- <div id="search-bar" class="d-flex mt-1" role="search">
-    <input id="search-field" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-    <ion-icon id="search-icon" name="search-outline" size="large"></ion-icon>
-  </div> -->
-
-  <!-- Categories NAV -->
-  <!-- <nav id="categories">
-    <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies"
-        style="width: 50%;"></a>
-    <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits"
-        style="width: 50%;"></a>
-    <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy"
-        style="width: 50%;"></a>
-    <a id="nuts-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts"
-        style="width: 50%;"></a>
-    <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/tomato.png" alt="nuts"
-        style="width: 50%;"></a>
-    <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer"
-        style="width: 50%;"></a>
-  </nav> -->
-  <div id="big-container">
-
-    <div id="post-container" class="container">
-      <div id="img-container">
-        <img class="post-img responsive" src="" style="width: 100%;" />
-        <div id="bookmark-container">
-          <i id="bookmark-icon" class="material-icons">bookmark_border</i>
-        </div>
-      </div>
-      <h1><span id="post-title"> title</span></h1>
-      <div id="content">
-        <div id="farm-container">
-          <div id="avatar-container">
-            <img id="user-avatar" src="" alt="user-avatar">
-            <div id="fallback-avatar" class="fallback-avatar"></div>
-            <span id="farm"></span>
-          </div>
-          <p id="star-rating"></p>
-        </div>
-        <p id="product"></p>
-        <p id="quantity"></p>
-        <p id="description"></p>
-        <p id="price"></p>
-        <div id="btn-group">
-          <button id="message-container" class="btn btn-primary">
-            <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
-            Message
-          </button>
-          <button id="review-btn" class="btn btn-primary" onclick="savePostDocumentIDAndRedirect()">Review</button>
-        </div>
+  <div id="post-container" class="container">
+    <div id="img-container">
+      <img class="post-img responsive" src="" style="width: 100%;" />
+      <div id="bookmark-container">
+        <i id="bookmark-icon" class="material-icons">bookmark_border</i>
       </div>
     </div>
-
+    <h1><span id="post-title"> title</span></h1>
+    <div id="content">
+      <div id="farm-container">
+        <div id="avatar-container">
+          <img id="user-avatar" src="" alt="user-avatar">
+          <div id="fallback-avatar" class="fallback-avatar"></div>
+          <span id="farm"></span>
+        </div>
+        <p id="star-rating"></p>
+      </div>
+      <p id="product"></p>
+      <p id="quantity"></p>
+      <p id="description"></p>
+      <p id="price"></p>
+      <div id="btn-group">
+        <button id="message-container" class="btn btn-primary">
+          <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
+          Message
+        </button>
+        <button id="review-btn" class="btn btn-primary" onclick="savePostDocumentIDAndRedirect()">Review</button>
+      </div>
+    </div>
 
     <div id="review-container" class="container-review">
       <h2>Reviews</h2>
-      <div id="details-go-here"></div>
-      <!-- Here is the container for cards with horizontal scrolling -->
-      <div class="card-container">
-        <div id="reviewCardGroup" class="row row-cols-auto">
-          <!-- Add your card templates here -->
+      <div id="details-go-here">
+        <!-- Here is the container for cards with horizontal scrolling -->
+        <div class="card-container">
+          
+          <div id="reviewCardGroup" class="row row-cols-auto">
+            <!-- Add your card templates here -->
+          </div>
         </div>
       </div>
     </div>
-
     <div id="googleMap" style="width:100%;height:400px;"></div>
     <script>
-      (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
-        key: "AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo",
-        v: "weekly",
-        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-        // Add other bootstrap parameters as needed, using camel case.
-      });
+      
     </script>
 
     <template id="reviewCardTemplate">
-      <div class="card bg-secondary">
+      <div id="review-card-display" class="card">
         <img class="card-img-top">
-        <div class="card-body bg-light">
+        <div class="card-body">
           <h5 class="title">placeholder</h5>
-
           <p class="time">placeholder</p>
+          <p id="star-review"></p>
           <img id="review-images" class="file" src="" alt="review-img">
-          <!-- <p class="season">placeholder</p>
-            <p class="scrambled">placeholder</p>
-            <p class="flooded">placeholder</p> -->
           <br>
           <p class="description">This card has supporting text below as a natural lead-in to additional content.</p>
         </div>
@@ -197,49 +164,43 @@
     <div id="post-saved">
       <div id="saved-confirm">Post Saved</div>
     </div>
+  </div>
 
-    <!-- Button trigger modal -->
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Unsave this post</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Area you sure you want to unsave this post?
-          </div>
-          <div class="modal-footer">
-            <button id="cancel-unsave" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button id="yes-unsave" type="button" class="btn btn-primary">Yes, unsave!</button>
-          </div>
+  <!-- Button trigger modal -->
+  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Unsave this post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Area you sure you want to unsave this post?
+        </div>
+        <div class="modal-footer">
+          <button id="cancel-unsave" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="yes-unsave" type="button" class="btn btn-primary">Yes, unsave!</button>
         </div>
       </div>
     </div>
   </div>
+
   <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">open</a> -->
 
   <!-- our own footer goes here-->
 
   <footer id="bottom-navbar" class="navbar fixed-bottom">
     <div id="navbar-bottom" class="container">
-
       <div id="border-style"></div>
-
       <div id="chat-container">
         <ion-icon id="chat-icon" name="chatbubbles-outline" size="large"></ion-icon>
       </div>
-
-
       <div id="add-cart-container">
-
         <ion-icon id="add-cart-icon" name="bag-add-outline" size="large"></ion-icon>
       </div>
-
       <div id="buy-container">
         <span id="buy">Buy</span>
       </div>
-
     </div>
   </footer>
 
@@ -247,7 +208,7 @@
   <footer id="cart-menu-option" class="navbar fixed-bottom">
     <div id="cart-menu" class="container">
       <button type="button" id="close-btn-cart" class="btn-close" aria-label="Close"></button>
-      
+
       <div id="border-style-cart"></div>
 
       <div id="range-option">
@@ -269,15 +230,12 @@
         </div>
         <div id="total-price"></div>
       </div>
-
-
-      <!-- keep these things -->
     </div>
 
-
-    <div id="add-cart-container-cart" >
+    <!-- keep these things -->
+    <div id="add-cart-container-cart">
       <div id="add-cart-icon-cart">
-      <ion-icon id="add-cart-icon-cart" name="bag-add-outline"></ion-icon>
+        <ion-icon id="add-cart-icon-cart" name="bag-add-outline"></ion-icon>
       </div>
       <div id="add-to-card">Add to cart</div>
     </div>
@@ -299,8 +257,6 @@
     src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCYZHuxwD2nETWwgc6eH11uXmlKlx2GyHo&loading=async&callback=initMap"></script>
   <script src="./scripts/search_firestore.js"></script>
   <script src="./scripts/cart_selection.js"></script>
-
-
 
   <!-- Link to scripts of your own -->
   <!--<script src="./scripts/script.js"></script> -->

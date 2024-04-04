@@ -258,7 +258,7 @@ h1 {
 }
 
 #content {
-  margin: 0 20px 200px;
+  margin: 0 20px 20px;
 }
 
 #farm {
@@ -305,25 +305,6 @@ button {
   margin: 20px;
 }
 
-#big-container {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-auto-rows: max-content;
-  padding-bottom: 150px;
-}
-
-#post-container {
-  grid-row: 1;
-}
-
-#review-container {
-  grid-row: 2;
-  margin-top: 300px;
-}
-
-#googleMap {
-  grid-row: 3;
-}
 
 h2 {
   margin-left: 20px;
@@ -359,11 +340,10 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: -10px;
-  left: 30px;
+  bottom: -35px;
+  left: 27px;
   cursor: pointer;
 }
-
 
 #add-cart-container {
   position: absolute;
@@ -374,8 +354,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: -10px;
-  left: 100px;
+  bottom: -35px;
+  left: 90px;
   cursor: pointer;
 }
 
@@ -391,7 +371,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: -10px;
+  bottom: -35px;
   font-size: 14pt;
   cursor: pointer;
 }
@@ -419,10 +399,10 @@ h2 {
 #border-style {
   position: absolute;
   width: 100px;
-  height: 8px;
+  height: 5px;
   background-color: white;
   border: solid white;
-  top: -15px;
+  top: -40px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 30px;
@@ -611,4 +591,22 @@ h2 {
   position: absolute;
   left: 30px;
   top: -200px;
+}
+
+#googleMap {
+  margin: 100px 0 120px;
+}
+
+#details-go-here {
+  padding-bottom: 20px;
+}
+
+#review-card-display {
+  border-top: solid 1px green;
+  border-radius: 0;
+  margin-bottom: 100px;
+}
+
+.blur-background {
+  filter: blur(5px);
 }
