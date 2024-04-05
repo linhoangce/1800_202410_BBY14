@@ -65,6 +65,11 @@ addCartButton.addEventListener('click', () => {
     document.querySelector('#cart-menu-option').style.display = "flex";
 });
 
+const buyButtonDirect = document.getElementById('buy-container');
+buyButtonDirect.addEventListener('click', () => {
+    document.querySelector('#cart-menu-option').style.display = "flex";
+})
+
 const addCartButtonAble = document.getElementById("add-cart-container-cart");
 addCartButtonAble.addEventListener('click', () => {
     console.log('add cart clicked');
@@ -74,7 +79,7 @@ addCartButtonAble.addEventListener('click', () => {
 const buyButton = document.getElementById('buy-container-cart');
 buyButton.addEventListener('click', () => {
     console.log('buy btn clicked');
-    window.location.href = 'cart.html';
+    window.location.href = 'success_purchase.html';
 });
 
 function updateButtonsStyles() {
@@ -137,10 +142,32 @@ closeButtonCart.addEventListener('click', () => {
 const pickupButton = document.getElementById('pickup');
 const deliveryButton = document.getElementById('delivery');
 
-pickupButton.addEventListener('mousenter', handleMouseEnterDelivery);
+deliveryButton.addEventListener('click', (evt) => {
+    evt.target.style.backgroundColor = 'green';
+    evt.target.style.border = 'solid white 1px';
+    evt.target.style.color = 'white';
+    evt.target.style.cursor = 'pointer';
+    pickupButton.style.backgroundColor = 'white';
+    pickupButton.style.color = 'green';
+    pickupButton.removeEventListener('mouseleave', handleMouseLeaveDelivery);
+    deliveryButton.removeEventListener('mouseenter', handleMouseEnterDelivery);
+    deliveryButton.removeEventListener('mouseleave', handleMouseLeaveDelivery);
+
+});
+
+pickupButton.addEventListener('click', (evt) => {
+    console.log("BOJJK");
+    evt.target.style.backgroundColor = 'green';
+    evt.target.style.color = 'white';
+    deliveryButton.style.backgroundColor = 'white';
+    deliveryButton.style.color = 'green';
+});
+
+
+// pickupButton.addEventListener('mouseenter', handleMouseEnterDelivery);
 pickupButton.addEventListener('mouseleave', handleMouseLeaveDelivery);
 deliveryButton.addEventListener('mouseenter', handleMouseEnterDelivery);
-deliveryButton.addEventListener('mouseleave', handleMouseLeaveDelivery);    
+deliveryButton.addEventListener('mouseleave', handleMouseLeaveDelivery);
 
 function handleMouseEnterDelivery(evt) {
     evt.target.style.backgroundColor = 'green';

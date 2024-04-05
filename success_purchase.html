@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>My BCIT Project - Farmify</title>
+  <title>My BCIT Project</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -12,6 +12,16 @@
   <!-- Bootstrap Library CSS CDN go here -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons CSS (optional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 
   <!-- Boostrap Library JS CDN  go here -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -37,10 +47,10 @@
     href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Revolution&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/style_successPurchase.css">
 
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
-  <link rel="stylesheet" href="./styles/style_review.css">
 
 </head>
 
@@ -83,41 +93,41 @@
 
         </div>
       </div>
-      <a href="cart.html">
-        <ion-icon class="cart" name="cart" size="large"></ion-icon>
-      </a>
+      <!-- Initially hide this search bar and display it only when scrolling -->
+      <div id="search-bar-scroll" class="d-flex1 mt-0" role="search">
+        <input id="search-field-scroll" class="form-control me-1" type="search" placeholder="Search"
+          aria-label="Search">
+        <ion-icon id="search-icon-scroll" name="search-outline" size="large"></ion-icon>
+      </div>
+      <ion-icon id="cart-icon-home" class="cart" name="cart" size="large"></ion-icon>
+    </div>
     </div>
   </nav>
 
-  <!-- Search bar -->
-  <div id="search-bar" class="d-flex mt-1" role="search">
-    <input id="search-field" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-    <!-- <button class="btn btn-outline-success"> -->
-    <ion-icon id="search-icon" name="search-outline" size="large"></ion-icon>
-  </div>
-
-  <div id="review">
-    <button type="button" id="close-btn" class="btn-close" aria-label="Close"></button>
-    <h2 id="title"></h2>
-    <div id="farm_name"></div>
-    <div id="user_name"></div>
-    <div class="card-body">
-      <p>Rate your overall experience:</p>
-      <span class="material-icons star" id="star1">star_outline</span>
-      <span class="material-icons star" id="star2">star_outline</span>
-      <span class="material-icons star" id="star3">star_outline</span>
-      <span class="material-icons star" id="star4">star_outline</span>
-      <span class="material-icons star" id="star5">star_outline</span>
+  <!-- Default Search bar -->
+    <div id="search-bar" class="d-flex mt-1" role="search">
+      <input id="search-field" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+      <ion-icon id="search-icon" name="search-outline" size="large"></ion-icon>
     </div>
-    <input type="text" id="comment" placeholder="Share your experience">
-    <input type="file" id="file_name" placeholder="Add photos & videos">
-    <div id="post_review">
-      <a type="submit" href="#" class="btn btn-success" id="post">Post</a>
+
+    <div id="thankyou-message">
+      <div id="delivery-image-container">
+        <figure>
+        <img id="delivery-image" src="./images/farm-delivery2.jpg" alt="delivery">
+        <figcaption id="image-cap">Your order is on the way..</figcaption>
+        </figure>
+      </div> <br/>
+      <div id="thankyou-text">
+        <h1 id="thankyou">Thank you!</h1>
+        At Farmify, we believe every order
+        can contribute to our community's sustainability and increase the farmers' profit share, 
+        so we thank you for making a purchase directly from the farms.
+      </div>
+      <div id="button-group">
+      <button id="tracking">View Order</button>
+      <button id="message-farm">Message</button>
+      </div>
     </div>
-  </div>
-
-
-
 
   <!-- our own footer goes here-->
 
@@ -131,24 +141,18 @@
         <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
         <span id="chat-sig">Message</span>
       </div>
-      <!-- Define the button with Ionicon -->
-
       <div id="create-post-container">
-
         <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
         <span id="create-post-sig">Post</span>
       </div>
-
       <div id="notification-container">
         <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
         <span id="notification-sig">Notification</span>
       </div>
-
       <div id="account-container">
         <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
         <span id="account-sig">Account</span>
       </div>
-
     </div>
   </footer>
 
@@ -157,18 +161,16 @@
   <!---------------------------------------------->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <!-- <script src="./scripts/main.js"></script> -->
-  <!-- <script src="./scripts/filter_categories.js"></script> -->
-  <script src="./scripts/home.js"></script>
-  <script src="./scripts/review.js"></script>
   <script src="./scripts/create_post.js"></script>
   <script src="./scripts/search_firestore.js"></script>
+  <script src="./scripts/home.js"></script>
+  <script src="./scripts/searchbar-scroll.js"></script>
+  <script src="./scripts/success_purchase.js"></script>
 
 
 
-
-  <!-- <script type="module" src="./scripts/firesearch.gen.js"></script> -->
-  <!-- <script type="module" src="./scripts/search.js"></script> -->
+  <!-- <script type="module" src="./scripts/firesearch.gen.js"></script>
+  <script type="module" src="./scripts/search.js"></script> -->
   <!-- Link to scripts of your own -->
   <!--<script src="./scripts/script.js"></script> -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

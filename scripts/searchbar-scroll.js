@@ -7,17 +7,17 @@ window.addEventListener('scroll', () => {
 
         searchBarScroll.style.display = 'block';
         topNavbar.style.backgroundColor = 'white';
-        topNavbar.style.height = '120px';
+        topNavbar.style.height = '110px';
 
         searchBarScroll.style.position = 'relative';
         document.getElementById("top-navbar-container").style.marginTop = '0';
         document.getElementById("search-field-scroll").style.position = 'absolute';
         document.getElementById("search-field-scroll").classList.remove('form-control');
         document.getElementById("search-field-scroll").classList.remove('me-1');
-        document.getElementById("search-field-scroll").style.left = '-320px';
+        document.getElementById("search-field-scroll").style.left = '-330px';
         document.getElementById("search-field-scroll").style.border = 'white';
         document.getElementById("search-field-scroll").style.top = '-20px';
-        document.getElementById('search-icon-scroll').style.left = '-300px';
+        document.getElementById('search-icon-scroll').style.left = '-320px';
         document.getElementById('search-icon-scroll').style.top = '-10px';
         document.getElementById("cart-icon-home").setAttribute('name', 'cart-outline');
         document.getElementById("cart-icon-home").classList.add('green-outline-cart');

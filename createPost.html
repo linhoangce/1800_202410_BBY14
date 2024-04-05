@@ -82,7 +82,6 @@
               </ul>
             </li>
           </ul>
-
         </div>
       </div>
       <div id="search-bar-post" class="d-flex1 mt-0" role="search">
@@ -96,6 +95,7 @@
   <br> <br>
 
   <form id="create-post-form">
+    <button id="close-btn" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" class="form-control" id="title">
@@ -155,26 +155,18 @@
         <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
         <span id="chat-sig">Message</span>
       </div>
-      <!-- Define the button with Ionicon -->
-
       <div id="create-post-container">
-
         <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
         <span id="create-post-sig">Post</span>
       </div>
-
-
-
       <div id="notification-container">
         <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
         <span id="notification-sig">Notification</span>
       </div>
-
       <div id="account-container">
         <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
         <span id="account-sig">Account</span>
       </div>
-
     </div>
   </footer>
 

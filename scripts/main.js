@@ -99,21 +99,3 @@ editProfile.addEventListener("click", () => {
 })
 
 
-
-
-// const originalStyles = {
-//     navPos: topNavbar.style.position,
-//     width: searchBar.style.width,
-//     position: searchBar.style.position,
-//     searchMargin: searchBar.style.margin,
-//     searchMarginLeft: searchBar.style.marginLeft,
-//     backgroundColor: topNavbar.style.backgroundColor,
-//     height: topNavbar.style.height,
-//     searchIconColor: document.getElementById('search-icon').style.color,
-//     cartPos: document.querySelector('.cart').style.position,
-//     cartRight: document.querySelector('.cart').style.right,
-//     cartBottom: document.querySelector('.cart').style.bottom,
-
-// };
-// const originalTopPosition = '900px';
-

@@ -79,6 +79,7 @@ body {
 
 .card-body {
   height: 80px;
+  padding: 0 5px;
 }
 
 .navbar {
@@ -531,7 +532,7 @@ p {
 
 
 #posts-go-here {
-  padding-bottom: 105px;
+  padding-bottom: 50px;
 }
 
 #search-bar-scroll {
@@ -566,6 +567,7 @@ p {
 #view-btn {
   background-color: green;
   color: white;
+  border-radius: 10px;
 }
 
 #view-btn:hover {

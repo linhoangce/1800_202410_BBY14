@@ -51,3 +51,7 @@ postButton.addEventListener("click", async () => {
         }
 });
 
+// Click back button to go back to the previous page
+cancelPostingButton.addEventListener('click', () => {
+    window.location.href = 'main.html';
+})
