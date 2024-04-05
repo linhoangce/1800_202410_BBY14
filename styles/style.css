@@ -188,6 +188,7 @@ body-title {
   width: 90%;
   height: 50px;
   border-radius: 30px;
+  margin-bottom: 10px;
 }
 
 .nav-link img:hover {
@@ -492,7 +493,7 @@ p {
 /* Style Seach Bar */
 
 .mt-1 {
-  margin-top: 5rem !important;
+  margin-top: 6rem !important;
 }
 
 #search-bar {
@@ -592,3 +593,6 @@ p {
   margin: 65px;
 }
 
+#top-navbar-container {
+  margin-top: 20px;
+}

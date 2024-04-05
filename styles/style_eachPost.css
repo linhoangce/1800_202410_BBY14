@@ -111,7 +111,6 @@
   #post-saved {
     display: none;
     position: absolute;
-    top: 70%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #f6f4f4;
@@ -119,6 +118,8 @@
     text-align: center;
     height: 50px;
     padding-top: 15px;
+    bottom: -290px;
+    opacity: 0.6;
   }
 
   #save-btn-clicked{
@@ -142,8 +143,8 @@
   width: 50%;
   position: relative;
   margin: 0 auto;
-  margin-left: 20px;
-  margin-bottom: 80px;
+  margin-left: 30px;
+  margin-bottom: 90px;
 }
 
 #search-field {
@@ -295,9 +296,9 @@ button {
   margin-right: 20px;
 }
 
-.material-icons {
-  color: green;
-}
+/* .material-icons {
+  color: gold;
+} */
 
 .card {
   width: 95%;
@@ -609,4 +610,12 @@ h2 {
 
 .blur-background {
   filter: blur(5px);
+}
+
+#star-rating {
+  color: orange;
+}
+
+#star-review {
+  color: orange;
 }

@@ -45,7 +45,7 @@
 
 <body>
 
-  <nav class="navbar fixed-top">
+  <nav id="top-navbar-container" class="navbar fixed-top">
     <div class="container-fluid">
 
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -83,9 +83,14 @@
 
         </div>
       </div>
-      <a href="cart.html">
-        <ion-icon class="cart" name="cart" size="large"></ion-icon>
-      </a>
+      <!-- Initially hide this search bar and display it only when scrolling -->
+      <div id="search-bar-scroll" class="d-flex1 mt-0" role="search">
+        <input id="search-field-scroll" class="form-control me-1" type="search" placeholder="Search"
+          aria-label="Search">
+        <ion-icon id="search-icon-scroll" name="search-outline" size="large"></ion-icon>
+      </div>
+      <ion-icon id="cart-icon-home" class="cart" name="cart" size="large"></ion-icon>
+    </div>
     </div>
   </nav>
   <!-- Search bar -->
@@ -97,38 +102,44 @@
 
   <!-- Categories NAV -->
   <nav id="categories">
-      <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies" style="width: 50%;"></a>
-      <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits" style="width: 50%;"></a>
-      <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy" style="width: 50%;"></a>
-      <a id="nuts-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts" style="width: 50%;"></a>
-      <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/tomato.png" alt="nuts" style="width: 50%;"></a>
-      <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer" style="width: 50%;"></a>
-    </nav>
-  
-    <div class="container" style="padding-bottom: 200px;">
-      <h1>Search Result</h1>
-      <!-- Here is the container for cards  -->
-      <div class="container">
-          <div id="posts-go-here" class="row row-col customed-card">
-          </div>
+    <a id="veggies-category" class="nav-link" href="#"><img class="cat" src="./images/collard.png" alt="veggies"
+        style="width: 50%;"></a>
+    <a id="fruits-category" class="nav-link" href="#"><img class="cat" src="./images/strawberry.png" alt="fruits"
+        style="width: 50%;"></a>
+    <a id="dairy-category" class="nav-link" href="#"><img class="cat" src="./images/milk.png" alt="dairy"
+        style="width: 50%;"></a>
+    <a id="nuts-category" class="nav-link" href="#"><img class="cat" src="./images/macadamia.png" alt="nuts"
+        style="width: 50%;"></a>
+    <a id="plants-category" class="nav-link" href="#"><img class="cat" src="./images/tomato.png" alt="nuts"
+        style="width: 50%;"></a>
+    <a id="farmer-category" class="nav-link" href="#"><img class="cat" src="./images/farmer.png" alt="farmer"
+        style="width: 50%;"></a>
+  </nav>
+
+  <div class="container" style="padding-bottom: 200px;">
+    <h1>Search Result</h1>
+    <!-- Here is the container for cards  -->
+    <div class="container">
+      <div id="posts-go-here" class="row row-col customed-card">
       </div>
+    </div>
   </div>
 
   <!-- Templates for general use, not displayed -->
-  <template id="postCardTemplate" >
-      <div class="card py-2 mx-1">
-          <img class="card-image card-img-top" src=" ..." alt="..."/>
-          <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-farm"></p>
-              <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-              </p>
-              <p class="card-footer"></p>
-              <a id="view-btn" class="btn btn-primary card-href">View</a>
-          </div>
+  <template id="postCardTemplate">
+    <div class="card py-2 mx-1">
+      <img class="card-image card-img-top" src=" ..." alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-farm"></p>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <p class="card-footer"></p>
+        <a id="view-btn" class="btn btn-primary card-href">View</a>
       </div>
+    </div>
   </template>
 
 
@@ -136,7 +147,7 @@
 
   <footer id="bottom-navbar-main" class="navbar fixed-bottom">
     <div class="container">
-      
+
       <div id="home-container">
         <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
         <span id="home-sig">Home</span>
@@ -160,7 +171,7 @@
 
       <div id="account-container">
         <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
-        <span id="account-sig">Account</span>.orderBy("timestamp")
+        <span id="account-sig">Account</span>
       </div>
 
     </div>
@@ -171,16 +182,12 @@
   <!---------------------------------------------->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <!-- <script src="./scripts/main.js"></script> -->
   <script src="./scripts/filter_categories.js"></script>
   <script src="./scripts/home.js"></script>
   <script src="./scripts/search_result.js"></script>
   <script src="./scripts/search_firestore.js"></script>
+  <script src="./scripts/searchbar-scroll.js"></script>
 
-
-  
-  <!-- <script type="module" src="./scripts/firesearch.gen.js"></script> -->
-  <!-- <script type="module" src="./scripts/search.js"></script> -->
   <!-- Link to scripts of your own -->
   <!--<script src="./scripts/script.js"></script> -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
