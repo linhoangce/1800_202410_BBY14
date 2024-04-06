@@ -24,6 +24,7 @@ async function createPost(collectionName, data) {
 
 
 postButton.addEventListener("click", async () => {
+
     const title = titleInput.value;
     const titleUpperCase = title.toUpperCase();
     const farm = farmInput.value;
@@ -41,7 +42,8 @@ postButton.addEventListener("click", async () => {
 
     // Update Firestore document
     try {
-    const docId = await createPost("posts", {title, titleUpperCase, farm, farmUpperCase, category, categoryUpperCase, product, productUpperCase, price, quantity, description, descriptionUpperCase, img, timestamp})
+    const docId = await createPost("posts", {title, titleUpperCase, farm, farmUpperCase, 
+        category, categoryUpperCase, product, productUpperCase, price, quantity, description, descriptionUpperCase, img, timestamp});
         
             console.log("Document succesfully updated!", docId);
             window.location.href = `eachpost.html?docID=${docId}`;
@@ -51,6 +53,7 @@ postButton.addEventListener("click", async () => {
         }
 });
 
+const cancelPostingButton = document.getElementById("close-btn");
 // Click back button to go back to the previous page
 cancelPostingButton.addEventListener('click', () => {
     window.location.href = 'main.html';

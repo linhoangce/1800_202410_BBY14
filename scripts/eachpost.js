@@ -42,6 +42,7 @@ function displayPostInfo() {
             postQuantity = doc.data().quantity;
             postDescription = doc.data().description;
             postPrice = doc.data().price;
+            
 
             // parse file path to get only file format name
             const pathParsed = postImage.split("\\");
@@ -73,6 +74,11 @@ function displayPostInfo() {
                 if (bookmarks.includes(docID)) {
                     document.getElementById('save-' + docID).innerText = 'bookmark';
                 }
+
+                postAvatar = userDoc.data().avatar;
+                document.getElementById('user-avatar').src = postAvatar;
+
+
             });
         });
 }
@@ -210,7 +216,7 @@ function populateReviews() {
                 for (let i = rating; i < 5; i++) {
                     starRating += '<span class="material-icons">star_outline</span>';
                 }
-                console.log("starRating: ", starRating);
+                // console.log("starRating: ", starRating);
                 reviewCard.querySelector('#star-review').innerHTML = starRating;
 
                 // Fill the stars
@@ -258,7 +264,7 @@ function populateAverageReviews() {
                 for (let i = averageRating; i < 5; i++) {
                     starRating += '<span class="material-icons">star_outline</span>';
                 }
-                console.log("starRating: ", starRating);
+                // console.log("starRating: ", starRating);
                 document.querySelector("#star-rating").innerHTML = starRating;
             });
         });

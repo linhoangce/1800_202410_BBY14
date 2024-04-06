@@ -1,6 +1,7 @@
 var currentUser;               //points to the document of the user who is logged in
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
+
         // Check if user is signed in:
         if (user) {
 
@@ -25,9 +26,9 @@ function populateUserInfo() {
                     if (userCity != null) {
                         document.getElementById("cityInput").value = userCity;
                     }
-                    if (userCity != null) {
-                        document.getElementById("fileInput").value = userAvatar;
-                    }
+                   if (userAvatar != null) {
+                    document.getElementById('mypic-goes-here').setAttribute('src', userAvatar);
+                   }
                 })
         } else {
             // No user is signed in.
@@ -45,24 +46,60 @@ function editUserInfo() {
 }
 
 function saveUserInfo() {
-    //enter code here
+    firebase.auth().onAuthStateChanged(function (user) {
 
-    //a) get user entered values
-    userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
-    userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
-    userCity = document.getElementById('cityInput').value;       //get the value of the field with id="cityInput"
-    userAvater = document.getElementById('fileInput').value;
-    //b) update user's document in Firestore
-    currentUser.update({
-        name: userName,
-        school: userSchool,
-        city: userCity,
-        avatar: userAvater
-    })
-    .then(() => {
-        console.log("Document successfully updated!");
-    })
 
-    //c) disable edit 
-    document.getElementById('personalInfoFields').disabled = true;
+        var storageRef = storage.ref("images/" + user.uid + ".jpg");
+
+        // Async call to put File Object (global variable ImageFile) onto Cloud
+        storageRef.put(ImageFile)
+            .then(function () {
+                console.log('Uploaded to Cloud Storage.');
+
+                // Async call to get URL from Cloud
+                storageRef.getDownloadURL()
+                    .then(function (url) {
+                        console.log("Got the download URL.");
+                        // get the values from the form
+                        userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
+                        userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
+                        userCity = document.getElementById('cityInput').value;       //get the value of the field with id="cityInput"
+                        // userAvatar = document.getElementById('mypic-inp').value;
+
+                        // Asyn call to save the form fields into Firestore
+                        currentUser.update({
+                            name: userName,
+                            school: userSchool,
+                            city: userCity,
+                            avatar: url
+                        })
+                            .then(() => {
+                                console.log("Document successfully updated!");
+                            });
+                    });
+            });
+
+        //c) disable edit 
+        document.getElementById('personalInfoFields').disabled = true;
+    });
 }
+
+var ImageFile;      //global variable to store the File Object reference
+
+function chooseFileListener() {
+    const fileInput = document.getElementById("mypic-input");   // pointer #1
+    const image = document.getElementById("mypic-goes-here");   // pointer #2
+
+    //attach listener to input file
+    //when this file changes, do something
+    fileInput.addEventListener('change', function (e) {
+
+        //the change event returns a file "e.target.files[0]"
+        ImageFile = e.target.files[0];
+        var blob = URL.createObjectURL(ImageFile);
+
+        //change the DOM img element source to point to this file
+        image.src = blob;    //assign the "src" property of the "img" tag
+    })
+}
+chooseFileListener();

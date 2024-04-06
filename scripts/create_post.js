@@ -5,5 +5,5 @@ createpostButton.addEventListener("click", () => {
     window.location.href = 'createPost.html';
 });
 
-const cancelPostingButton = document.getElementById("close-btn");
+
 

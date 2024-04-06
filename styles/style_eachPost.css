@@ -32,8 +32,6 @@
     cursor: pointer;
 }
 
-
-
 /* Style the bottom navbar */
 #home-container {
     position: relative;
@@ -263,6 +261,7 @@ h1 {
 
 #farm {
   font-style: italic;
+  padding-left: 10px;
 }
 
 #btn-group{
@@ -621,4 +620,15 @@ h2 {
 
 .btn-primary {
   --bs-btn-active-bg: green;
+}
+
+#user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#avatar-container {
+  display: flex;
+  align-items: center;
 }
