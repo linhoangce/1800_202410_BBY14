@@ -352,6 +352,9 @@ p {
   background-color: green;
 }
 
+#cart-icon-home:hover {
+  cursor: pointer;
+}
 
 .order-card {
   background-color: #f0f0f0;

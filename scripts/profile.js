@@ -48,7 +48,6 @@ function editUserInfo() {
 function saveUserInfo() {
     firebase.auth().onAuthStateChanged(function (user) {
 
-
         var storageRef = storage.ref("images/" + user.uid + ".jpg");
 
         // Async call to put File Object (global variable ImageFile) onto Cloud
@@ -103,3 +102,12 @@ function chooseFileListener() {
     })
 }
 chooseFileListener();
+
+const editProfile = document.getElementById("account-container");
+editProfile.addEventListener("click", () => {
+    window.location.href = "profile.html";
+})
+
+document.getElementById('message-container').addEventListener('click', () => {
+    window.location.href = 'messages.html';
+})

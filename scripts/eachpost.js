@@ -35,23 +35,18 @@ function displayPostInfo() {
         .get()
         .then(doc => {
             thisPost = doc.data();
-            postImage = doc.data().img;
+            postImage = doc.data().image;
             postTitle = doc.data().title;
             postFarm = doc.data().farm;
             postProduct = doc.data().product;
             postQuantity = doc.data().quantity;
             postDescription = doc.data().description;
             postPrice = doc.data().price;
-            
 
-            // parse file path to get only file format name
-            const pathParsed = postImage.split("\\");
-            const fileName = pathParsed[pathParsed.length - 1];
-            console.log("File name: ", fileName);
-
+            console.log("URL ", postImage);
             document.getElementById("post-title").innerHTML = postTitle;
             let imgEvent = document.querySelector(".post-img");
-            imgEvent.src = "../images/" + fileName;
+            imgEvent.src = postImage;
             document.getElementById("farm").innerHTML = postFarm;
             document.getElementById("product").innerHTML = postProduct;
             document.getElementById("quantity").innerHTML = postQuantity;
@@ -71,8 +66,8 @@ function displayPostInfo() {
             currentUser.get().then(userDoc => {
                 //get the user name
                 var bookmarks = userDoc.data().bookmarks;
-                if (bookmarks.includes(docID)) {
-                    document.getElementById('save-' + docID).innerText = 'bookmark';
+                if (bookmarks.includes(doc.id)) {
+                    document.getElementById('save-' + doc.id).innerText = 'bookmark';
                 }
 
                 postAvatar = userDoc.data().avatar;
@@ -377,4 +372,8 @@ window.initMap = initMap;
     v: "weekly",
     // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
     // Add other bootstrap parameters as needed, using camel case.
+});
+
+document.getElementById('cart-btn').addEventListener('click', () => {
+    window.location.href = 'cart.html';
 });

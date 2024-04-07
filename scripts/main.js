@@ -42,30 +42,25 @@ function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("postCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
 
 
-    db.collection(collection).orderBy("timestamp").get()
+    db.collection(collection).orderBy("timestamp", 'desc').get()
            //the collection called "hikes"
         .then(allPosts => {
             var i = 1;  //Optional: if you want to have a unique ID for each hike
             allPosts.forEach(doc => { //iterate thru each doc
                 var title = doc.data().title;       // get value of the "title" key
                 var farm = doc.data().farm;  // get value of the "farm" key
-                var imgCode = doc.data().img;    //get unique ID to each hike to be used for fetching right image
+                var image = doc.data().image;    //get unique ID to each hike to be used for fetching right image
                 var product = doc.data().product; //gets the product
                 var price = doc.data().price;
                 var details = doc.data().description;
                 var docID = doc.id;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
-                // parse file path to get only file format name
-                const pathParsed = imgCode.split("\\");
-                const fileName = pathParsed[pathParsed.length - 1];
-                console.log("File name: ", fileName);
-
                 //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-farm').innerHTML = farm;
                 newcard.querySelector('.card-text').innerHTML = product + "<br>" + details;
-                newcard.querySelector('.card-image').src = "./images/" + fileName; //Example: NV01.jpg
+                newcard.querySelector('.card-image').src = image; //Example: NV01.jpg
                 newcard.querySelector('.card-footer').innerHTML = "$" + price;
                 newcard.querySelector('a').href = "eachpost.html?docID=" + docID;
 
@@ -98,4 +93,11 @@ editProfile.addEventListener("click", () => {
     window.location.href = "profile.html";
 })
 
+document.getElementById('message-container').addEventListener('click', () => {
+    window.location.href = 'messages.html';
+})
+
+document.getElementById('cart-icon-home').addEventListener('click', () => {
+    window.location.href = 'cart.html';
+})
 

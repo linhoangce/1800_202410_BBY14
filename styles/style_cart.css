@@ -1,25 +1,33 @@
+body {
+    background-color: rgb(238, 239, 239);
+}
 
 #cart-body {
-    margin-top: 120px;
+    margin-top: 110px;
     position: relative;
-    background-color: rgb(216, 218, 220);
     height: 100%
 }
 
 #top-navbar {
     width: 100%;
-    background-color: green;
-    margin-top: 50px;
+    background-color: white;
     height: 70px;
 }
 
+.container-fluid {
+    height: 65px;
+    background-color: green;
+    margin-top: 40px;
+}
+
 #select-all {
-    box-shadow: 0 0 10px 0;
+    box-shadow: 0 0 5px 0 rgb(202, 201, 201);
     position: relative;
     height: 60px;
     display: flex;
     align-items: center;
     background-color: white;
+    margin-bottom: 10px;
 }
 
 #delete {
@@ -30,36 +38,41 @@
     font-weight: bold;
 }
 
-#farm-info {
+#delete:hover {
+    cursor: pointer;
+    ;
+}
+
+.farm-info {
     height: 60px;
-    border-bottom: thin solid rgb(221, 221, 221);
+    border-bottom: thin solid rgb(238, 239, 239);
     display: flex;
     align-items: center;
 }
 
-#select-quantity {
-    background-color: rgb(195, 199, 199) ;
+.select-quantity {
+    background-color: rgb(238, 239, 239);
 }
 
-#per-order {
+.per-order {
     position: relative;
     background-color: white;
-    box-shadow: 0 0 10px 0;
+    box-shadow: 0 0 5px 0 rgb(202, 201, 201);
     height: 300px;
-   
+    margin-bottom: 30px;
+
 }
 
-#product-image {
+.product-image {
     position: absolute;
     right: 30px;
     border-radius: 20px;
-    border: solid;
     width: 100px;
     height: 100px;
     top: 30%;
 }
 
-#select-quantity {
+.select-quantity {
     position: absolute;
     right: 100px;
     display: flex;
@@ -72,34 +85,46 @@
     border-radius: 10px;
 }
 
-#decrement {
+.decrement {
     position: absolute;
     right: 90px;
     bottom: 10px;
     color: green;
 }
 
-#quantity-num {
+.decrement:hover {
+    cursor: pointer;
+}
+
+.quantity-num {
     position: absolute;
     right: 60px;
 }
 
-#increment {
+.increment {
     position: absolute;
     right: 10px;
     bottom: 10px;
     color: green;
 }
 
-#trash-bin {
-    background-color: rgb(194, 198, 198);
+.increment:hover {
+    cursor: pointer;
+}
+
+.trash-bin {
+    background-color: rgb(238, 239, 239);
     position: absolute;
     right: 30px;
     bottom: 20px;
     height: 30px;
     width: 40px;
     border-radius: 10px;
-   padding: 10px;
+    padding: 10px;
+}
+
+.trash-bin:hover {
+    cursor: pointer;
 }
 
 .ionicon {
@@ -112,30 +137,131 @@
 }
 
 .form-check {
+    display: flex;
+    align-items: center;
     margin-left: 30px;
 }
 
-#product-img {
-    width: 50px;
+.product-img {
+    width: 100px;
+    height: 100px;
     border-radius: 20px;
 }
 
-#item-checked {
+.item-checked {
     margin-top: 30px;
 }
 
-#back-icon {
+#back-btn {
     color: white;
 }
 
-#chat-btn {
-    color: white;
-    margin-right: 10px;
+#back-btn:hover {
+    cursor: pointer;
 }
 
-#farm-avatar {
+#chat-container {
+    position: absolute;
+    right: 20px;
+    color: white;
+}
+
+#chat-container:hover {
+    cursor: pointer;
+}
+
+.farm-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: solid;
+    margin-left: 20px;
+}
+
+.farm-name {
+    margin-left: 10px;
+}
+
+.cart-content {
+    display: block;
+    margin-left: 30px;
+}
+
+.quantity {
+    font-weight: lighter;
+    font-size: smaller;
+    margin-left: 10px;
+}
+
+.product-name {
+    margin-left: 10px;
+}
+
+.price {
+    margin-left: 10px;
+}
+
+#continue-footer {
+    display: flex;
+    justify-content: center;
+}
+
+#continue {
+    position: relative;
+    background-color: green;
+    color: white;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    height: 65px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+#cont-text {
+    position: absolute;
+    left: 20px;
+    font-size: 14pt;
+    font-weight: bold;
+
+}
+
+#forward {
+    position: absolute;
+    right: 20px;
+    opacity: 0.5;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.4;
+}
+
+#forward:hover {
+    cursor: pointer;
+}
+
+#cont-icon {
+    position: absolute;
+    right: 28px;
+}
+
+#cont-icon:hover {
+    cursor: pointer;
+}
+
+.form-check-input:hover {
+    cursor: pointer;
+}
+
+.select-all:hover {
+    cursor: pointer;
+}
+
+footer {
+    background-color: white;
+    border: none;
+}
+
+#cart-go-here {
+    margin-bottom: 120px;
 }

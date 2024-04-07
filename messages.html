@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>My BCIT Project</title>
+  <title>My BCIT Project - Farmify</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -12,16 +12,6 @@
   <!-- Bootstrap Library CSS CDN go here -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Bootstrap Icons CSS (optional) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-  <!-- Bootstrap JS (optional) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
 
   <!-- Boostrap Library JS CDN  go here -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -46,9 +36,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Revolution&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css">
 
   <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style_cart.css">
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/style_messages.css">
+
 </head>
 
 <body>
@@ -58,78 +51,66 @@
       <div id="back-btn">
         <ion-icon id="back-icon" name="chevron-back-outline" size="large"> </ion-icon>
       </div>
-
-      <div id="chat-container">
-        <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
-      </div>
     </div>
   </nav>
+<!----------------------------->
+<!-- CHAT MESSAGING GOES HERE-->
+<!----------------------------->
 
-  <div id="cart-body">
-    <div id="select-all">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label select-all" for="flexCheckDefault" style="padding-left: 20px; font-weight: bold;">
-          Select All
-        </label>
+  <div class="container">
+    <div class="chat-container" id="chat-container">
+      <div class="chat-message user-1">
+        <strong>You:</strong> Hello there!
       </div>
-      <div id="delete">Delete</div>
+      <div class="chat-message user-2">
+        <strong>Farmer:</strong> Hi! How can I help you?
+      </div>
     </div>
-    <br />
-    <div id="cart-go-here"></div>
+    <div class="input-group mt-3">
+      <input type="text" class="form-control" id="message-input" placeholder="Type your message...">
+      <div class="input-group-append">
+        <button class="btn btn-primary" id="send-btn">Send</button>
+      </div>
+    </div>
   </div>
 
-  <template id="cartContentTemplate">
-  <div id="per-order" class="per-order">
-    <div class="farm-info">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <div class="farm-avatar-container"><img class="farm-avatar"></div>
-        <span class="farm-name"></span>
-      </div>
+  <!-- our own footer goes here-->
 
-    </div>
-
-    <div id="item-checked" class="item-checked">
-      <div class="form-check cart-content">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-        <label class="form-check-label product-name" for="flexCheckChecked">
-        </label>
-        <div class="quantity"><small>Quantity</small></div>
-        <div class="price">Price</div>
+  <footer id="bottom-navbar-main" class="navbar fixed-bottom">
+    <div class="container">
+      <div id="home-container">
+        <ion-icon id="home-btn" class="buttons" name="home-outline" size="large"></ion-icon>
+        <span id="home-sig">Home</span>
+      </div>
+      <div id="message-container">
+        <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
+        <span id="chat-sig">Message</span>
+      </div>
+      <div id="create-post-container">
+        <ion-icon id="create-post-btn" class="buttons" name="add-circle-outline" size="large"></ion-icon>
+        <span id="create-post-sig">Post</span>
+      </div>
+      <div id="notification-container">
+        <ion-icon id="notification-btn" class="buttons" name="notifications-outline" size="large"></ion-icon>
+        <span id="notification-sig">Notification</span>
+      </div>
+      <div id="account-container">
+        <ion-icon id="account-btn" class="buttons" name="person-outline" size="large"></ion-icon>
+        <span id="account-sig">Account</span>
       </div>
     </div>
-    <div id="product-image" class="product-image">
-      <img class="product-img" src="" alt="image">
-    </div>
-    <div id="select-quantity" class="select-quantity">
-      <div id="quantity-num" class="quantity-num">0</div>
-      <div id="quantity-adjust" class="quantity-adjust">
-        <ion-icon id="decrement" class="decrement" name="remove-circle" size="large"></ion-icon>
-        <div id="quantity-selected" class="quantity-selected"></div>
-        <ion-icon id="increment" class="increment" name="add-circle" size="large"></ion-icon>
-      </div>
-    </div>
-    <ion-icon id="trash-bin" class="trash-bin" name="trash-outline" size="large"></ion-icon>
-  </div>
-</template>
-
-  <footer id="continue-footer" class="navbar fixed-bottom">
-    <div id="continue">
-      <div id="cont-text">CONTINUE</div>
-      <div id="forward">
-      </div>
-      <ion-icon id="cont-icon" name="chevron-forward-outline" size="large"></ion-icon>
-    </div>
-    
   </footer>
+
 
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/cart.js"></script>
-  <script src="./scripts/goback.js"></script>
+  <script src="./scripts/home.js"></script>
+  <script src="./scripts/create_post.js"></script>
+  <script src="./scripts/messages.js"></script>
+
+  <!-- Link to scripts of your own -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

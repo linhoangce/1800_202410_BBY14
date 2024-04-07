@@ -17,12 +17,6 @@ var itemPrice;
         const doc = await db.collection("posts").doc(docID).get();
         if (doc.exists) {
             itemPrice = doc.data().price;
-            console.log("Item Price is:", itemPrice);
-
-            // const decrementButton = document.getElementById('decrement');
-            // const incrementButton = document.getElementById('increment');
-            // const quantityDisplay = document.getElementById('quantity-selected');
-            // const totalPriceDisplay = document.getElementById('total-price');
 
             // Event listeners
             decrementButton.addEventListener('click', () => {
@@ -70,11 +64,7 @@ buyButtonDirect.addEventListener('click', () => {
     document.querySelector('#cart-menu-option').style.display = "flex";
 })
 
-const addCartButtonAble = document.getElementById("add-cart-container-cart");
-addCartButtonAble.addEventListener('click', () => {
-    console.log('add cart clicked');
-    window.location.href = 'cart.html';
-});
+
 
 const buyButton = document.getElementById('buy-container-cart');
 buyButton.addEventListener('click', () => {
@@ -184,3 +174,59 @@ function handleMouseLeaveDelivery(evt) {
     pickupButton.style.backgroundColor = 'green';
     pickupButton.style.color = 'white';
 }
+
+// Create a cart collection to store users' selections in cart.
+const addCartButtonAble = document.getElementById("add-cart-container-cart");
+
+addCartButtonAble.addEventListener('click', async () => {
+    console.log('add cart clicked');
+    try {
+        const user = await firebase.auth().currentUser;
+
+        if (user) {
+            const title = document.querySelector('h1').textContent;
+            console.log("TITLE ", title);
+            const farm = document.getElementById('post-title').textContent;
+            console.log("FARM " , farm);
+            // const category = categoryInput.value;
+            // const categoryUpperCase = category.toUpperCase();
+            const product = document.getElementById('product').textContent;
+            console.log("PRO" , product);
+            const farmAvatar = document.getElementById('user-avatar').src;
+            const postImage = document.getElementById('post-images').src
+            console.log("POSt Ima " , postImage);
+            const quantitySelected = document.getElementById('quantity-selected').textContent;
+            console.log("Quantity ", quantity);
+            const totalPrice = document.getElementById('total-price').textContent;
+            console.log("PRICE ", totalPrice);
+            const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+            const userID = user.uid;
+            const doc = docID;
+
+            // Update Firestore document
+
+            const docId = await createCart("cart", { title, farm, product, quantitySelected, timestamp, userID, farmAvatar, doc, totalPrice, postImage });
+
+            console.log("Document succesfully updated!", docId);
+            window.location.href = 'cart.html';
+        } else {
+            console.log("No user is logged in.");
+        }
+    } catch (error) {
+        console.error("Error updating document:", error);
+    }
+});
+
+async function createCart(collectionName, data) {
+    try {
+        const docRef = await db.collection(collectionName).add(data);
+        console.log("docRef: ", docRef.id);
+        console.log("Document written with ID:", docRef.id);
+        return docRef.id;
+    } catch (error) {
+        console.error("Error adding document: ", error);
+        throw error;
+    }
+}
+
+
