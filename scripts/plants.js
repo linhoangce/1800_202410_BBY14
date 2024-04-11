@@ -17,7 +17,7 @@ function populatePlantsData(filteredData) {
       newcard.querySelector('.card-title').innerHTML = doc.data.product;
       newcard.querySelector('.card-farm').innerHTML = doc.data.farm;
       newcard.querySelector('.card-text').innerHTML = doc.data.product + doc.data.description;
-      newcard.querySelector('.card-image').src = "./images/" + fileName; // Example: NV01.jpg
+      newcard.querySelector('.card-image').src = doc.data.image; // Example: NV01.jpg
       newcard.querySelector('.card-footer').innerHTML = "$" + doc.data.price;
       newcard.querySelector('a').href = `eachpost.html?docID=${doc.id}`;
   

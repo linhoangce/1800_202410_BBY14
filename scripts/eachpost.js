@@ -185,12 +185,8 @@ function populateReviews() {
                 var title = doc.data().title;
                 var comment = doc.data().comment;
                 var time = doc.data().timestamp.toDate();
-                var filePath = doc.data().imgReview;
+                var reviewImg = doc.data().reviewImage;
                 var rating = doc.data().rating; // Get the rating value
-
-                // parse file path to get only file format name
-                const pathParsed = filePath.split("\\");
-                const fileName = pathParsed[pathParsed.length - 1];
 
                 let reviewCard = reviewCardTemplate.content.cloneNode(true);
                 reviewCard.querySelector(".title").innerHTML = title;
@@ -198,7 +194,7 @@ function populateReviews() {
                     time
                 ).toLocaleString();
                 reviewCard.querySelector(".description").innerHTML = `${comment}`;
-                reviewCard.querySelector(".file").src = `./images/${fileName}`;
+                reviewCard.querySelector(".file").src = reviewImg;
                 // Populate the star rating based on the rating value
 
                 // Initialize an empty string to store the star rating HTML

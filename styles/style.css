@@ -354,6 +354,7 @@ p {
 
 #cart-icon-home:hover {
   cursor: pointer;
+  color: green;
 }
 
 .order-card {

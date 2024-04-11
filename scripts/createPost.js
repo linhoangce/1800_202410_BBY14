@@ -26,7 +26,6 @@ function listenFileSelect() {
 listenFileSelect();
 
 postButton.addEventListener("click", async () => {
-    alert("POST is triggered");
     firebase.auth().onAuthStateChanged( (user) => {
         if (user) {
             var title = titleInput.value;
@@ -128,7 +127,7 @@ function savePostIDforUser(postDocID) {
           })
           .then(() =>{
                 console.log("5. Saved to user's document!");
-                                alert ("Post is complete!");
+                                alert ("Posted successfully!");
                                 window.location.href = "eachpost.html?docID=" + postDocID;
                             })
            .catch((error) => {
