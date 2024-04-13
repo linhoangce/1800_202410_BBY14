@@ -1,33 +1,11 @@
 const viewOrderButton = document.getElementById('tracking');
 const messageButton = document.getElementById('message-farm');
 
-// viewOrderButton.addEventListener('click', (evt) => {
-//     evt.target.style.backgroundColor = 'green';
-//     evt.target.style.border = 'solid white 1px';
-//     evt.target.style.color = 'white';
-//     evt.target.style.cursor = 'pointer';
-//     pickupButton.style.backgroundColor = 'white';
-//     pickupButton.style.color = 'green';
-//     pickupButton.removeEventListener('mouseleave', handleMouseLeaveDelivery);
-//     deliveryButton.removeEventListener('mouseenter', handleMouseEnterDelivery);
-//     deliveryButton.removeEventListener('mouseleave', handleMouseLeaveDelivery);
-
-// });
-
-// pickupButton.addEventListener('click', (evt) => {
-//     console.log("BOJJK");
-//     evt.target.style.backgroundColor = 'green';
-//     evt.target.style.color = 'white';
-//     deliveryButton.style.backgroundColor = 'white';
-//     deliveryButton.style.color = 'green';
-// });
-
-
-// pickupButton.addEventListener('mouseenter', handleMouseEnterDelivery);
-// messageButton.addEventListener('mouseleave', handleMouseLeave);
+// Styles the button when hovering
 viewOrderButton.addEventListener('mouseenter', handleMouseEnter);
 viewOrderButton.addEventListener('mouseleave', handleMouseLeave);
 
+// Handles hovering effects
 function handleMouseEnter(evt) {
     evt.target.style.backgroundColor = 'green';
     evt.target.style.color = 'white';
@@ -44,3 +22,16 @@ function handleMouseLeave(evt) {
     messageButton.style.backgroundColor = 'green';
     messageButton.style.color = 'white';
 }
+
+const editProfile = document.getElementById("account-container");
+editProfile.addEventListener("click", () => {
+    window.location.href = "profile.html";
+})
+
+document.getElementById('message-container').addEventListener('click', () => {
+    window.location.href = 'messages.html';
+})
+
+document.getElementById('cart-icon-home').addEventListener('click', () => {
+    window.location.href = 'cart.html';
+})

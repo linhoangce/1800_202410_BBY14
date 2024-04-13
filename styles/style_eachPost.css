@@ -1,18 +1,18 @@
 .container {
-    margin: 0 auto;
-    width: 100%;
-    --bs-gutter-x: 0;
+  margin: 0 auto;
+  width: 100%;
+  --bs-gutter-x: 0;
 
 }
 
 .bottom-0 {
-    bottom: 450px !important;
+  bottom: 450px !important;
 }
 
 #img-container {
-    position: relative;
-    text-align: center;
-    width: 100%;
+  position: relative;
+  text-align: center;
+  width: 100%;
 }
 
 .post-img {
@@ -28,112 +28,113 @@
 #yes-unsave {
   left: 0;
 }
+
 #save-btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* Style the bottom navbar */
 #home-container {
-    position: relative;
-    display: inline-block;
-    height: 50px;
-  }
-  
-  #home-btn{
-    position: absolute;
-    left: 50%;
-    transform:  translateX(-50%);
-  }
-  
-  #home-sig {
-    display: block;
-    text-align: center;
-    padding-top: 30px;
-  }
+  position: relative;
+  display: inline-block;
+  height: 50px;
+}
 
-  
-  #post-container {
-    position: relative;
-    display: inline-block;
-    height: 50px;
-  }
-  
-  #create-post-btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  #create-post-sig {
-    display: block;
-    text-align: center;
-    padding-top: 30px;
-  }
-  
-  #notification-container {
-    position: relative;
-    display: inline-block;
-    height: 50px;
-  }
-  
-  #notification-btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  #notification-sig {
-    display: block;
-    text-align: center;
-    padding-top: 30px;
-  }
-  
-  #account-container {
-    position: relative;
-    display: inline-block;
-    height: 50px;
-  }
-  
-  #account-btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  #account-sig {
-    display: block;
-    text-align: center;
-    padding-top: 28px;
-  }
-  
-  #post-saved {
-    display: none;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #f6f4f4;
-    width: 100%;
-    text-align: center;
-    height: 50px;
-    padding-top: 15px;
-    bottom: -290px;
-    opacity: 0.6;
-  }
+#home-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-  #save-btn-clicked{
-    width: 35px;
-    position: absolute;
-    top: 500px;
-    right: 10px;
-    display: none;
-  }
+#home-sig {
+  display: block;
+  text-align: center;
+  padding-top: 30px;
+}
 
-  .container-review {
-    width: 94%;
-  }
-  
-  .material-icons{
-    cursor: pointer;
+
+#post-container {
+  position: relative;
+  display: inline-block;
+  height: 50px;
+}
+
+#create-post-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#create-post-sig {
+  display: block;
+  text-align: center;
+  padding-top: 30px;
+}
+
+#notification-container {
+  position: relative;
+  display: inline-block;
+  height: 50px;
+}
+
+#notification-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#notification-sig {
+  display: block;
+  text-align: center;
+  padding-top: 30px;
+}
+
+#account-container {
+  position: relative;
+  display: inline-block;
+  height: 50px;
+}
+
+#account-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#account-sig {
+  display: block;
+  text-align: center;
+  padding-top: 28px;
+}
+
+#post-saved {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f6f4f4;
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  padding-top: 15px;
+  bottom: -290px;
+  opacity: 0.6;
+}
+
+#save-btn-clicked {
+  width: 35px;
+  position: absolute;
+  top: 500px;
+  right: 10px;
+  display: none;
+}
+
+.container-review {
+  width: 94%;
+}
+
+.material-icons {
+  cursor: pointer;
 }
 
 #search-bar {
@@ -212,11 +213,11 @@
   right: 10px;
 }
 
-#toggle-menu:hover{
+#toggle-menu:hover {
   cursor: pointer;
 }
 
-#search-icon:hover{
+#search-icon:hover {
   cursor: pointer;
 }
 
@@ -264,7 +265,7 @@ h1 {
   padding-left: 10px;
 }
 
-#btn-group{
+#btn-group {
   position: relative;
   display: flex;
   width: 100%;
@@ -272,7 +273,8 @@ h1 {
   margin: 30px 0;
 }
 
-#message-container, #review-btn {
+#message-container,
+#review-btn {
   width: 40%;
   float: left;
   left: 28%;
@@ -327,11 +329,11 @@ h2 {
 
 #navbar-bottom {
   position: relative;
-  
+
 }
 
 #chat-container {
-  position:absolute;
+  position: absolute;
   width: 50px;
   height: 50px;
   background-color: white;
@@ -385,7 +387,7 @@ h2 {
   color: white;
   border: white 5px solid;
   border-radius:
-   50%;
+    50%;
 }
 
 #chat-container:hover {
@@ -420,7 +422,7 @@ h2 {
   position: relative;
 }
 
-#add-cart-container-cart{
+#add-cart-container-cart {
   position: absolute;
   width: 180px;
   height: 65px;
@@ -437,7 +439,7 @@ h2 {
   pointer-events: none;
 }
 
-#add-cart-icon-cart{
+#add-cart-icon-cart {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -447,7 +449,8 @@ h2 {
 #add-to-cart {
   margin-left: 5px;
 }
-#buy-container-cart{
+
+#buy-container-cart {
   position: absolute;
   width: 180px;
   height: 65px;
@@ -465,7 +468,7 @@ h2 {
 }
 
 #range-option {
-  position:absolute;
+  position: absolute;
   width: 85%;
   display: flex;
   justify-content: center;
@@ -487,7 +490,7 @@ h2 {
 }
 
 #delivery-options {
-  position:absolute;
+  position: absolute;
   width: 85%;
   height: 50px;
   background-color: white;
@@ -500,7 +503,7 @@ h2 {
 }
 
 #select-quantity {
-  position:absolute;
+  position: absolute;
   width: 85%;
   height: 50px;
   background-color: white;
@@ -513,7 +516,7 @@ h2 {
 }
 
 #quantity-text {
-  position:absolute;
+  position: absolute;
   left: 20px;
   bottom: 60px;
   font-size: 14pt;
@@ -574,7 +577,7 @@ h2 {
   cursor: pointer;
 }
 
-#border-style-cart{
+#border-style-cart {
   position: absolute;
   width: 100px;
   height: 5px;

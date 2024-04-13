@@ -25,11 +25,14 @@ function listenFileSelect() {
 }
 listenFileSelect();
 
+// Saves the information in a new doc in the posts collection
 postButton.addEventListener("click", async () => {
-    firebase.auth().onAuthStateChanged( (user) => {
+    firebase.auth().onAuthStateChanged((user) => { // authenticate user to get their uid
         if (user) {
+
+            // Retrieve data from form input on html
             var title = titleInput.value;
-            var titleUpperCase = title.toUpperCase();
+            var titleUpperCase = title.toUpperCase(); // Converts all input data to uppercase for querying purposes
             var farm = farmInput.value;
             var farmUpperCase = farm.toUpperCase();
             var category = categoryInput.value;
@@ -42,6 +45,7 @@ postButton.addEventListener("click", async () => {
             var descriptionUpperCase = description.toUpperCase();
             var timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
+            // Write data to firestore
             db.collection('posts').add({
                 userID: user.uid,
                 title: title,
@@ -67,7 +71,7 @@ postButton.addEventListener("click", async () => {
         }
     });
 });
-            
+
 
 
 //------------------------------------------------
@@ -84,13 +88,13 @@ function uploadPic(postDocID) {
     var storageRef = storage.ref("images/" + postDocID + ".jpg");
 
     storageRef.put(ImageFile)   //global variable ImageFile
-       
-                   // AFTER .put() is done
+
+        // AFTER .put() is done
         .then(function () {
             console.log('2. Uploaded to Cloud Storage.');
             storageRef.getDownloadURL()
 
-                 // AFTER .getDownloadURL is done
+                // AFTER .getDownloadURL is done
                 .then(function (url) { // Get URL of the uploaded file
                     console.log("3. Got the download URL.");
 
@@ -98,9 +102,9 @@ function uploadPic(postDocID) {
                     // post document, and update it with an "image" field
                     // that contains the url of where the picture is stored.
                     db.collection("posts").doc(postDocID).update({
-                            "image": url // Save the URL into users collection
-                        })
-                         // AFTER .update is done
+                        "image": url // Save the URL into users collection
+                    })
+                        // AFTER .update is done
                         .then(function () {
                             console.log('4. Added pic URL to Firestore.');
                             // One last thing to do:
@@ -111,7 +115,7 @@ function uploadPic(postDocID) {
                 })
         })
         .catch((error) => {
-             console.log("error uploading to cloud storage");
+            console.log("error uploading to cloud storage");
         })
 }
 
@@ -120,19 +124,19 @@ function uploadPic(postDocID) {
 //--------------------------------------------
 function savePostIDforUser(postDocID) {
     firebase.auth().onAuthStateChanged(user => {
-          console.log("user id is: " + user.uid);
-          console.log("postdoc id is: " + postDocID);
-          db.collection("users").doc(user.uid).update({
-                myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
-          })
-          .then(() =>{
+        console.log("user id is: " + user.uid);
+        console.log("postdoc id is: " + postDocID);
+        db.collection("users").doc(user.uid).update({
+            myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
+        })
+            .then(() => {
                 console.log("5. Saved to user's document!");
-                                alert ("Posted successfully!");
-                                window.location.href = "eachpost.html?docID=" + postDocID;
-                            })
-           .catch((error) => {
+                alert("Posted successfully!");
+                window.location.href = "eachpost.html?docID=" + postDocID;
+            })
+            .catch((error) => {
                 console.error("Error writing document: ", error);
-           });
+            });
     })
 }
 

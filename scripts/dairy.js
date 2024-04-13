@@ -7,8 +7,7 @@ function populateDairyData(filteredData) {
   
       // Create a new post based on the template
       const newcard = cardTemplate.content.cloneNode(true);
-
-  
+      
       // Populate the new post with data
       newcard.querySelector('.card-title').innerHTML = doc.data.product;
       newcard.querySelector('.card-farm').innerHTML = doc.data.farm;

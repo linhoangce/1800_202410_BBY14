@@ -58,18 +58,19 @@
       <div id="back-btn">
         <ion-icon id="back-icon" name="chevron-back-outline" size="large"> </ion-icon>
       </div>
-
       <div id="chat-container">
         <ion-icon id="chat-btn" class="buttons" name="chatbubble-ellipses-outline" size="large"></ion-icon>
       </div>
     </div>
   </nav>
 
+  <!-- Content -->
   <div id="cart-body">
     <div id="select-all">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label select-all" for="flexCheckDefault" style="padding-left: 20px; font-weight: bold;">
+        <label class="form-check-label select-all" for="flexCheckDefault"
+          style="padding-left: 20px; font-weight: bold;">
           Select All
         </label>
       </div>
@@ -79,41 +80,41 @@
     <div id="cart-go-here"></div>
   </div>
 
+  <!-- Template -->
   <template id="cartContentTemplate">
-  <div id="per-order" class="per-order">
-    <div class="farm-info">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <div class="farm-avatar-container"><img class="farm-avatar"></div>
-        <span class="farm-name"></span>
+    <div id="per-order" class="per-order">
+      <div class="farm-info">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <div class="farm-avatar-container"><img class="farm-avatar"></div>
+          <span class="farm-name"></span>
+        </div>
       </div>
-
-    </div>
-
-    <div id="item-checked" class="item-checked">
-      <div class="form-check cart-content">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-        <label class="form-check-label product-name" for="flexCheckChecked">
-        </label>
-        <div class="quantity"><small>Quantity</small></div>
-        <div class="price">Price</div>
+      <div id="item-checked" class="item-checked">
+        <div class="form-check cart-content">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+          <label class="form-check-label product-name" for="flexCheckChecked">
+          </label>
+          <div class="quantity"><small>Quantity</small></div>
+          <div class="price">Price</div>
+        </div>
       </div>
-    </div>
-    <div id="product-image" class="product-image">
-      <img class="product-img" src="" alt="image">
-    </div>
-    <div id="select-quantity" class="select-quantity">
-      <div id="quantity-num" class="quantity-num">0</div>
-      <div id="quantity-adjust" class="quantity-adjust">
-        <ion-icon id="decrement" class="decrement" name="remove-circle" size="large"></ion-icon>
-        <div id="quantity-selected" class="quantity-selected"></div>
-        <ion-icon id="increment" class="increment" name="add-circle" size="large"></ion-icon>
+      <div id="product-image" class="product-image">
+        <img class="product-img" src="" alt="image">
       </div>
+      <div id="select-quantity" class="select-quantity">
+        <div id="quantity-num" class="quantity-num">0</div>
+        <div id="quantity-adjust" class="quantity-adjust">
+          <ion-icon id="decrement" class="decrement" name="remove-circle" size="large"></ion-icon>
+          <div id="quantity-selected" class="quantity-selected"></div>
+          <ion-icon id="increment" class="increment" name="add-circle" size="large"></ion-icon>
+        </div>
+      </div>
+      <ion-icon id="trash-bin" class="trash-bin" name="trash-outline" size="large"></ion-icon>
     </div>
-    <ion-icon id="trash-bin" class="trash-bin" name="trash-outline" size="large"></ion-icon>
-  </div>
-</template>
+  </template>
 
+  <!-- footer -->
   <footer id="continue-footer" class="navbar fixed-bottom">
     <div id="continue">
       <div id="cont-text">CONTINUE</div>
@@ -121,7 +122,6 @@
       </div>
       <ion-icon id="cont-icon" name="chevron-forward-outline" size="large"></ion-icon>
     </div>
-    
   </footer>
 
   <!-- Your own JavaScript functions go here    -->
@@ -130,6 +130,7 @@
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/cart.js"></script>
   <script src="./scripts/goback.js"></script>
+  
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

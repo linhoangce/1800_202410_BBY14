@@ -1,6 +1,8 @@
 
+// Gets the current url
 const paramsNew = new URL(window.location.href);
 const docID = paramsNew.searchParams.get('docID');
+
 var quantity = 0;
 var decrementButton = document.getElementById('decrement');
 var incrementButton = document.getElementById('increment');
@@ -8,17 +10,15 @@ var quantityDisplay = document.getElementById('quantity-selected');
 var totalPriceDisplay = document.getElementById('total-price');
 var itemPrice;
 
-
-
 // Retrieve price from database instead of html element because the latter does not work!!!!
-
 (async () => {
     try {
+        // Gets the doc ID and saves it
         const doc = await db.collection("posts").doc(docID).get();
         if (doc.exists) {
             itemPrice = doc.data().price;
 
-            // Event listeners
+            // Decrements the quantity and activates/deactivates the buttons
             decrementButton.addEventListener('click', () => {
                 console.log("- click");
                 if (quantity > 0) {
@@ -27,7 +27,7 @@ var itemPrice;
                     updateButtonsStyles();
                 }
             });
-
+            // Increment the quantity and activates the buttons
             incrementButton.addEventListener('click', () => {
                 console.log("+ click");
                 quantity++;
@@ -64,15 +64,15 @@ buyButtonDirect.addEventListener('click', () => {
     document.querySelector('#cart-menu-option').style.display = "flex";
 })
 
-
-
 const buyButton = document.getElementById('buy-container-cart');
 buyButton.addEventListener('click', () => {
     console.log('buy btn clicked');
     window.location.href = 'success_purchase.html';
 });
 
+//Activates or deactivates buttons
 function updateButtonsStyles() {
+    // Activates and changes element styles
     if (quantity >= 1) {
         addCartButtonAble.style.pointerEvents = 'auto';
         addCartButtonAble.style.backgroundColor = 'white';
@@ -90,6 +90,7 @@ function updateButtonsStyles() {
         buyButton.addEventListener('mouseleave', handleMouseLeave);
 
     } else {
+        // Disables and reverses styles
         addCartButtonAble.style.pointerEvents = 'none';
         buyButton.style.pointerEvents = 'none';
         addCartButtonAble.removeEventListener('mouseenter', handleMouseEnter);
@@ -108,6 +109,7 @@ function updateButtonsStyles() {
     }
 }
 
+// Handles hovering effects
 function handleMouseEnter(evt) {
     evt.target.style.backgroundColor = 'green';
     evt.target.style.border = 'solid white 5px';
@@ -121,14 +123,12 @@ function handleMouseLeave(evt) {
 }
 
 // hide the cart selection panel
-
 const closeButtonCart = document.getElementById('close-btn-cart');
 closeButtonCart.addEventListener('click', () => {
     document.getElementById('cart-menu-option').style.display = 'none';
 })
 
 //Style delivery options
-
 const pickupButton = document.getElementById('pickup');
 const deliveryButton = document.getElementById('delivery');
 
@@ -153,8 +153,6 @@ pickupButton.addEventListener('click', (evt) => {
     deliveryButton.style.color = 'green';
 });
 
-
-// pickupButton.addEventListener('mouseenter', handleMouseEnterDelivery);
 pickupButton.addEventListener('mouseleave', handleMouseLeaveDelivery);
 deliveryButton.addEventListener('mouseenter', handleMouseEnterDelivery);
 deliveryButton.addEventListener('mouseleave', handleMouseLeaveDelivery);
@@ -185,20 +183,12 @@ addCartButtonAble.addEventListener('click', async () => {
 
         if (user) {
             const title = document.querySelector('h1').textContent;
-            console.log("TITLE ", title);
             const farm = document.getElementById('post-title').textContent;
-            console.log("FARM " , farm);
-            // const category = categoryInput.value;
-            // const categoryUpperCase = category.toUpperCase();
             const product = document.getElementById('product').textContent;
-            console.log("PRO" , product);
             const farmAvatar = document.getElementById('user-avatar').src;
             const postImage = document.getElementById('post-images').src
-            console.log("POSt Ima " , postImage);
             const quantitySelected = document.getElementById('quantity-selected').textContent;
-            console.log("Quantity ", quantity);
             const totalPrice = document.getElementById('total-price').textContent;
-            console.log("PRICE ", totalPrice);
             const timestamp = firebase.firestore.FieldValue.serverTimestamp();
             const userID = user.uid;
             const doc = docID;

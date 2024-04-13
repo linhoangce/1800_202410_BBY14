@@ -26,6 +26,8 @@ function doAll() {
 }
 doAll();
 
+
+// Displays post content after retrieving from firestore database
 function displayPostInfo() {
 
     console.log("docID: ", ID);
@@ -57,11 +59,6 @@ function displayPostInfo() {
             console.log("save id: ", document.getElementById('save-' + doc.id));
             document.querySelector('i').onclick = () => saveBookmark(doc.id); // onclick can lead to firing the modal events twice
 
-            // Style bookmark
-            // document.getElementById("save-" + doc.id).style.top = "50%";
-            // document.getElementById("save-" + doc.id).style.transform = "translateX(-50%)";
-            // document.getElementById("save-" + doc.id).style.right = "50px";
-
             // keep bookmark if already saved
             currentUser.get().then(userDoc => {
                 //get the user name
@@ -69,17 +66,12 @@ function displayPostInfo() {
                 if (bookmarks.includes(doc.id)) {
                     document.getElementById('save-' + doc.id).innerText = 'bookmark';
                 }
-
+                // Display the current's user avatar?? Buggy?
                 postAvatar = userDoc.data().avatar;
                 document.getElementById('user-avatar').src = postAvatar;
-
-
             });
         });
 }
-
-
-// displayPostInfo();
 
 
 function savePostDocumentIDAndRedirect() {
@@ -100,10 +92,7 @@ async function saveBookmark(postDocID) {
         const bookmarks = userDoc.data().bookmarks;
 
         if (bookmarks.includes(postDocID)) {
-
-
             // a popup to confirm
-
             document.querySelector('i').setAttribute('data-bs-toggle', 'modal');
             document.querySelector('i').setAttribute('data-bs-target', '#exampleModal');
 
@@ -129,7 +118,6 @@ async function saveBookmark(postDocID) {
                 document.querySelector('i').removeAttribute('data-bs-target');
             });
 
-            // modal.style.display = 'none';
         } else {
             currentUser.update({
                 // Use 'arrayUnion' to add the new bookmark ID to the 'bookmarks' array.
@@ -145,7 +133,6 @@ async function saveBookmark(postDocID) {
                     document.getElementById(iconID).innerText = 'bookmark';
                 });
             showSaved();
-
         }
 
     });
@@ -173,7 +160,7 @@ function populateReviews() {
     let postID = params.searchParams.get("docID");
     console.log("postID: ", postID);
 
-    // Double-check: is your collection called "Reviews" or "reviews"?
+    // Iterates through the reviews collection, retrieves doc content and displays it
     db.collection("reviews")
         .where("postDocID", "==", postID)
         .get()
@@ -261,17 +248,17 @@ function populateAverageReviews() {
         });
 }
 
-
-// Make the search bar appear when scrolling
 const navbar = document.getElementById("top-navbar");
 const searchBar = document.getElementById("search-field");
 const searchIcon = document.getElementById("search-icon");
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > 0) {
+        // Make the search bar appear when scrolling
         searchBar.style.display = "block";
         searchIcon.style.display = "block";
 
+        // Changes styles when scrolling past the photo
         if (window.scrollY > 170) {
             navbar.style.height = '120px';
             navbar.style.backgroundColor = "white";
@@ -282,6 +269,7 @@ window.addEventListener("scroll", () => {
             document.getElementById('toggle-icon').style.color = 'green';
             document.getElementById('search-icon').style.color = 'green';
         } else {
+            // Reverses changes to styles within photo frame
             navbar.style.backgroundColor = "";
             document.getElementById('cart-icon').classList.remove('green-outline-cart');
             document.getElementById("cart-icon").setAttribute('name', 'cart');
@@ -291,6 +279,7 @@ window.addEventListener("scroll", () => {
 
         }
     } else {
+        // Reverses changes to default
         navbar.style.backgroundColor = "";
         searchBar.style.display = "none";
         searchIcon.style.display = "none";

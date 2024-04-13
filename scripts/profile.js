@@ -1,4 +1,5 @@
 var currentUser;               //points to the document of the user who is logged in
+
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
 
@@ -26,9 +27,9 @@ function populateUserInfo() {
                     if (userCity != null) {
                         document.getElementById("cityInput").value = userCity;
                     }
-                   if (userAvatar != null) {
-                    document.getElementById('mypic-goes-here').setAttribute('src', userAvatar);
-                   }
+                    if (userAvatar != null) {
+                        document.getElementById('mypic-goes-here').setAttribute('src', userAvatar);
+                    }
                 })
         } else {
             // No user is signed in.

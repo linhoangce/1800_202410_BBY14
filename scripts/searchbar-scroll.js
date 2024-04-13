@@ -2,6 +2,11 @@
 const topNavbar = document.querySelector('.fixed-top');
 const searchBarScroll = document.querySelector('#search-bar-scroll');
 
+// Changes color when no hovering , for default
+document.getElementById('cart-icon-home').removeEventListener('mouseenter', handleMouseEnterCart);
+document.getElementById('cart-icon-home').removeEventListener('mouseleave', handleMouseLeaveCart);
+
+// Handles style changes with scrolling
 window.addEventListener('scroll', () => {
     if (window.scrollY > 25) {
 
@@ -9,6 +14,7 @@ window.addEventListener('scroll', () => {
         topNavbar.style.backgroundColor = 'white';
         topNavbar.style.height = '110px';
 
+        // Changes styles when scrolling
         searchBarScroll.style.position = 'relative';
         document.getElementById("top-navbar-container").style.marginTop = '0';
         document.getElementById("search-field-scroll").style.position = 'absolute';
@@ -27,6 +33,8 @@ window.addEventListener('scroll', () => {
         document.getElementById('cart-icon-home').addEventListener('mouseleave', handleMouseLeaveCart);
 
     } else {
+
+        // Reverse style changes
         searchBarScroll.style.display = 'none';
         topNavbar.style.backgroundColor = '';
         topNavbar.style.height = '';
@@ -46,20 +54,14 @@ window.addEventListener('scroll', () => {
         document.getElementById("cart-icon-home").style.color = 'black';
         document.getElementById("cart-icon-home").style.bottom = '8px';
         document.getElementById('search-icon').style.color = '';
-        document.getElementById('cart-icon-home').removeEventListener('mouseenter', handleMouseEnterCart);
-        document.getElementById('cart-icon-home').removeEventListener('mouseleave', handleMouseLeaveCart);
     }
 })
 
-
+// Handles color changes with hovering
 function handleMouseEnterCart(evt) {
-
     evt.target.style.color = 'green';
-
 }
 
 function handleMouseLeaveCart(evt) {
-
     evt.target.style.color = '';
-
 }

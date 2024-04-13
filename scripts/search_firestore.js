@@ -1,6 +1,6 @@
 
 
-// Event listener for the "Fetch Vegetables Data" button
+// Retrieves data where product name matches query
 const searchItem = document.getElementById("search-icon");
 searchItem.addEventListener("click", async () => {
     try {

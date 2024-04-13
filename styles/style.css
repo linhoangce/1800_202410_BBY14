@@ -121,8 +121,8 @@ body {
   bottom: 8px;
 }
 
-.cart:hover{
-  color:green;
+.cart:hover {
+  color: green;
 }
 
 .col-md-8-fs-4 {
@@ -390,10 +390,10 @@ p {
   scale: 1.05;
 }
 
-#home-btn{
+#home-btn {
   position: absolute;
   left: 50%;
-  transform:  translateX(-50%);
+  transform: translateX(-50%);
 }
 
 #home-sig {
@@ -431,7 +431,7 @@ p {
   height: 50px;
 }
 
-#create-post-container:hover{
+#create-post-container:hover {
   color: green;
   scale: 1.05;
 }
@@ -493,7 +493,10 @@ p {
   padding-top: 30px;
 }
 
-.bigger-arrow{ font-size: 34px; color:#00610e;   }
+.bigger-arrow {
+  font-size: 34px;
+  color: #00610e;
+}
 
 /* Style Seach Bar */
 
@@ -524,13 +527,13 @@ p {
   transform: translateX(-50%);
 }
 
-#search-icon-scroll:hover{
-  color:green;
+#search-icon-scroll:hover {
+  color: green;
   cursor: pointer;
 }
 
-#search-icon:hover{
-  color:green;
+#search-icon:hover {
+  color: green;
   cursor: pointer;
 }
 
@@ -581,7 +584,7 @@ p {
 }
 
 #login-btn {
-    margin-right: 300px;
+  margin-right: 300px;
 }
 
 #footerPlaceholder {

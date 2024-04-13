@@ -1,10 +1,12 @@
+// This is for Firesearch implementation, which is not yet implemented on the app
+
 const admin = require('firebase-admin');
 admin.initializeApp();
 
 const Firesearch = require('firesearch');
 
 const config = {
-    collectionName: 'posts', // Replace with your Firestore collection name
+    collectionName: 'posts', 
     indexProperties: ['title', 'farm', 'product', 'quantity', 'price', 'description'], // Fields to include in the index
     resultantProperties: ['title', 'farm', 'product', 'quantity', 'price', 'description'], // Fields to return in search results
 };

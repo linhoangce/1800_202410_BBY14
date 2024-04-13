@@ -18,38 +18,20 @@ function getNameFromAuth() {
 }
 getNameFromAuth(); //run the function
 
-function writePostLoop(max) {
-    //define a variable for the collection you want to create in Firestore to populate data
-    var postsRef = db.collection("posts");
-    for (i = 1; i <= max; i++) {
-        postsRef.add({ //add to database, autogen ID
-            title: "",
-            farm: "",
-            product: "",
-            price: "",
-            quantity: "",
-            description: "",
-            img: "",
-            last_updated: firebase.firestore.FieldValue.serverTimestamp()
-        })
-    }
-}
-
 //------------------------------------------------------------------------------
 // Input parameter is a string representing the collection we are reading from
 //------------------------------------------------------------------------------
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("postCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
 
-
+    // Iterates through collection, retrieve each doc's content to display in descending order by timestamp
     db.collection(collection).orderBy("timestamp", 'desc').get()
-           //the collection called "hikes"
         .then(allPosts => {
-            var i = 1;  //Optional: if you want to have a unique ID for each hike
+            var i = 1;  //unique ID for each post
             allPosts.forEach(doc => { //iterate thru each doc
                 var title = doc.data().title;       // get value of the "title" key
                 var farm = doc.data().farm;  // get value of the "farm" key
-                var image = doc.data().image;    //get unique ID to each hike to be used for fetching right image
+                var image = doc.data().image;    //get image URL
                 var product = doc.data().product; //gets the product
                 var price = doc.data().price;
                 var details = doc.data().description;
@@ -75,29 +57,24 @@ function displayCardsDynamically(collection) {
                 document.getElementById(collection + "-go-here").appendChild(newcard);
 
                 i++;   //Optional: iterate variable to serve as unique ID
-            })
-        })
+            });
+        });
 }
 
 displayCardsDynamically("posts");  //input param is the name of the collection
 
 // Redirect to Profile Page
-const profileButton = document.getElementById("account-btn");
-
-profileButton.addEventListener("click", () => {
-    window.location.href = "profile.html";
-})
 
 const editProfile = document.getElementById("account-container");
 editProfile.addEventListener("click", () => {
     window.location.href = "profile.html";
-})
+});
 
 document.getElementById('message-container').addEventListener('click', () => {
     window.location.href = 'messages.html';
-})
+});
 
 document.getElementById('cart-icon-home').addEventListener('click', () => {
     window.location.href = 'cart.html';
-})
+});
 

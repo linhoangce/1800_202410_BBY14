@@ -1,11 +1,12 @@
+// Retrieves data from firestore and displays them
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("cartContentTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
 
-
-    db.collection(collection).orderBy("timestamp").get()
+    // Iterates through the collection and sort them by timestamp
+    db.collection(collection).orderBy("timestamp", 'desc').get()
            //the collection called "hikes"
         .then(allPosts => {
-            var i = 1;  //Optional: if you want to have a unique ID for each hike
+            var i = 1;  // Create unique id for each card
             allPosts.forEach(doc => { //iterate thru each doc
                 var farm = doc.data().farm;  // get value of the "farm" key
                 var image = doc.data().postImage;    //get unique ID to each hike to be used for fetching right image

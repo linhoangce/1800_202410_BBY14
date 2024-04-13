@@ -4,13 +4,14 @@
 function populateSearchData(searchData) {
   const cardTemplate = document.getElementById("postCardTemplate");
 
+  // Sort search in desc order by timestamp
+  searchData.sort((x, y) => y.timestamp - x.timestamp);
+
   searchData.forEach((doc) => {
     console.log("Document ID:", doc.id);
 
     // Create a new post based on the template
     const newcard = cardTemplate.content.cloneNode(true);
-
-    // parse file path to get only file format nam
 
     // Populate the new post with data
     newcard.querySelector('.card-title').innerHTML = doc.data.product;

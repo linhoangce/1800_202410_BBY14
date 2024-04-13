@@ -1,6 +1,7 @@
 var postDocID = localStorage.getItem("postDocID");    //visible to all functions on this page
 console.log("postID: ", postDocID);
 
+// Displays the post info on review page
 function getPostName(id) {
     db.collection("posts")
         .doc(id)
@@ -27,7 +28,6 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 // displays the user info
-
 function displayDefaultInfo(user) {
     let userInfo = document.getElementById("user_name");
     var currentUser = db.collection("users").doc(user.uid);
@@ -73,6 +73,8 @@ function listenFileSelect() {
 }
 listenFileSelect();
 
+// Save the review in a new doc with the post data into firestore
+
 const postReviewButton = document.getElementById("post");
 
 postReviewButton.addEventListener("click", async () => {
@@ -94,6 +96,7 @@ postReviewButton.addEventListener("click", async () => {
                 }
             });
 
+            // Retrieves the post data to store in review
             db.collection("posts")
                 .doc(postDocID)
                 .get()
@@ -136,13 +139,13 @@ function uploadPic(postDocID) {
     var storageRef = storage.ref("images/" + postDocID + ".jpg");
 
     storageRef.put(ImageFile)   //global variable ImageFile
-       
-                   // AFTER .put() is done
+
+        // AFTER .put() is done
         .then(function () {
             console.log('2. Uploaded to Cloud Storage.');
             storageRef.getDownloadURL()
 
-                 // AFTER .getDownloadURL is done
+                // AFTER .getDownloadURL is done
                 .then(function (url) { // Get URL of the uploaded file
                     console.log("3. Got the download URL.");
 
@@ -150,21 +153,21 @@ function uploadPic(postDocID) {
                     // post document, and update it with an "image" field
                     // that contains the url of where the picture is stored.
                     db.collection("reviews").doc(postDocID).update({
-                            "reviewImage": url // Save the URL into users collection
-                        })
-                         // AFTER .update is done
+                        "reviewImage": url // Save the URL into users collection
+                    })
+                        // AFTER .update is done
                         .then(function () {
                             console.log('4. Added pic URL to Firestore.');
                             // One last thing to do:
                             // save this postID into an array for the OWNER
                             // so we can show "my posts" in the future
                             saveReviewDocIDforUser(postDocID);
-                        })
-                })
+                        });
+                });
         })
         .catch((error) => {
-             console.log("error uploading to cloud storage");
-        })
+            console.log("error uploading to cloud storage", error);
+        });
 }
 
 //--------------------------------------------
@@ -172,82 +175,21 @@ function uploadPic(postDocID) {
 //--------------------------------------------
 function saveReviewDocIDforUser(postDocID) {
     firebase.auth().onAuthStateChanged(user => {
-          console.log("user id is: " + user.uid);
-          console.log("postdoc id is: " + postDocID);
-          db.collection("users").doc(user.uid).update({
-                myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
-          })
-          .then(() =>{
+        console.log("user id is: " + user.uid);
+        console.log("postdoc id is: " + postDocID);
+        db.collection("users").doc(user.uid).update({
+            myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
+        })
+            .then(() => {
                 console.log("5. Saved to user's review!");
-                                alert ("Review is complete!");
-                                window.location.href = "thanks.html";
-                            })
-           .catch((error) => {
+                alert("Review is complete!");
+                window.location.href = "thanks.html";
+            })
+            .catch((error) => {
                 console.error("Error writing document: ", error);
-           });
-    })
+            });
+    });
 }
-
-// function writeReview() {
-//         console.log("inside write review");
-//         let comment = document.getElementById("comment").value;
-//         let file = document.getElementById("file_name").value;
-
-//         // Get the star rating
-//         // Get all the elements with the class "star" and store them in the 'stars' variable
-//         const stars = document.querySelectorAll('.star');
-//         // Initialize a variable 'hikeRating' to keep track of the rating count
-//         let postRating = 0;
-//         // Iterate through each element in the 'stars' NodeList using the forEach method
-//         stars.forEach((star) => {
-//             // Check if the text content of the current 'star' element is equal to the string 'star'
-//             if (star.textContent === 'star') {
-//                 // If the condition is met, increment the 'hikeRating' by 1
-//                 postRating++;
-//             }
-//         });
-
-//         var user = firebase.auth().currentUser;
-//         if (user) {
-//             var currentUser = db.collection("users").doc(user.uid);
-//             var userID = user.uid;
-
-//             db.collection("posts")
-//                 .doc(postDocID)
-//                 .get()
-//                 .then((doc) => {
-
-//                     var farm = doc.data().farm;
-//                     var title = doc.data().title;
-//                     var imgPost = doc.data().img;
-//                     var product = doc.data().product;
-//                     var price = doc.data().price;
-//                     var postDetails = doc.data().description;
-
-//                     // Create a new collection of reviews for each post, each review is a doc
-//                     db.collection("reviews").add({
-//                         postDocID: postDocID,
-//                         userID: userID,
-//                         title: title,
-//                         farm: farm,
-//                         imgReview: file,
-//                         imgPost: imgPost,
-//                         description: postDetails,
-//                         product: product,
-//                         price: price,
-//                         comment: comment,
-//                         rating: postRating, // Include the rating in the review
-//                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
-//                     }).then(() => {
-//                         window.location.href = "thanks.html"; // Redirect to the thanks page
-//                     });
-//                 });
-//         } else {
-//             console.log("No user is signed in");
-//             window.location.href = 'review.html';
-//         }
-//     }
-
 
 const closeButton = document.getElementById("close-btn");
 

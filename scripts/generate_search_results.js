@@ -1,3 +1,5 @@
+// THIS IS FOR FIRESEARCH IMPLEMENTATION, WHICH IS STILL BEING TESTED AND DEVELOPED, NOT YET IMPLEMENTED
+
 // Retrieve search results from query parameters
 const searchResults = JSON.parse(decodeURIComponent(window.location.search.split('=')[1]));
 
