@@ -12,7 +12,7 @@ List team members and/or short bio's here...
 * Hi, my name is Linh. I am just happy to be here.
 * Hello again, it's Linh. I am here for fun!
 * Joey Jahanshahi, Hello!
-* Isaac Azage
+* Isaac Azage (left)
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
@@ -22,7 +22,7 @@ List technologies (with version numbers), API's, icons, fonts, images, media or 
 * Firestore (BAAS - Backend as a Service)
 * Firebase Cloud Storage (BAAS - Backend as a Service)
 
-* Acknowledgement of free usage for icons:
+Acknowledgement of free usage for icons:
 * Vegetables icons created by Freepik - Flaticon
 * Fruit icons created by Freepik - Flaticon
 * Dairy products icons created by Smashicons - Flaticon
@@ -43,20 +43,20 @@ Here are some simple instructions.
 * You can create a fake account in the format of an email to log in, for example user@bcit.ca, fill out your name and password.
 * Optionally, if you need bigger screen size because the default screen size is too small for you, please unselect the computer with phone icon, and adjust the screen size as you wish. Our recommendation is 460 x 695 pixel to maintain relatively proper UI elements.
 * After logging in, you can try different features that we have been able to implement so far.
-* Finally, we would love to hear about your experience or feedback, please help us complete a small survey on this link. 
-Thank you, I hope you will enjoy using our app.
+* Finally, we would love to hear about your experience or feedback, please help us complete a small survey on this link. https://docs.google.com/forms/d/1fGqkebst4PxXcXgrAWfM3m8XMgkNt9S7ZDzuCHzWxME/edit
+* Thank you, I hope you will enjoy using our app.
 
 ## 5. Known Bugs and Limitations
 Here are some known bugs:
 * Average star rating display on each post page increases from 5 to 6 when calculating average rating
-* ...
+* Current location is not yet accurate
 * ...
 
 ## 6. Features for Future
 What we'd like to build in the future:
-* ...
-* ...
-* ...
+* Collecting data from various site to make price suggestions
+* Full text search
+* Recommendations based on personal history
 	
 ## 7. Contents of Folder
 Content of the project folder:
