@@ -10,7 +10,7 @@ function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             currentUser = db.collection("users").doc(user.uid); //global
-            console.log(currentUser);
+            console.log("currentUser", currentUser);
             // return currentUser;
 
             // the following functions are always called when someone is logged in
@@ -59,17 +59,6 @@ function displayPostInfo() {
             console.log("save id: ", document.getElementById('save-' + doc.id));
             document.querySelector('i').onclick = () => saveBookmark(doc.id); // onclick can lead to firing the modal events twice
 
-            // keep bookmark if already saved
-            currentUser.get().then(userDoc => {
-                //get the user name
-                var bookmarks = userDoc.data().bookmarks;
-                if (bookmarks.includes(doc.id)) {
-                    document.getElementById('save-' + doc.id).innerText = 'bookmark';
-                }
-                // Display the current's user avatar?? Buggy?
-                postAvatar = userDoc.data().avatar;
-                document.getElementById('user-avatar').src = postAvatar;
-            });
         });
 }
 
@@ -85,11 +74,16 @@ const bookmarkClicked = document.getElementById('bookmark-container');
 // bookmarkClicked.addEventListener('click', saveBookmark); // for debugging
 
 async function saveBookmark(postDocID) {
-
-    console.log("sfafdfas", currentUser);
+    console.log('docID', postDocID);
     currentUser.get().then(userDoc => {
         //get the user name
-        const bookmarks = userDoc.data().bookmarks;
+        console.log('userDoc', userDoc);
+        const userData = userDoc.data();
+        console.log('userData', userData);
+
+        // Initialize bookmarks if undefined
+        const bookmarks = userData.bookmarks || [];
+        console.log("bookmarks", bookmarks);
 
         if (bookmarks.includes(postDocID)) {
             // a popup to confirm
