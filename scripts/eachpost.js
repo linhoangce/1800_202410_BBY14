@@ -10,8 +10,10 @@ function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             currentUser = db.collection("users").doc(user.uid); //global
-            console.log("currentUser", currentUser);
-            // return currentUser;
+            currentUser.get().then(doc => {
+                userAvatarUrl = doc.data().avatar;
+                document.getElementById('user-avatar').src = userAvatarUrl;
+            });            // return currentUser;
 
             // the following functions are always called when someone is logged in
             displayPostInfo();
@@ -44,7 +46,7 @@ function displayPostInfo() {
             postQuantity = doc.data().quantity;
             postDescription = doc.data().description;
             postPrice = doc.data().price;
-
+            
             console.log("URL ", postImage);
             document.getElementById("post-title").innerHTML = postTitle;
             let imgEvent = document.querySelector(".post-img");
