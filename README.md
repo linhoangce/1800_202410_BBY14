@@ -48,9 +48,6 @@ Here are some simple instructions.
 
 ## 5. Demos
 
-
-Here is a table with titles/descriptions in the first row and GIFs in the second row:
-
 | Create a Post          | Write Reviews          | Add to Cart/Buy         | Search & Filter          |
 |------------------|------------------|------------------|------------------|
 | ![Posting](images/1800-posting.gif)   | ![Write Reviews](images/1800-review.gif)   | ![Cart/Buy Interaction](images/1800-interaction.gif)   | ![Search & Filter](images/1800-search_filter.gif)   |
