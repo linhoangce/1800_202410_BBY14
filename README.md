@@ -46,37 +46,162 @@ Here are some simple instructions.
 * Finally, we would love to hear about your experience or feedback, please help us complete a small survey on this link. https://docs.google.com/forms/d/1fGqkebst4PxXcXgrAWfM3m8XMgkNt9S7ZDzuCHzWxME/edit
 * Thank you, I hope you will enjoy using our app.
 
-## 5. Known Bugs and Limitations
+## 5. Demos
+
+
+Here is a table with titles/descriptions in the first row and GIFs in the second row:
+
+| Create a Post          | Write Reviews          | Add to Cart/Buy         | Search & Filter          |
+|------------------|------------------|------------------|------------------|
+| ![Posting](images/1800-posting.gif)   | ![Write Reviews](images/1800-review.gif)   | ![Cart/Buy Interaction](images/1800-interaction.gif)   | ![Search & Filter](images/1800-search_filter.gif)   |
+
+
+## 6. Known Bugs and Limitations
 Here are some known bugs:
 * Average star rating display on each post page increases from 5 to 6 when calculating average rating
 * Current location is not yet accurate
 * ...
 
-## 6. Features for Future
+## 7. Features for Future
 What we'd like to build in the future:
 * Collecting data from various site to make price suggestions
 * Full text search
 * Recommendations based on personal history
 	
-## 7. Contents of Folder
-Content of the project folder:
+## 8. Contents of Folder
 
 ```
- Top level of project folder: 
-├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
-└── README.md
-
-It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /blah.jpg                # Acknowledge source
-├── scripts                  # Folder for scripts
-    /blah.js                 # 
-├── styles                   # Folder for styles
-    /blah.css                # 
-
-
+├── .firebase
+│  └── hosting..cache
+├── .firebaserc
+├── .gitignore
+├── .vscode
+│  └── settings.json
+├── 1800_202410_BBY14.code-workspace
+├── 404.html
+├── AboutUs.html
+├── cart.html
+├── chat.html
+├── contactus.html
+├── createPost.html
+├── dairy.html
+├── eachpost.html
+├── empty.html
+├── firebase.json
+├── firestore.indexes.json
+├── firestore.rules
+├── fruits.html
+├── images
+│  ├── 1800-interaction.gif
+│  ├── 1800-login.gif
+│  ├── 1800-posting.gif
+│  ├── 1800-review.gif
+│  ├── 1800-search_filter.gif
+│  ├── AM01.jpg
+│  ├── apple-har.jpg
+│  ├── apple.jpg
+│  ├── avatar.jpg
+│  ├── avatar1.jpg
+│  ├── basket.jpg
+│  ├── bookmark-dark.png
+│  ├── bookmark.png
+│  ├── brocoli.jpg
+│  ├── card1.png
+│  ├── card2.png
+│  ├── card3.png
+│  ├── card4.png
+│  ├── card5.png
+│  ├── card6.png
+│  ├── card7.png
+│  ├── card8.png
+│  ├── carrot.jpg
+│  ├── cheese.png
+│  ├── cherry-tomatoes.jpg
+│  ├── Colby-Cheese-4.jpg
+│  ├── collard.png
+│  ├── cottage-ch.jpg
+│  ├── cucumber.jpg
+│  ├── eggplant.jpg
+│  ├── farm-delivery.jpg
+│  ├── farm-delivery1.jpg
+│  ├── farm-delivery2.jpg
+│  ├── farmer.png
+│  ├── image.jpeg
+│  ├── kales.jpg
+│  ├── logo.png
+│  ├── macadamia.png
+│  ├── milk.png
+│  ├── mint-plant.jpg
+│  ├── orange-basket.jpg
+│  ├── orange.png
+│  ├── oranges.jpg
+│  ├── rosemary.png
+│  ├── spinach.jpg
+│  ├── strawberry-1330459_640.jpg
+│  ├── strawberry-plant.jpg
+│  ├── strawberry.png
+│  ├── tomato-basket.jpg
+│  ├── tomato.png
+│  ├── veg-basket.jpg
+│  ├── veggie.jpg
+│  └── veggie1.jpg
+├── index.html
+├── login.html
+├── main.html
+├── messages.html
+├── nuts.html
+├── plants.html
+├── profile.html
+├── README.md
+├── review.html
+├── scripts
+│  ├── authentication.js
+│  ├── cart_selection.js
+│  ├── cart.js
+│  ├── client.js.plush
+│  ├── create_post.js
+│  ├── createPost.js
+│  ├── dairy.js
+│  ├── eachpost.js
+│  ├── filter_categories.js
+│  ├── firebaseAPI_TEAM99.js
+│  ├── fruits.js
+│  ├── generate_search_results.js
+│  ├── goback.js
+│  ├── home.js
+│  ├── indexgenerator.js
+│  ├── main.js
+│  ├── messages.js
+│  ├── nuts.js
+│  ├── plants.js
+│  ├── profile.js
+│  ├── review.js
+│  ├── save_post.js
+│  ├── script.js
+│  ├── search_firestore.js
+│  ├── search_result.js
+│  ├── searchbar-scroll.js
+│  ├── skeleton.js
+│  ├── success_purchase.js
+│  └── vegetables.js
+├── search_results.html
+├── storage.rules
+├── styles
+│  ├── style_cart.css
+│  ├── style_eachPost.css
+│  ├── style_messages.css
+│  ├── style_review.css
+│  ├── style_successPurchase.css
+│  ├── style-createPost.css
+│  ├── style-profile.css
+│  └── style.css
+├── success_purchase.html
+├── text
+│  ├── footer.html
+│  ├── nav_after_login.html
+│  └── nav_before_login.html
+├── thanks.html
+└── vegetables.html
 
 ```
 
